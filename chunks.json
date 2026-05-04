@@ -1,0 +1,138 @@
+[
+  {
+    "TargetContent": "    \"id\": 25,\n    \"name\": \"피카츄 (5th Anniversary)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 25,\n    \"name\": \"피카츄 (5주년)\",\n    \"types\": ["
+  },
+  {
+    "TargetContent": "    \"id\": 25,\n    \"name\": \"피카츄 (Flying)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 25,\n    \"name\": \"피카츄 (공중날기)\",\n    \"types\": ["
+  },
+  {
+    "TargetContent": "    \"id\": 25,\n    \"name\": \"피카츄 (Horizons)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 25,\n    \"name\": \"피카츄 (캡틴)\",\n    \"types\": ["
+  },
+  {
+    "TargetContent": "    \"id\": 25,\n    \"name\": \"피카츄 (Kariyushi)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 25,\n    \"name\": \"피카츄 (카리유시)\",\n    \"types\": ["
+  },
+  {
+    "TargetContent": "    \"id\": 25,\n    \"name\": \"피카츄 (Libre)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 25,\n    \"name\": \"피카츄 (마스크드)\",\n    \"types\": ["
+  },
+  {
+    "TargetContent": "    \"id\": 25,\n    \"name\": \"피카츄 (Pop Star)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 25,\n    \"name\": \"피카츄 (팝스타)\",\n    \"types\": ["
+  },
+  {
+    "TargetContent": "    \"id\": 25,\n    \"name\": \"피카츄 (Rock Star)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 25,\n    \"name\": \"피카츄 (록스타)\",\n    \"types\": ["
+  },
+  {
+    "TargetContent": "    \"id\": 25,\n    \"name\": \"피카츄 (Shaymin Scarf)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 25,\n    \"name\": \"피카츄 (쉐이미 스카프)\",\n    \"types\": ["
+  },
+  {
+    "TargetContent": "    \"id\": 128,\n    \"name\": \"켄타로스 (Aqua)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 128,\n    \"name\": \"켄타로스 (워터종)\",\n    \"types\": ["
+  },
+  {
+    "TargetContent": "    \"id\": 128,\n    \"name\": \"켄타로스 (Blaze)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 128,\n    \"name\": \"켄타로스 (블레이즈종)\",\n    \"types\": ["
+  },
+  {
+    "TargetContent": "    \"id\": 128,\n    \"name\": \"켄타로스 (Combat)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 128,\n    \"name\": \"켄타로스 (컴뱃종)\",\n    \"types\": ["
+  },
+  {
+    "TargetContent": "    \"id\": 412,\n    \"name\": \"도롱충이 (Plant)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 412,\n    \"name\": \"도롱충이 (초목도롱)\",\n    \"types\": ["
+  },
+  {
+    "TargetContent": "    \"id\": 412,\n    \"name\": \"도롱충이 (Sandy)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 412,\n    \"name\": \"도롱충이 (모래땅도롱)\",\n    \"types\": ["
+  },
+  {
+    "TargetContent": "    \"id\": 412,\n    \"name\": \"도롱충이 (Trash)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 412,\n    \"name\": \"도롱충이 (슈레도롱)\",\n    \"types\": ["
+  },
+  {
+    "TargetContent": "    \"id\": 413,\n    \"name\": \"도롱마담 (Plant)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 413,\n    \"name\": \"도롱마담 (초목도롱)\",\n    \"types\": ["
+  },
+  {
+    "TargetContent": "    \"id\": 413,\n    \"name\": \"도롱마담 (Sandy)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 413,\n    \"name\": \"도롱마담 (모래땅도롱)\",\n    \"types\": ["
+  },
+  {
+    "TargetContent": "    \"id\": 413,\n    \"name\": \"도롱마담 (Trash)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 413,\n    \"name\": \"도롱마담 (슈레도롱)\",\n    \"types\": ["
+  },
+  {
+    "TargetContent": "    \"id\": 421,\n    \"name\": \"체리꼬 (Overcast)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 421,\n    \"name\": \"체리꼬 (네거폼)\",\n    \"types\": ["
+  },
+  {
+    "TargetContent": "    \"id\": 421,\n    \"name\": \"체리꼬 (Sunshine)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 421,\n    \"name\": \"체리꼬 (포지폼)\",\n    \"types\": ["
+  },
+  {
+    "TargetContent": "    \"id\": 479,\n    \"name\": \"로토무 (Fan)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 479,\n    \"name\": \"로토무 (스핀)\",\n    \"types\": ["
+  },
+  {
+    "TargetContent": "    \"id\": 479,\n    \"name\": \"로토무 (Frost)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 479,\n    \"name\": \"로토무 (프로스트)\",\n    \"types\": ["
+  },
+  {
+    "TargetContent": "    \"id\": 479,\n    \"name\": \"로토무 (Heat)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 479,\n    \"name\": \"로토무 (히트)\",\n    \"types\": ["
+  },
+  {
+    "TargetContent": "    \"id\": 479,\n    \"name\": \"로토무 (Mow)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 479,\n    \"name\": \"로토무 (커트)\",\n    \"types\": ["
+  },
+  {
+    "TargetContent": "    \"id\": 479,\n    \"name\": \"로토무 (Wash)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 479,\n    \"name\": \"로토무 (워시)\",\n    \"types\": ["
+  },
+  {
+    "TargetContent": "    \"id\": 351,\n    \"name\": \"캐스퐁 (비)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 351,\n    \"name\": \"캐스퐁 (빗방울의 모습)\",\n    \"types\": ["
+  },
+  {
+    "TargetContent": "    \"id\": 351,\n    \"name\": \"캐스퐁 (눈)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 351,\n    \"name\": \"캐스퐁 (설운의 모습)\",\n    \"types\": ["
+  },
+  {
+    "TargetContent": "    \"id\": 351,\n    \"name\": \"캐스퐁 (쾌청)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 351,\n    \"name\": \"캐스퐁 (태양의 모습)\",\n    \"types\": ["
+  },
+  {
+    "TargetContent": "    \"id\": 649,\n    \"name\": \"게노세크트 (물)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 649,\n    \"name\": \"게노세크트 (아쿠아카세트)\",\n    \"types\": ["
+  },
+  {
+    "TargetContent": "    \"id\": 649,\n    \"name\": \"게노세크트 (전기)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 649,\n    \"name\": \"게노세크트 (번개카세트)\",\n    \"types\": ["
+  },
+  {
+    "TargetContent": "    \"id\": 649,\n    \"name\": \"게노세크트 (불꽃)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 649,\n    \"name\": \"게노세크트 (블레이즈카세트)\",\n    \"types\": ["
+  },
+  {
+    "TargetContent": "    \"id\": 649,\n    \"name\": \"게노세크트 (얼음)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 649,\n    \"name\": \"게노세크트 (프리즈카세트)\",\n    \"types\": ["
+  },
+  {
+    "TargetContent": "    \"id\": 648,\n    \"name\": \"메로엣타 (스탭폼)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 648,\n    \"name\": \"메로엣타 (스텝폼)\",\n    \"types\": ["
+  },
+  {
+    "TargetContent": "    \"id\": 925,\n    \"name\": \"파밀리쥐 (세 식구)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 925,\n    \"name\": \"파밀리쥐 (3마리)\",\n    \"types\": ["
+  },
+  {
+    "TargetContent": "    \"id\": 925,\n    \"name\": \"파밀리쥐 (네 식구)\",\n    \"types\": [",
+    "ReplacementContent": "    \"id\": 925,\n    \"name\": \"파밀리쥐 (4마리)\",\n    \"types\": ["
+  }
+]

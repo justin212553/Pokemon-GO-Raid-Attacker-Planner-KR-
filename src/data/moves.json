@@ -1,0 +1,1642 @@
+[
+    {
+        "id": "ACID",
+        "name": "용해액",
+        "type": "poison"
+    },
+    {
+        "id": "ACID_SPRAY",
+        "name": "애시드봄",
+        "type": "poison"
+    },
+    {
+        "id": "ACROBATICS",
+        "name": "애크러뱃",
+        "type": "flying"
+    },
+    {
+        "id": "AERIAL_ACE",
+        "name": "제비반환",
+        "type": "flying"
+    },
+    {
+        "id": "AEROBLAST",
+        "name": "에어로블라스트",
+        "type": "flying"
+    },
+    {
+        "id": "AIR_CUTTER",
+        "name": "에어컷터",
+        "type": "flying"
+    },
+    {
+        "id": "AIR_SLASH",
+        "name": "에어슬래시",
+        "type": "flying"
+    },
+    {
+        "id": "ANCIENT_POWER",
+        "name": "원시의힘",
+        "type": "rock"
+    },
+    {
+        "id": "AQUA_JET",
+        "name": "아쿠아제트",
+        "type": "water"
+    },
+    {
+        "id": "AQUA_STEP",
+        "name": "아쿠아스탭",
+        "type": "water"
+    },
+    {
+        "id": "AQUA_TAIL",
+        "name": "아쿠아테일",
+        "type": "water"
+    },
+    {
+        "id": "ASTONISH",
+        "name": "놀래키기",
+        "type": "ghost"
+    },
+    {
+        "id": "AURA_SPHERE",
+        "name": "파동탄",
+        "type": "fighting"
+    },
+    {
+        "id": "AURA_WHEEL_DARK",
+        "name": "오라휠",
+        "type": "dark"
+    },
+    {
+        "id": "AURA_WHEEL_ELECTRIC",
+        "name": "오라휠",
+        "type": "electric"
+    },
+    {
+        "id": "AURORA_BEAM",
+        "name": "오로라빔",
+        "type": "ice"
+    },
+    {
+        "id": "AVALANCHE",
+        "name": "눈사태",
+        "type": "ice"
+    },
+    {
+        "id": "BEAK_BLAST",
+        "name": "부리캐논",
+        "type": "flying"
+    },
+    {
+        "id": "BEHEMOTH_BASH",
+        "name": "거수탄",
+        "type": "steel"
+    },
+    {
+        "id": "BEHEMOTH_BLADE",
+        "name": "거수참",
+        "type": "steel"
+    },
+    {
+        "id": "BITE",
+        "name": "물기",
+        "type": "dark"
+    },
+    {
+        "id": "BLAST_BURN",
+        "name": "블러스트번",
+        "type": "fire"
+    },
+    {
+        "id": "BLAZE_KICK",
+        "name": "블레이즈킥",
+        "type": "fire"
+    },
+    {
+        "id": "BLEAKWIND_STORM",
+        "name": "찬바람폭풍",
+        "type": "flying"
+    },
+    {
+        "id": "BLIZZARD",
+        "name": "눈보라",
+        "type": "ice"
+    },
+    {
+        "id": "BODY_SLAM",
+        "name": "누르기",
+        "type": "normal"
+    },
+    {
+        "id": "BONE_CLUB",
+        "name": "뼈다귀치기",
+        "type": "ground"
+    },
+    {
+        "id": "BOOMBURST",
+        "name": "폭음파",
+        "type": "normal"
+    },
+    {
+        "id": "BRAVE_BIRD",
+        "name": "브레이브버드",
+        "type": "flying"
+    },
+    {
+        "id": "BREAKING_SWIPE",
+        "name": "와이드브레이커",
+        "type": "dragon"
+    },
+    {
+        "id": "BRICK_BREAK",
+        "name": "깨트리다",
+        "type": "fighting"
+    },
+    {
+        "id": "BRINE",
+        "name": "소금물",
+        "type": "water"
+    },
+    {
+        "id": "BRUTAL_SWING",
+        "name": "세차게휘두르기",
+        "type": "dark"
+    },
+    {
+        "id": "BUBBLE",
+        "name": "거품",
+        "type": "water"
+    },
+    {
+        "id": "BUBBLE_BEAM",
+        "name": "거품광선",
+        "type": "water"
+    },
+    {
+        "id": "BUG_BITE",
+        "name": "벌레먹음",
+        "type": "bug"
+    },
+    {
+        "id": "BUG_BUZZ",
+        "name": "벌레의야단법석",
+        "type": "bug"
+    },
+    {
+        "id": "BULLDOZE",
+        "name": "땅고르기",
+        "type": "ground"
+    },
+    {
+        "id": "BULLET_PUNCH",
+        "name": "불릿펀치",
+        "type": "steel"
+    },
+    {
+        "id": "BULLET_SEED",
+        "name": "기관총",
+        "type": "grass"
+    },
+    {
+        "id": "CHARGE_BEAM",
+        "name": "차지빔",
+        "type": "electric"
+    },
+    {
+        "id": "CHARM",
+        "name": "애교부리기",
+        "type": "fairy"
+    },
+    {
+        "id": "CHILLING_WATER",
+        "name": "찬물끼얹기",
+        "type": "water"
+    },
+    {
+        "id": "CLANGING_SCALES",
+        "name": "스케일노이즈",
+        "type": "dragon"
+    },
+    {
+        "id": "CLOSE_COMBAT",
+        "name": "인파이트",
+        "type": "fighting"
+    },
+    {
+        "id": "CONFUSION",
+        "name": "염동력",
+        "type": "psychic"
+    },
+    {
+        "id": "COUNTER",
+        "name": "카운터",
+        "type": "fighting"
+    },
+    {
+        "id": "CRABHAMMER",
+        "name": "찝게햄머",
+        "type": "water"
+    },
+    {
+        "id": "CROSS_CHOP",
+        "name": "크로스촙",
+        "type": "fighting"
+    },
+    {
+        "id": "CROSS_POISON",
+        "name": "크로스포이즌",
+        "type": "poison"
+    },
+    {
+        "id": "CRUNCH",
+        "name": "깨물어부수기",
+        "type": "dark"
+    },
+    {
+        "id": "CRUSH_GRIP",
+        "name": "묵사발",
+        "type": "normal"
+    },
+    {
+        "id": "CUT",
+        "name": "풀베기",
+        "type": "normal"
+    },
+    {
+        "id": "DARKEST_LARIAT",
+        "name": "DD래리어트",
+        "type": "dark"
+    },
+    {
+        "id": "DARK_PULSE",
+        "name": "악의파동",
+        "type": "dark"
+    },
+    {
+        "id": "DAZZLING_GLEAM",
+        "name": "매지컬샤인",
+        "type": "fairy"
+    },
+    {
+        "id": "DIG",
+        "name": "구멍파기",
+        "type": "ground"
+    },
+    {
+        "id": "DISARMING_VOICE",
+        "name": "차밍보이스",
+        "type": "fairy"
+    },
+    {
+        "id": "DISCHARGE",
+        "name": "방전",
+        "type": "electric"
+    },
+    {
+        "id": "DOOM_DESIRE",
+        "name": "파멸의소원",
+        "type": "steel"
+    },
+    {
+        "id": "DOUBLE_IRON_BASH",
+        "name": "더블펀처",
+        "type": "steel"
+    },
+    {
+        "id": "DOUBLE_KICK",
+        "name": "두번치기",
+        "type": "fighting"
+    },
+    {
+        "id": "DRACO_METEOR",
+        "name": "용성군",
+        "type": "dragon"
+    },
+    {
+        "id": "DRAGON_ASCENT",
+        "name": "화룡점정",
+        "type": "flying"
+    },
+    {
+        "id": "DRAGON_BREATH",
+        "name": "용의숨결",
+        "type": "dragon"
+    },
+    {
+        "id": "DRAGON_CLAW",
+        "name": "드래곤크루",
+        "type": "dragon"
+    },
+    {
+        "id": "DRAGON_ENERGY",
+        "name": "드래곤에너지",
+        "type": "dragon"
+    },
+    {
+        "id": "DRAGON_PULSE",
+        "name": "용의파동",
+        "type": "dragon"
+    },
+    {
+        "id": "DRAGON_TAIL",
+        "name": "드래곤테일",
+        "type": "dragon"
+    },
+    {
+        "id": "DRAINING_KISS",
+        "name": "드레인키스",
+        "type": "fairy"
+    },
+    {
+        "id": "DRAIN_PUNCH",
+        "name": "드레인펀치",
+        "type": "fighting"
+    },
+    {
+        "id": "DRILL_PECK",
+        "name": "회전부리",
+        "type": "flying"
+    },
+    {
+        "id": "DRILL_RUN",
+        "name": "드릴라이너",
+        "type": "ground"
+    },
+    {
+        "id": "DRUM_BEATING",
+        "name": "드럼어택",
+        "type": "grass"
+    },
+    {
+        "id": "DYNAMAX_CANNON",
+        "name": "다이맥스포",
+        "type": "dragon"
+    },
+    {
+        "id": "DYNAMIC_PUNCH",
+        "name": "폭발펀치",
+        "type": "fighting"
+    },
+    {
+        "id": "EARTHQUAKE",
+        "name": "지진",
+        "type": "ground"
+    },
+    {
+        "id": "EARTH_POWER",
+        "name": "대지의힘",
+        "type": "ground"
+    },
+    {
+        "id": "EMBER",
+        "name": "불꽃세례",
+        "type": "fire"
+    },
+    {
+        "id": "ENERGY_BALL",
+        "name": "에너지볼",
+        "type": "grass"
+    },
+    {
+        "id": "EXTRASENSORY",
+        "name": "신통력",
+        "type": "psychic"
+    },
+    {
+        "id": "FAIRY_WIND",
+        "name": "요정의바람",
+        "type": "fairy"
+    },
+    {
+        "id": "FEATHER_DANCE",
+        "name": "깃털댄스",
+        "type": "flying"
+    },
+    {
+        "id": "FEINT_ATTACK",
+        "name": "속여때리기",
+        "type": "dark"
+    },
+    {
+        "id": "FELL_STINGER",
+        "name": "마지막일침",
+        "type": "bug"
+    },
+    {
+        "id": "FIRE_BLAST",
+        "name": "불대문자",
+        "type": "fire"
+    },
+    {
+        "id": "FIRE_FANG",
+        "name": "불꽃엄니",
+        "type": "fire"
+    },
+    {
+        "id": "FIRE_PUNCH",
+        "name": "불꽃펀치",
+        "type": "fire"
+    },
+    {
+        "id": "FIRE_SPIN",
+        "name": "회오리불꽃",
+        "type": "fire"
+    },
+    {
+        "id": "FLAMETHROWER",
+        "name": "화염방사",
+        "type": "fire"
+    },
+    {
+        "id": "FLAME_BURST",
+        "name": "불꽃튀기기",
+        "type": "fire"
+    },
+    {
+        "id": "FLAME_CHARGE",
+        "name": "니트로차지",
+        "type": "fire"
+    },
+    {
+        "id": "FLAME_WHEEL",
+        "name": "화염자동차",
+        "type": "fire"
+    },
+    {
+        "id": "FLASH_CANNON",
+        "name": "러스터캐논",
+        "type": "steel"
+    },
+    {
+        "id": "FLOWER_TRICK",
+        "name": "플라워트릭",
+        "type": "grass"
+    },
+    {
+        "id": "FLY",
+        "name": "공중날기",
+        "type": "flying"
+    },
+    {
+        "id": "FLYING_PRESS",
+        "name": "플라잉프레스",
+        "type": "fighting"
+    },
+    {
+        "id": "FOCUS_BLAST",
+        "name": "기합구슬",
+        "type": "fighting"
+    },
+    {
+        "id": "FORCE_PALM",
+        "name": "발경",
+        "type": "fighting"
+    },
+    {
+        "id": "FOUL_PLAY",
+        "name": "속임수",
+        "type": "dark"
+    },
+    {
+        "id": "FREEZE_SHOCK",
+        "name": "프리즈볼트",
+        "type": "ice"
+    },
+    {
+        "id": "FRENZY_PLANT",
+        "name": "하드플랜트",
+        "type": "grass"
+    },
+    {
+        "id": "FROST_BREATH",
+        "name": "얼음숨결",
+        "type": "ice"
+    },
+    {
+        "id": "FRUSTRATION",
+        "name": "화풀이",
+        "type": "normal"
+    },
+    {
+        "id": "FURY_CUTTER",
+        "name": "연속자르기",
+        "type": "bug"
+    },
+    {
+        "id": "FUSION_BOLT",
+        "name": "크로스썬더",
+        "type": "electric"
+    },
+    {
+        "id": "FUSION_FLARE",
+        "name": "크로스플레임",
+        "type": "fire"
+    },
+    {
+        "id": "FUTURE_SIGHT",
+        "name": "미래예지",
+        "type": "psychic"
+    },
+    {
+        "id": "GEOMANCY",
+        "name": "지오컨트롤",
+        "type": "fairy"
+    },
+    {
+        "id": "GIGA_DRAIN",
+        "name": "기가드레인",
+        "type": "grass"
+    },
+    {
+        "id": "GIGA_IMPACT",
+        "name": "기가임팩트",
+        "type": "normal"
+    },
+    {
+        "id": "GIGATON_HAMMER",
+        "name": "거대해머",
+        "type": "steel"
+    },
+    {
+        "id": "GLACIATE",
+        "name": "얼다세계",
+        "type": "ice"
+    },
+    {
+        "id": "GRASS_KNOT",
+        "name": "풀묶기",
+        "type": "grass"
+    },
+    {
+        "id": "GUNK_SHOT",
+        "name": "더스트슈트",
+        "type": "poison"
+    },
+    {
+        "id": "GUST",
+        "name": "바람일으키기",
+        "type": "flying"
+    },
+    {
+        "id": "GYRO_BALL",
+        "name": "자이로볼",
+        "type": "steel"
+    },
+    {
+        "id": "HEART_STAMP",
+        "name": "하트스탬프",
+        "type": "psychic"
+    },
+    {
+        "id": "HEAT_WAVE",
+        "name": "열풍",
+        "type": "fire"
+    },
+    {
+        "id": "HEAVY_SLAM",
+        "name": "헤비봄버",
+        "type": "steel"
+    },
+    {
+        "id": "HEX",
+        "name": "병상첨병",
+        "type": "ghost"
+    },
+    {
+        "id": "HIDDEN_POWER_BUG",
+        "name": "잠재파워 (벌레)",
+        "type": "bug"
+    },
+    {
+        "id": "HIDDEN_POWER_DARK",
+        "name": "잠재파워 (악)",
+        "type": "dark"
+    },
+    {
+        "id": "HIDDEN_POWER_DRAGON",
+        "name": "잠재파워 (드래곤)",
+        "type": "dragon"
+    },
+    {
+        "id": "HIDDEN_POWER_ELECTRIC",
+        "name": "잠재파워 (전기)",
+        "type": "electric"
+    },
+    {
+        "id": "HIDDEN_POWER_FIGHTING",
+        "name": "잠재파워 (격투)",
+        "type": "fighting"
+    },
+    {
+        "id": "HIDDEN_POWER_FIRE",
+        "name": "잠재파워 (불)",
+        "type": "fire"
+    },
+    {
+        "id": "HIDDEN_POWER_FLYING",
+        "name": "잠재파워 (비행)",
+        "type": "flying"
+    },
+    {
+        "id": "HIDDEN_POWER_GHOST",
+        "name": "잠재파워 (고스트)",
+        "type": "ghost"
+    },
+    {
+        "id": "HIDDEN_POWER_GRASS",
+        "name": "잠재파워 (풀)",
+        "type": "grass"
+    },
+    {
+        "id": "HIDDEN_POWER_GROUND",
+        "name": "잠재파워 (땅)",
+        "type": "ground"
+    },
+    {
+        "id": "HIDDEN_POWER_ICE",
+        "name": "잠재파워 (얼음)",
+        "type": "ice"
+    },
+    {
+        "id": "HIDDEN_POWER_NORMAL",
+        "name": "잠재파워 (노말)",
+        "type": "normal"
+    },
+    {
+        "id": "HIDDEN_POWER_POISON",
+        "name": "잠재파워 (독)",
+        "type": "poison"
+    },
+    {
+        "id": "HIDDEN_POWER_PSYCHIC",
+        "name": "잠재파워 (에스퍼)",
+        "type": "psychic"
+    },
+    {
+        "id": "HIDDEN_POWER_ROCK",
+        "name": "잠재파워 (바위)",
+        "type": "rock"
+    },
+    {
+        "id": "HIDDEN_POWER_STEEL",
+        "name": "잠재파워 (강철)",
+        "type": "steel"
+    },
+    {
+        "id": "HIDDEN_POWER_WATER",
+        "name": "잠재파워 (물)",
+        "type": "water"
+    },
+    {
+        "id": "HIGH_HORSEPOWER",
+        "name": "10만마력",
+        "type": "ground"
+    },
+    {
+        "id": "HIGH_JUMP_KICK",
+        "name": "무릎차기",
+        "type": "fighting"
+    },
+    {
+        "id": "HORN_ATTACK",
+        "name": "뿔찌르기",
+        "type": "normal"
+    },
+    {
+        "id": "HURRICANE",
+        "name": "폭풍",
+        "type": "flying"
+    },
+    {
+        "id": "HYDRO_CANNON",
+        "name": "하이드로캐논",
+        "type": "water"
+    },
+    {
+        "id": "HYDRO_PUMP",
+        "name": "하이드로펌프",
+        "type": "water"
+    },
+    {
+        "id": "HYPER_BEAM",
+        "name": "파괴광선",
+        "type": "normal"
+    },
+    {
+        "id": "HYPER_FANG",
+        "name": "필살앞니",
+        "type": "normal"
+    },
+    {
+        "id": "ICE_BEAM",
+        "name": "냉동빔",
+        "type": "ice"
+    },
+    {
+        "id": "ICE_BURN",
+        "name": "콜드플레어",
+        "type": "ice"
+    },
+    {
+        "id": "ICE_FANG",
+        "name": "얼음엄니",
+        "type": "ice"
+    },
+    {
+        "id": "ICE_PUNCH",
+        "name": "냉동펀치",
+        "type": "ice"
+    },
+    {
+        "id": "ICE_SHARD",
+        "name": "얼음뭉치",
+        "type": "ice"
+    },
+    {
+        "id": "ICICLE_SPEAR",
+        "name": "고드름침",
+        "type": "ice"
+    },
+    {
+        "id": "ICY_WIND",
+        "name": "얼다바람",
+        "type": "ice"
+    },
+    {
+        "id": "INCINERATE",
+        "name": "불태우기",
+        "type": "fire"
+    },
+    {
+        "id": "INFESTATION",
+        "name": "엉겨붙기",
+        "type": "bug"
+    },
+    {
+        "id": "IRON_HEAD",
+        "name": "아이언헤드",
+        "type": "steel"
+    },
+    {
+        "id": "IRON_TAIL",
+        "name": "아이언테일",
+        "type": "steel"
+    },
+    {
+        "id": "KARATE_CHOP",
+        "name": "태권당수",
+        "type": "fighting"
+    },
+    {
+        "id": "LAST_RESORT",
+        "name": "뒀다쓰기",
+        "type": "normal"
+    },
+    {
+        "id": "LEAFAGE",
+        "name": "나뭇잎",
+        "type": "grass"
+    },
+    {
+        "id": "LEAF_BLADE",
+        "name": "리프블레이드",
+        "type": "grass"
+    },
+    {
+        "id": "LEAF_STORM",
+        "name": "리프스톰",
+        "type": "grass"
+    },
+    {
+        "id": "LEAF_TORNADO",
+        "name": "그래스믹서",
+        "type": "grass"
+    },
+    {
+        "id": "LICK",
+        "name": "핥기",
+        "type": "ghost"
+    },
+    {
+        "id": "LIQUIDATION",
+        "name": "아쿠아브레이크",
+        "type": "water"
+    },
+    {
+        "id": "LOCK_ON",
+        "name": "록온",
+        "type": "normal"
+    },
+    {
+        "id": "LOW_KICK",
+        "name": "안다리걸기",
+        "type": "fighting"
+    },
+    {
+        "id": "LOW_SWEEP",
+        "name": "로킥",
+        "type": "fighting"
+    },
+    {
+        "id": "LUNGE",
+        "name": "덤벼들기",
+        "type": "bug"
+    },
+    {
+        "id": "LUSTER_PURGE",
+        "name": "라스트버지",
+        "type": "psychic"
+    },
+    {
+        "id": "MAGICAL_LEAF",
+        "name": "메지컬리프",
+        "type": "grass"
+    },
+    {
+        "id": "MAGMA_STORM",
+        "name": "마그마스톰",
+        "type": "fire"
+    },
+    {
+        "id": "MAGNET_BOMB",
+        "name": "마그넷봄",
+        "type": "steel"
+    },
+    {
+        "id": "MEGAHORN",
+        "name": "메가폰",
+        "type": "bug"
+    },
+    {
+        "id": "MEGA_DRAIN",
+        "name": "메가드레인",
+        "type": "grass"
+    },
+    {
+        "id": "METAL_CLAW",
+        "name": "메탈크로우",
+        "type": "steel"
+    },
+    {
+        "id": "METAL_SOUND",
+        "name": "금속음",
+        "type": "steel"
+    },
+    {
+        "id": "METEOR_BEAM",
+        "name": "메테오빔",
+        "type": "rock"
+    },
+    {
+        "id": "METEOR_MASH",
+        "name": "코멧펀치",
+        "type": "steel"
+    },
+    {
+        "id": "MIND_BLOWN",
+        "name": "깜짝헤드",
+        "type": "fire"
+    },
+    {
+        "id": "MIRROR_COAT",
+        "name": "미러코트",
+        "type": "psychic"
+    },
+    {
+        "id": "MIRROR_SHOT",
+        "name": "미러숏",
+        "type": "steel"
+    },
+    {
+        "id": "MIST_BALL",
+        "name": "미스트볼",
+        "type": "psychic"
+    },
+    {
+        "id": "MOONBLAST",
+        "name": "문포스",
+        "type": "fairy"
+    },
+    {
+        "id": "MOONGEIST_BEAM",
+        "name": "섀도레이",
+        "type": "ghost"
+    },
+    {
+        "id": "MUDDY_WATER",
+        "name": "탁류",
+        "type": "water"
+    },
+    {
+        "id": "MUD_BOMB",
+        "name": "진흙폭탄",
+        "type": "ground"
+    },
+    {
+        "id": "MUD_SHOT",
+        "name": "머드숏",
+        "type": "ground"
+    },
+    {
+        "id": "MUD_SLAP",
+        "name": "진흙뿌리기",
+        "type": "ground"
+    },
+    {
+        "id": "MYSTICAL_FIRE",
+        "name": "매지컬플레임",
+        "type": "fire"
+    },
+    {
+        "id": "NATURES_MADNESS",
+        "name": "자연의 분노",
+        "type": "fairy"
+    },
+    {
+        "id": "NIGHT_SHADE",
+        "name": "나이트헤드",
+        "type": "ghost"
+    },
+    {
+        "id": "NIGHT_SLASH",
+        "name": "깜짝베기",
+        "type": "dark"
+    },
+    {
+        "id": "OBLIVION_WING",
+        "name": "데스윙",
+        "type": "flying"
+    },
+    {
+        "id": "OBSTRUCT",
+        "name": "블로킹",
+        "type": "dark"
+    },
+    {
+        "id": "OCTAZOOKA",
+        "name": "대포무노포",
+        "type": "water"
+    },
+    {
+        "id": "OMINOUS_WIND",
+        "name": "괴상한바람",
+        "type": "ghost"
+    },
+    {
+        "id": "ORIGIN_PULSE",
+        "name": "근원의파동",
+        "type": "water"
+    },
+    {
+        "id": "OUTRAGE",
+        "name": "역린",
+        "type": "dragon"
+    },
+    {
+        "id": "OVERHEAT",
+        "name": "오버히트",
+        "type": "fire"
+    },
+    {
+        "id": "PARABOLIC_CHARGE",
+        "name": "파라볼라차지",
+        "type": "electric"
+    },
+    {
+        "id": "PAYBACK",
+        "name": "보복",
+        "type": "dark"
+    },
+    {
+        "id": "PECK",
+        "name": "쪼기",
+        "type": "flying"
+    },
+    {
+        "id": "PETAL_BLIZZARD",
+        "name": "꽃보라",
+        "type": "grass"
+    },
+    {
+        "id": "PLAY_ROUGH",
+        "name": "치근거리기",
+        "type": "fairy"
+    },
+    {
+        "id": "POISON_FANG",
+        "name": "독엄니",
+        "type": "poison"
+    },
+    {
+        "id": "POISON_JAB",
+        "name": "독찌르기",
+        "type": "poison"
+    },
+    {
+        "id": "POISON_STING",
+        "name": "독침",
+        "type": "poison"
+    },
+    {
+        "id": "POLTERGEIST",
+        "name": "폴터가이스트",
+        "type": "ghost"
+    },
+    {
+        "id": "POUND",
+        "name": "막치기",
+        "type": "normal"
+    },
+    {
+        "id": "POWDER_SNOW",
+        "name": "눈싸라기",
+        "type": "ice"
+    },
+    {
+        "id": "POWER_GEM",
+        "name": "파워젬",
+        "type": "rock"
+    },
+    {
+        "id": "POWER_UP_PUNCH",
+        "name": "그로우펀치",
+        "type": "fighting"
+    },
+    {
+        "id": "POWER_WHIP",
+        "name": "파워휩",
+        "type": "grass"
+    },
+    {
+        "id": "PRECIPICE_BLADES",
+        "name": "단애의칼",
+        "type": "ground"
+    },
+    {
+        "id": "PRESENT",
+        "name": "프레젠트",
+        "type": "normal"
+    },
+    {
+        "id": "PSYBEAM",
+        "name": "환상빔",
+        "type": "psychic"
+    },
+    {
+        "id": "PSYCHIC",
+        "name": "사이코키네시스",
+        "type": "psychic"
+    },
+    {
+        "id": "PSYCHIC_FANGS",
+        "name": "사이코팽",
+        "type": "psychic"
+    },
+    {
+        "id": "PSYCHO_BOOST",
+        "name": "사이코부스트",
+        "type": "psychic"
+    },
+    {
+        "id": "PSYCHO_CUT",
+        "name": "사이코커터",
+        "type": "psychic"
+    },
+    {
+        "id": "PSYSHOCK",
+        "name": "사이코쇼크",
+        "type": "psychic"
+    },
+    {
+        "id": "PSYSTRIKE",
+        "name": "사이코브레이크",
+        "type": "psychic"
+    },
+    {
+        "id": "PSYWAVE",
+        "name": "사이코웨이브",
+        "type": "psychic"
+    },
+    {
+        "id": "PYRO_BALL",
+        "name": "화염볼",
+        "type": "fire"
+    },
+    {
+        "id": "QUICK_ATTACK",
+        "name": "전광석화",
+        "type": "normal"
+    },
+    {
+        "id": "RAGE_FIST",
+        "name": "분노의주먹",
+        "type": "ghost"
+    },
+    {
+        "id": "RAZOR_LEAF",
+        "name": "잎날가르기",
+        "type": "grass"
+    },
+    {
+        "id": "RAZOR_SHELL",
+        "name": "셸블레이드",
+        "type": "water"
+    },
+    {
+        "id": "REST",
+        "name": "잠자기",
+        "type": "normal"
+    },
+    {
+        "id": "RETURN",
+        "name": "은혜갚기",
+        "type": "normal"
+    },
+    {
+        "id": "ROAR_OF_TIME",
+        "name": "시간의포효",
+        "type": "dragon"
+    },
+    {
+        "id": "ROCK_BLAST",
+        "name": "락블레스트",
+        "type": "rock"
+    },
+    {
+        "id": "ROCK_SLIDE",
+        "name": "스톤샤워",
+        "type": "rock"
+    },
+    {
+        "id": "ROCK_SMASH",
+        "name": "바위깨기",
+        "type": "fighting"
+    },
+    {
+        "id": "ROCK_THROW",
+        "name": "돌떨구기",
+        "type": "rock"
+    },
+    {
+        "id": "ROCK_TOMB",
+        "name": "암석봉인",
+        "type": "rock"
+    },
+    {
+        "id": "ROCK_WRECKER",
+        "name": "암석포",
+        "type": "rock"
+    },
+    {
+        "id": "ROLLOUT",
+        "name": "구르기",
+        "type": "rock"
+    },
+    {
+        "id": "SACRED_FIRE",
+        "name": "성스러운불꽃",
+        "type": "fire"
+    },
+    {
+        "id": "SACRED_SWORD",
+        "name": "성스러운칼",
+        "type": "fighting"
+    },
+    {
+        "id": "SANDSEAR_STORM",
+        "name": "열사의대지",
+        "type": "ground"
+    },
+    {
+        "id": "SAND_ATTACK",
+        "name": "모래뿌리기",
+        "type": "ground"
+    },
+    {
+        "id": "SAND_TOMB",
+        "name": "모래지옥",
+        "type": "ground"
+    },
+    {
+        "id": "SCALD",
+        "name": "열탕",
+        "type": "water"
+    },
+    {
+        "id": "SCORCHING_SANDS",
+        "name": "열사의대지",
+        "type": "ground"
+    },
+    {
+        "id": "SCRATCH",
+        "name": "할퀴기",
+        "type": "normal"
+    },
+    {
+        "id": "SECRET_SWORD",
+        "name": "신비의칼",
+        "type": "fighting"
+    },
+    {
+        "id": "SEED_BOMB",
+        "name": "씨폭탄",
+        "type": "grass"
+    },
+    {
+        "id": "SEED_FLARE",
+        "name": "시드플레어",
+        "type": "grass"
+    },
+    {
+        "id": "SHADOW_BALL",
+        "name": "섀도볼",
+        "type": "ghost"
+    },
+    {
+        "id": "SHADOW_BONE",
+        "name": "섀도본",
+        "type": "ghost"
+    },
+    {
+        "id": "SHADOW_CLAW",
+        "name": "섀도크루",
+        "type": "ghost"
+    },
+    {
+        "id": "SHADOW_FORCE",
+        "name": "섀도다이브",
+        "type": "ghost"
+    },
+    {
+        "id": "SHADOW_PUNCH",
+        "name": "섀도펀치",
+        "type": "ghost"
+    },
+    {
+        "id": "SHADOW_SNEAK",
+        "name": "야습",
+        "type": "ghost"
+    },
+    {
+        "id": "SIGNAL_BEAM",
+        "name": "시그널빔",
+        "type": "bug"
+    },
+    {
+        "id": "SILVER_WIND",
+        "name": "은빛바람",
+        "type": "bug"
+    },
+    {
+        "id": "SKULL_BASH",
+        "name": "로케트박치기",
+        "type": "normal"
+    },
+    {
+        "id": "SKY_ATTACK",
+        "name": "불새",
+        "type": "flying"
+    },
+    {
+        "id": "SLUDGE",
+        "name": "오물공격",
+        "type": "poison"
+    },
+    {
+        "id": "SLUDGE_BOMB",
+        "name": "오물폭탄",
+        "type": "poison"
+    },
+    {
+        "id": "SLUDGE_WAVE",
+        "name": "오물웨이브",
+        "type": "poison"
+    },
+    {
+        "id": "SMACK_DOWN",
+        "name": "떨어뜨리기",
+        "type": "rock"
+    },
+    {
+        "id": "SNARL",
+        "name": "바크아웃",
+        "type": "dark"
+    },
+    {
+        "id": "SOLAR_BEAM",
+        "name": "솔라빔",
+        "type": "grass"
+    },
+    {
+        "id": "SPACIAL_REND",
+        "name": "공간절단",
+        "type": "dragon"
+    },
+    {
+        "id": "SPARK",
+        "name": "스파크",
+        "type": "electric"
+    },
+    {
+        "id": "SPARKLING_ARIA",
+        "name": "물거품아리아",
+        "type": "water"
+    },
+    {
+        "id": "SPIRIT_SHACKLE",
+        "name": "그림자꿰매기",
+        "type": "ghost"
+    },
+    {
+        "id": "SPLASH",
+        "name": "튀어오르기",
+        "type": "water"
+    },
+    {
+        "id": "SPRINGTIDE_STORM",
+        "name": "봄의폭풍",
+        "type": "fairy"
+    },
+    {
+        "id": "STEEL_WING",
+        "name": "강철날개",
+        "type": "steel"
+    },
+    {
+        "id": "STOMP",
+        "name": "짓밟기",
+        "type": "normal"
+    },
+    {
+        "id": "STONE_EDGE",
+        "name": "스톤에지",
+        "type": "rock"
+    },
+    {
+        "id": "STRUGGLE",
+        "name": "발버둥",
+        "type": "normal"
+    },
+    {
+        "id": "STRUGGLE_BUG",
+        "name": "벌레의저항",
+        "type": "bug"
+    },
+    {
+        "id": "SUBMISSION",
+        "name": "지옥의바퀴",
+        "type": "fighting"
+    },
+    {
+        "id": "SUCKER_PUNCH",
+        "name": "기습",
+        "type": "dark"
+    },
+    {
+        "id": "SUNSTEEL_STRIKE",
+        "name": "메테오드라이브",
+        "type": "steel"
+    },
+    {
+        "id": "SUPER_POWER",
+        "name": "엄청난힘",
+        "type": "fighting"
+    },
+    {
+        "id": "SURF",
+        "name": "파도타기",
+        "type": "water"
+    },
+    {
+        "id": "SWIFT",
+        "name": "스피드스타",
+        "type": "normal"
+    },
+    {
+        "id": "SYNCHRONOISE",
+        "name": "싱크로노이즈",
+        "type": "psychic"
+    },
+    {
+        "id": "TACKLE",
+        "name": "몸통박치기",
+        "type": "normal"
+    },
+    {
+        "id": "TAKE_DOWN",
+        "name": "돌진",
+        "type": "normal"
+    },
+    {
+        "id": "TECHNO_BLAST_BURN",
+        "name": "테크노버스터 (불꽃)",
+        "type": "fire"
+    },
+    {
+        "id": "TECHNO_BLAST_CHILL",
+        "name": "테크노버스터 (얼음)",
+        "type": "ice"
+    },
+    {
+        "id": "TECHNO_BLAST_DOUSE",
+        "name": "테크노버스터 (물)",
+        "type": "water"
+    },
+    {
+        "id": "TECHNO_BLAST_NORMAL",
+        "name": "테크노버스터 (노말)",
+        "type": "normal"
+    },
+    {
+        "id": "TECHNO_BLAST_SHOCK",
+        "name": "테크노버스터 (전기)",
+        "type": "electric"
+    },
+    {
+        "id": "THUNDER",
+        "name": "번개",
+        "type": "electric"
+    },
+    {
+        "id": "THUNDERBOLT",
+        "name": "10만볼트",
+        "type": "electric"
+    },
+    {
+        "id": "THUNDER_CAGE",
+        "name": "썬더프리즌",
+        "type": "electric"
+    },
+    {
+        "id": "THUNDER_FANG",
+        "name": "번개엄니",
+        "type": "electric"
+    },
+    {
+        "id": "THUNDER_PUNCH",
+        "name": "번개펀치",
+        "type": "electric"
+    },
+    {
+        "id": "THUNDER_SHOCK",
+        "name": "전기쇼크",
+        "type": "electric"
+    },
+    {
+        "id": "TORCH_SONG",
+        "name": "플레어송",
+        "type": "fire"
+    },
+    {
+        "id": "TRAILBLAZE",
+        "name": "개척하기",
+        "type": "grass"
+    },
+    {
+        "id": "TRANSFORM",
+        "name": "변신",
+        "type": "normal"
+    },
+    {
+        "id": "TRIPLE_AXEL",
+        "name": "트리플악셀",
+        "type": "ice"
+    },
+    {
+        "id": "TRI_ATTACK",
+        "name": "트라이어택",
+        "type": "normal"
+    },
+    {
+        "id": "TWISTER",
+        "name": "회오리",
+        "type": "dragon"
+    },
+    {
+        "id": "UPPER_HAND",
+        "name": "기선제압",
+        "type": "fighting"
+    },
+    {
+        "id": "VICE_GRIP",
+        "name": "찝기",
+        "type": "normal"
+    },
+    {
+        "id": "VINE_WHIP",
+        "name": "덩굴채찍",
+        "type": "grass"
+    },
+    {
+        "id": "VOLT_SWITCH",
+        "name": "볼트체인지",
+        "type": "electric"
+    },
+    {
+        "id": "VOLT_TACKLE",
+        "name": "볼트태클",
+        "type": "electric"
+    },
+    {
+        "id": "V_CREATE",
+        "name": "V제너레이트",
+        "type": "fire"
+    },
+    {
+        "id": "WATERFALL",
+        "name": "폭포오르기",
+        "type": "water"
+    },
+    {
+        "id": "WATER_GUN",
+        "name": "물대포",
+        "type": "water"
+    },
+    {
+        "id": "WATER_PULSE",
+        "name": "물의파동",
+        "type": "water"
+    },
+    {
+        "id": "WATER_SHURIKEN",
+        "name": "물수리검",
+        "type": "water"
+    },
+    {
+        "id": "WEATHER_BALL_FIRE",
+        "name": "웨더볼 (불)",
+        "type": "fire"
+    },
+    {
+        "id": "WEATHER_BALL_ICE",
+        "name": "웨더볼 (얼음)",
+        "type": "ice"
+    },
+    {
+        "id": "WEATHER_BALL_NORMAL",
+        "name": "웨더볼 (노말)",
+        "type": "normal"
+    },
+    {
+        "id": "WEATHER_BALL_ROCK",
+        "name": "웨더볼 (바위)",
+        "type": "rock"
+    },
+    {
+        "id": "WEATHER_BALL_WATER",
+        "name": "웨더볼 (물)",
+        "type": "water"
+    },
+    {
+        "id": "WILDBOLT_STORM",
+        "name": "번개폭풍",
+        "type": "electric"
+    },
+    {
+        "id": "WILD_CHARGE",
+        "name": "와일드볼트",
+        "type": "electric"
+    },
+    {
+        "id": "WING_ATTACK",
+        "name": "날개치기",
+        "type": "flying"
+    },
+    {
+        "id": "WRAP",
+        "name": "김밥말이",
+        "type": "normal"
+    },
+    {
+        "id": "X_SCISSOR",
+        "name": "시저크로스",
+        "type": "bug"
+    },
+    {
+        "id": "YAWN",
+        "name": "하품",
+        "type": "normal"
+    },
+    {
+        "id": "ZAP_CANNON",
+        "name": "전자포",
+        "type": "electric"
+    },
+    {
+        "id": "ZEN_HEADBUTT",
+        "name": "사념의박치기",
+        "type": "psychic"
+    },
+    {
+        "id": "AEGISLASH_CHARGE_AIR_SLASH",
+        "name": "에어슬래시",
+        "type": "flying"
+    },
+    {
+        "id": "AEGISLASH_CHARGE_PSYCHO_CUT",
+        "name": "사이코커터",
+        "type": "psychic"
+    }
+]
