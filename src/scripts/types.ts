@@ -26,4 +26,7 @@ export interface PartySlotData {
   chargeMove1Checked: boolean;
   isShadow: boolean;
   trainingStatus: TrainingStatus;
+  atkIv?: number;
+  defIv?: number;
+  hpIv?: number;
 }

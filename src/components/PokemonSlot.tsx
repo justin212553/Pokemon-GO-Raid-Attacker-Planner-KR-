@@ -39,6 +39,7 @@ export function PokemonSlot({
 
   const isMegaOrPrimal = pokemon.name.startsWith('메가') || pokemon.name.startsWith('원시');
   const canBeShadow = pokemon.shadow_eligible && !isMegaOrPrimal;
+  const isUncaught = ['Not Caught', 'To Catch'].includes(trainingStatus || 'Not Caught');
 
   const toggleShadow = () => {
     if (!canBeShadow) return;
@@ -49,6 +50,30 @@ export function PokemonSlot({
   const availableStatuses = isMegaOrPrimal 
     ? TRAINING_STATUSES 
     : TRAINING_STATUSES.filter(s => s !== 'Mega Evolved');
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'Not Caught': return 'text-slate-400';
+      case 'To Catch': return 'text-yellow-400';
+      case 'Caught': return 'text-green-400';
+      case 'Evolved': return 'text-blue-400';
+      case 'Maxed Out': return 'text-purple-400';
+      case 'Mega Evolved': return 'text-pink-400';
+      default: return 'text-slate-300';
+    }
+  };
+
+  const getStatusBgColor = (status: string) => {
+    switch (status) {
+      case 'Not Caught': return 'bg-slate-400';
+      case 'To Catch': return 'bg-yellow-400';
+      case 'Caught': return 'bg-green-400';
+      case 'Evolved': return 'bg-blue-400';
+      case 'Maxed Out': return 'bg-purple-400';
+      case 'Mega Evolved': return 'bg-pink-400';
+      default: return 'bg-slate-400';
+    }
+  };
 
   const [openDropdown, setOpenDropdown] = useState<'fast' | 'charge1' | 'status' | null>(null);
   
@@ -74,22 +99,28 @@ export function PokemonSlot({
   return (
     <div className="group/slot relative flex border border-slate-700/50 bg-slate-900/80 rounded-lg hover:border-blue-500/50 hover:bg-slate-800/80 transition-all text-slate-100">
       
-      <div className={`absolute left-0 top-0 bottom-0 w-3 rounded-l-lg ${roleColor} z-10 opacity-100 pointer-events-none`}></div>
+      <div className={`absolute left-0 top-0 bottom-0 w-3 rounded-l-lg ${getStatusBgColor(trainingStatus || 'Not Caught')} z-10 opacity-100 pointer-events-none`}></div>
 
       {/* 포켓몬 이미지 (Left Box) */}
       <div 
-        className="w-2/5 min-w-[120px] pl-5 pr-4 py-4 overflow-hidden border-r border-slate-800/50 flex flex-col items-center justify-center bg-slate-950/50 cursor-pointer transition-colors relative group/img rounded-l-lg "
-        onClick={onSelectPokemonRequest}
+        className="w-2/5 min-w-[140px] pl-4 pr-1 py-4 overflow-hidden border-r border-slate-800/50 flex flex-row items-center bg-slate-950/50 transition-colors relative group/img rounded-l-lg "
       >
-        <PokemonImage 
+        <div className="flex flex-col gap-1 z-20 shrink-0">
+          <input title="Attack IV" type={isUncaught ? "text" : "number"} min="0" max="15" value={isUncaught ? "-" : (slot.atkIv ?? 15)} readOnly={isUncaught} onChange={(e) => { if(!isUncaught){ const v = parseInt(e.target.value); onUpdate({...slot, atkIv: isNaN(v) ? 0 : Math.min(15, Math.max(0, v))}); } }} className={`w-7 h-5 text-[10px] bg-slate-900 border border-slate-700 text-center font-bold ${isUncaught ? 'text-slate-500' : 'text-red-400'} outline-none focus:border-red-500 rounded-sm [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]`} />
+          <input title="Defense IV" type={isUncaught ? "text" : "number"} min="0" max="15" value={isUncaught ? "-" : (slot.defIv ?? 15)} readOnly={isUncaught} onChange={(e) => { if(!isUncaught){ const v = parseInt(e.target.value); onUpdate({...slot, defIv: isNaN(v) ? 0 : Math.min(15, Math.max(0, v))}); } }} className={`w-7 h-5 text-[10px] bg-slate-900 border border-slate-700 text-center font-bold ${isUncaught ? 'text-slate-500' : 'text-blue-400'} outline-none focus:border-blue-500 rounded-sm [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]`} />
+          <input title="HP IV" type={isUncaught ? "text" : "number"} min="0" max="15" value={isUncaught ? "-" : (slot.hpIv ?? 15)} readOnly={isUncaught} onChange={(e) => { if(!isUncaught){ const v = parseInt(e.target.value); onUpdate({...slot, hpIv: isNaN(v) ? 0 : Math.min(15, Math.max(0, v))}); } }} className={`w-7 h-5 text-[10px] bg-slate-900 border border-slate-700 text-center font-bold ${isUncaught ? 'text-slate-500' : 'text-green-400'} outline-none focus:border-green-500 rounded-sm [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]`} />
+        </div>
+        <div className="flex-1 flex flex-col items-center justify-center cursor-pointer h-full relative" onClick={onSelectPokemonRequest}>
+          <PokemonImage 
             pokemonId={pokemon.id}
             pokemonName={pokemon.name}
             defaultImage={pokemon.image}
             className={`w-50 h-50 object-contain absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ${isShadow ? 'drop-shadow-[0_0_10px_rgba(168,85,247,0.8)] mix-blend-plus-lighter' : 'drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]'}`}
           />
-        <span className="absolute bottom-2 right-2 text-[9px] font-mono text-slate-500 font-bold bg-slate-900/80 px-1 py-0.5 rounded border border-slate-800">
-          #{String(pokemon.id).padStart(3, '0')}
-        </span>
+          <span className="absolute bottom-1 right-2 text-[9px] font-mono text-slate-500 font-bold bg-slate-900/80 px-1 py-0.5 rounded border border-slate-800">
+            #{String(pokemon.id).padStart(3, '0')}
+          </span>
+        </div>
       </div>
 
       {/* 정보 및 스킬 (Right Box) */}
@@ -135,12 +166,12 @@ export function PokemonSlot({
 
             {/* 드롭다운 버튼 */}
             <div className="relative dropdown-container">
-              <button
+              <button 
                 onClick={(e) => {
                   e.stopPropagation();
                   setOpenDropdown(openDropdown === 'status' ? null : 'status');
                 }}
-                className="px-3 py-1.5 text-[11px] font-bold rounded bg-slate-800 border border-slate-600 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors w-28 text-center"
+                className={`px-3 py-1.5 text-[11px] font-bold rounded bg-slate-800 border border-slate-600 hover:bg-slate-700 transition-colors w-28 text-center ${getStatusColor(trainingStatus || 'Not Caught')}`}
               >
                 {trainingStatus || 'Not Caught'}
               </button>
@@ -154,11 +185,18 @@ export function PokemonSlot({
                       className="px-3 py-2 flex items-center justify-between hover:bg-slate-800 cursor-pointer border-b border-slate-800/50 last:border-0"
                       onClick={(e) => {
                         e.stopPropagation();
-                        onUpdate({ ...slot, trainingStatus: status });
+                        
+                        const isNowUncaught = ['Not Caught', 'To Catch'].includes(status);
+                        
+                        onUpdate({ 
+                          ...slot, 
+                          trainingStatus: status,
+                          ...(isNowUncaught && { atkIv: undefined, defIv: undefined, hpIv: undefined })
+                        });
                         setOpenDropdown(null);
                       }}
                     >
-                      <span className="text-[10px] font-bold text-slate-300">{status}</span>
+                      <span className={`text-[10px] font-bold ${getStatusColor(status)}`}>{status}</span>
                     </div>
                   ))}
                 </div>

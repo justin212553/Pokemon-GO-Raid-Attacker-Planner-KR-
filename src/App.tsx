@@ -80,6 +80,17 @@ export default function App() {
           onImportClick={handleImport}
           onExportClick={handleExport}
         />
+        <footer className="mt-auto py-6 flex flex-col items-center justify-center text-center opacity-40 hover:opacity-100 transition-opacity space-y-4">
+          <img 
+            src="https://lh3.googleusercontent.com/3TSaKxXGo2wT0lu0AyNUBnkk6wkCC2AzOhJyy3JXIPm-AmZ1k9DSAroWeBUyePswCZSs5lVp3mPF7HzUpY9VPlyOV5eddITONINr3WSqLNLm=e365-pa-nu-w280-rw" 
+            alt="Pokemon GO Campfire" 
+            className="w-32 object-contain grayscale opacity-50"
+            referrerPolicy="no-referrer"
+          />
+          <p className="text-[10px] sm:text-xs text-slate-500 max-w-3xl px-4 break-keep">
+            이 사이트의 모든 이미지 데이터는 주식회사 나이언틱(Niantic.) 및 주식회사 포켓몬(The Pokémon Company | 株式会社ポケモン | Pokémon, Inc.) 의 소유이며, 웹사이트의 소스코드 저작권은 제작자(github id: justin212553)에게 있음을 밝힙니다.
+          </p>
+        </footer>
       </div>
     </main>
   );

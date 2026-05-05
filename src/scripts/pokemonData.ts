@@ -69,7 +69,7 @@ export const getPokemonImageUrl = async (id: number, name: string, defaultImage:
   const cacheKey = `${id}-${name}`;
   if (formImageCache[cacheKey]) return formImageCache[cacheKey];
 
-  const isForm = /메가|알로라|가라르|히스이|원시|테투리|오리진|어나더|영물|화신|폼|모습|새벽의|황혼의|울트라|켄타로스|캐스퐁|아르세우스|실버디|도롱충이|도롱마담|춤추새|체리꼬|로토무|불비달마|케르디오|메로엣타|게노세크트|킬가르도|루가루암|약어리|메테노|스트린더|자시안|자마젠타|무한다이노|우라오스|버드랙스|파밀리쥐|돌핀맨|싸리용|%/.test(name);
+  const isForm = /메가|알로라|가라르|히스이|원시|테투리|오리진|어나더|영물|화신|폼|모습|새벽의|황혼의|울트라|켄타로스|캐스퐁|아르세우스|실버디|도롱충이|도롱마담|춤추새|체리꼬|로토무|불비달마|케르디오|메로엣타|게노세크트|킬가르도|루가루암|약어리|메테노|스트린더|자시안|자마젠타|무한다이노|우라오스|버드랙스|파밀리쥐|돌핀맨|싸리용|큐레무|%/.test(name);
 
   if (!isForm) {
     return defaultImage;
@@ -314,6 +314,11 @@ export const getPokemonImageUrl = async (id: number, name: string, defaultImage:
         if (name.includes('늘어진')) targetVariety = data.varieties.find((v: any) => v.pokemon.name.includes('-droopy')) || targetVariety;
         else if (name.includes('뻗은')) targetVariety = data.varieties.find((v: any) => v.pokemon.name.includes('-stretchy')) || targetVariety;
         else targetVariety = data.varieties.find((v: any) => v.pokemon.name.includes('-curly')) || targetVariety;
+      } else if (name.includes('큐레무')) {
+        if (name.includes('블랙')) targetVariety = data.varieties.find((v: any) => v.pokemon.name.includes('-black')) || targetVariety;
+        else if (name.includes('화이트')) targetVariety = data.varieties.find((v: any) => v.pokemon.name.includes('-white')) || targetVariety;
+        else targetVariety = data.varieties.find((v: any) => v.pokemon.name === 'kyurem') || targetVariety;
+        console.log(name, targetVariety)
       }
     
     if (targetVariety && targetVariety.pokemon.url) {

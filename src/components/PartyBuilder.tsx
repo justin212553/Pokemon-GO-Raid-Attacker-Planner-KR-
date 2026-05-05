@@ -4,7 +4,7 @@ import { PartySlotData, Pokemon, Move } from '../scripts/types';
 import { POKEMON_DATA, POKEMON_TYPES, TYPE_TEXT_COLORS } from '../scripts/pokemonData';
 import { TYPE_ICONS } from '../scripts/icons';
 import { PokemonImage } from './PokemonImage';
-import { ChevronDown, X, Trash2, Upload, Download, GripVertical } from 'lucide-react';
+import { ChevronDown, X, Trash2, Upload, Download, GripVertical, Eye, EyeOff } from 'lucide-react';
 
 interface PartyBuilderProps {
   selectedType: string;
@@ -16,7 +16,7 @@ interface PartyBuilderProps {
 }
 
 const POKEMON_TYPES_LIST = [
-  "fire", "water", "grass", "electric", "ice", "fighting", "poison", "ground", "flying", "psychic", "bug", "rock", "ghost", "dragon", "dark", "steel", "fairy", "normal"
+  "normal", "fire", "water", "grass", "electric", "ice", "fighting", "poison", "ground", "flying", "psychic", "bug", "rock", "ghost", "dragon", "dark", "steel", "fairy"
 ];
 
 export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, onImportClick, onExportClick }: PartyBuilderProps) {
@@ -33,6 +33,23 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, o
   const [searchTerm, setSearchTerm] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
+  const [hiddenTypes, setHiddenTypes] = useState<string[]>(() => {
+    const saved = localStorage.getItem('pogo-hidden-types');
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  const toggleCurrentTypeVisibility = () => {
+    setHiddenTypes(prev => {
+      let next;
+      if (prev.includes(selectedType)) {
+        next = prev.filter(t => t !== selectedType);
+      } else {
+        next = [...prev, selectedType];
+      }
+      localStorage.setItem('pogo-hidden-types', JSON.stringify(next));
+      return next;
+    });
+  };
 
   const handleDragStart = (e: React.DragEvent, index: number) => {
     setDraggedIndex(index);
@@ -109,18 +126,33 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, o
   const activePokemon = activeSlot?.pokemon;
 
   const filteredPokemons = POKEMON_DATA.filter(poke => {
-    const matchSearch = poke.name.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchType = poke.types.includes(selectedType);
+    const normSearch = searchTerm.trim().toLowerCase();
     
     const isMegaOrPrimal = poke.name.startsWith('메가') || poke.name.startsWith('원시');
-    
+    let matchSlot = false;
     if (modalState.slotId === 'slot-0') {
-      if (!isMegaOrPrimal) return false;
+      matchSlot = isMegaOrPrimal;
     } else {
-      if (isMegaOrPrimal) return false;
+      matchSlot = !isMegaOrPrimal;
+    }
+
+    const matchType = poke.types.includes(selectedType);
+
+    if (!normSearch) {
+      return matchType && matchSlot;
+    }
+
+    let isMatch = false;
+    if (normSearch.length >= 2) {
+      // 2글자 이상 입력 시에만 부분 일치 허용 (이름의 일부가 분명히 포함)
+      isMatch = poke.name.toLowerCase().includes(normSearch);
+    } else {
+      // 1글자 입력 시에는 정확히 일치하는 경우만 허용 (전체를 검색했을 때만)
+      isMatch = poke.name.toLowerCase() === normSearch;
     }
     
-    return matchType && matchSearch;
+    // 검색 시에는 타입 필터를 무시하고 슬롯 조건과 검색 조건만으로 필터링
+    return isMatch && matchSlot;
   });
 
   return (
@@ -136,7 +168,14 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, o
             </h6>
             <span className="text-gray-600 text-xs">포켓몬고 레이드 공격대 육성계획표</span>
           </div>
-          <div className="flex gap-1.5">
+          <div className="flex gap-1.5 flex-wrap justify-end">
+          <button 
+            onClick={toggleCurrentTypeVisibility}
+            className="flex items-center gap-1.5 px-4 py-2 bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-semibold rounded-full border border-slate-700 transition-colors shadow-sm cursor-pointer"
+          >
+            {hiddenTypes.includes(selectedType) ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
+            {hiddenTypes.includes(selectedType) ? '현재 타입 보이기' : '현재 타입 뒤로'}
+          </button>
           <button 
             onClick={onImportClick}
             className="flex items-center gap-1.5 px-4 py-2 bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-semibold rounded-full border border-slate-700 transition-colors shadow-sm cursor-pointer"
@@ -156,7 +195,7 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, o
 
         <div className="w-full max-w-full h-14 mx-auto mt-4 px-2 overflow-x-auto custom-scrollbar items-center">
           <div className="flex items-center h-10 gap-2 min-w-max justify-between sm:justify-between">
-            {POKEMON_TYPES_LIST.map(type => (
+            {[...POKEMON_TYPES_LIST.filter(t => !hiddenTypes.includes(t)), ...POKEMON_TYPES_LIST.filter(t => hiddenTypes.includes(t))].map(type => (
               <button
                 key={type}
                 onClick={() => setSelectedType(type)}
@@ -164,7 +203,7 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, o
                   selectedType === type 
                     ? 'scale-125 z-10' 
                     : 'opacity-70 hover:opacity-100'
-                }`}
+                } ${hiddenTypes.includes(type) && selectedType !== type ? 'opacity-30 grayscale' : ''}`}
                 title={type}
               >
                 <img src={TYPE_ICONS[type]} alt={type} className="w-6 h-6 object-contain" />
@@ -272,7 +311,7 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, o
                 <div className="grid grid-cols-2 gap-2">
                   {filteredPokemons.length > 0 ? filteredPokemons.map(poke => (
                     <button
-                      key={poke.id}
+                      key={poke.name}
                       onClick={() => handleSelectPokemon(poke)}
                       className="flex items-center p-2 rounded bg-slate-900/50 hover:bg-slate-800 border border-slate-800/50 hover:border-blue-500/50 transition-all text-left"
                     >
