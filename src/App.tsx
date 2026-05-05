@@ -3,11 +3,11 @@ import { PartyBuilder } from './components/PartyBuilder';
 import { PartySlotData } from './scripts/types';
 
 const POKEMON_TYPES_LIST = [
-  "normal", "fire", "water", "grass", "electric", "ice", "fighting", "poison", "ground", "flying", "psychic", "bug", "rock", "ghost", "dragon", "dark", "steel", "fairy"
+  "fire", "water", "grass", "electric", "ice", "fighting", "poison", "ground", "flying", "psychic", "bug", "rock", "ghost", "dragon", "dark", "steel", "fairy", "normal"
 ];
 
 export default function App() {
-  const [selectedType, setSelectedType] = useState<string>('normal');
+  const [selectedType, setSelectedType] = useState<string>('fire');
   
   const generateDefaultSlots = () => Array.from({ length: 6 }).map((_, i) => ({
     id: `slot-${i}`,
@@ -25,39 +25,38 @@ export default function App() {
     return acc;
   }, {} as Record<string, PartySlotData[]>);
   
-  const [allParties, setAllParties] = useState<Record<string, PartySlotData[]>>(initialParties);
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [allParties, setAllParties] = useState<Record<string, PartySlotData[]>>(() => {
+    const saved = localStorage.getItem('pogo-all-parties');
+    if (saved) {
+      try {
+        return { ...initialParties, ...JSON.parse(saved) };
+      } catch (err) {
+        console.error('Failed to parse saved parties:', err);
+      }
+    }
+    return initialParties;
+  });
 
   const handleExport = () => {
-    const dataStr = JSON.stringify({ allParties }, null, 2);
-    const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
-    const exportFileDefaultName = `pogo-all-parties.json`;
-
-    const linkElement = document.createElement('a');
-    linkElement.setAttribute('href', dataUri);
-    linkElement.setAttribute('download', exportFileDefaultName);
-    linkElement.click();
+    try {
+      localStorage.setItem('pogo-all-parties', JSON.stringify(allParties));
+      alert('성공적으로 브라우저에 저장되었습니다!');
+    } catch (err) {
+      alert('저장에 실패했습니다.');
+    }
   };
 
-  const handleImport = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = (e) => {
+  const handleImport = () => {
+    const saved = localStorage.getItem('pogo-all-parties');
+    if (saved) {
       try {
-        const json = JSON.parse(e.target?.result as string);
-        if (json.allParties) {
-          // Merge with initial parties in case some types are missing
-          setAllParties({ ...initialParties, ...json.allParties });
-        }
+        setAllParties({ ...initialParties, ...JSON.parse(saved) });
+        alert('저장된 데이터를 성공적으로 불러왔습니다!');
       } catch (err) {
-        alert('Invalid JSON file.');
+        alert('데이터를 불러오는데 실패했습니다.');
       }
-    };
-    reader.readAsText(file);
-    if (fileInputRef.current) {
-        fileInputRef.current.value = '';
+    } else {
+      alert('저장된 데이터가 없습니다.');
     }
   };
 
@@ -73,19 +72,12 @@ export default function App() {
   return (
     <main className="min-h-screen bg-[#090b0e] text-slate-100 font-sans selection:bg-slate-700">
       <div className="relative z-10 min-h-screen flex flex-col">
-        <input 
-          type="file" 
-          accept=".json" 
-          ref={fileInputRef} 
-          className="hidden" 
-          onChange={handleImport} 
-        />
         <PartyBuilder 
           selectedType={selectedType} 
           setSelectedType={setSelectedType}
           slots={slots}
           setSlots={setSlots}
-          onImportClick={() => fileInputRef.current?.click()}
+          onImportClick={handleImport}
           onExportClick={handleExport}
         />
       </div>

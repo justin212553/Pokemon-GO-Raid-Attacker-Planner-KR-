@@ -31,6 +31,7 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, o
   });
 
   const [searchTerm, setSearchTerm] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
 
   const handleDragStart = (e: React.DragEvent, index: number) => {
@@ -70,6 +71,7 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, o
   const closeModal = () => {
     setModalState({ ...modalState, isOpen: false });
     setSearchTerm('');
+    setSearchQuery('');
   };
 
   const handleSelectPokemon = (pokemon: Pokemon) => {
@@ -242,15 +244,27 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, o
             </div>
 
             {modalState.type === 'pokemon' && (
-              <div className="p-2 border-b border-slate-800/80 bg-slate-900/80">
+              <form 
+                className="p-2 border-b border-slate-800/80 bg-slate-900/80 flex gap-2"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  setSearchTerm(searchQuery);
+                }}
+              >
                 <input 
                   type="text" 
                   placeholder="Search Pokémon..." 
-                  value={searchTerm}
-                  onChange={e => setSearchTerm(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-700 rounded px-3 py-2 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors"
+                  value={searchQuery}
+                  onChange={e => setSearchQuery(e.target.value)}
+                  className="flex-1 bg-slate-950 border border-slate-700 rounded px-3 py-2 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors"
                 />
-              </div>
+                <button 
+                  type="submit"
+                  className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold rounded transition-colors"
+                >
+                  검색
+                </button>
+              </form>
             )}
 
             <div className="p-2 max-h-[60vh] overflow-y-auto custom-scrollbar">

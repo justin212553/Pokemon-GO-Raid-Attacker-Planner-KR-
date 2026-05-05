@@ -46,7 +46,9 @@ export function PokemonSlot({
   };
 
   const TRAINING_STATUSES = ['Not Caught', 'To Catch', 'Caught', 'Evolved', 'Maxed Out', 'Mega Evolved'] as const;
-
+  const availableStatuses = isMegaOrPrimal 
+    ? TRAINING_STATUSES 
+    : TRAINING_STATUSES.filter(s => s !== 'Mega Evolved');
 
   const [openDropdown, setOpenDropdown] = useState<'fast' | 'charge1' | 'status' | null>(null);
   
@@ -146,7 +148,7 @@ export function PokemonSlot({
               {/* 드롭다운 메뉴 (동일) */}
               {openDropdown === 'status' && (
                 <div className="absolute top-full right-0 mt-1 w-32 bg-slate-900 border border-slate-700 rounded-lg shadow-xl z-50 overflow-hidden">
-                  {TRAINING_STATUSES.map((status) => (
+                  {availableStatuses.map((status) => (
                     <div 
                       key={status}
                       className="px-3 py-2 flex items-center justify-between hover:bg-slate-800 cursor-pointer border-b border-slate-800/50 last:border-0"

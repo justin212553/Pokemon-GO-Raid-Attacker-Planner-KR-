@@ -7,7 +7,7 @@ export default defineConfig(({mode}) => {
   const env = loadEnv(mode, '.', '');
   return {
     plugins: [react(), tailwindcss()],
-    base: '/Pokemon-GO-Raid-Attacker-Planner-KR-/',
+    base: './',
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
