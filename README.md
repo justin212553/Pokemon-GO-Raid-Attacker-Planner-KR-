@@ -1,5 +1,5 @@
 <div align="center">
-<img width="1200" alt="FFXIV banner" src="https://i.namu.wiki/i/9h3V8rQLA3y8gFLzZSZc54zfhiVo1pFDnOLy72xlPPXTXGaIGfjDFvPnWf5LKaeyqAu56IX7qb4BpFbbO_4O8NE5kU31Lc_S2VrKSSjWkqkgHB2400-IFCPuHIe5lqTAuHPE-jk-Y8QlPYbEK6ImrQ.svg" />
+<img width="280" alt="FFXIV banner" src="https://lh3.googleusercontent.com/3TSaKxXGo2wT0lu0AyNUBnkk6wkCC2AzOhJyy3JXIPm-AmZ1k9DSAroWeBUyePswCZSs5lVp3mPF7HzUpY9VPlyOV5eddITONINr3WSqLNLm=e365-pa-nu-w280-rw" />
 </div>
 
 # Pokemon GO Raid Attacker Planner (KR)
@@ -19,7 +19,7 @@
 
 상단에 있는 18개의 타입 아이콘들을 클릭하여 각 타입별 포켓몬들을 필터링 할 수 있습니다. 각 속성 별로 최대 6마리의 포켓몬을 지정할 수 있으며, 이 포켓몬들의 그림자 포켓몬 여부, 메가진화 에너지 여부, 육성 상황을 지정할 수 있습니다.
 
-또한, 퀵 무브나 차지 무브가 대단한기술머신 혹은 운석 등 특별한 아이템을 필요로 하는 레거시 기술일 시, 예시 사진 속 삼삼드래의 '세차게휘두르기' 처럼 보라색 작은 표시가 됩니다.
+또한, 퀵 무브나 차지 무브가 대단한기술머신 혹은 운석 등 특별한 아이템을 필요로 하는 레거시 기술일 시, 예시 사진 속 기라티나(오리진)의 '섀도다이브' 처럼 보라색 작은 표시가 됩니다.
 
 모든 타입의 공격대는 1번 포켓몬이 MEGA(메가진화) 포켓몬, 2-3번 포켓몬이 DPS(유리대포) 포켓몬, 4-5번 포켓몬이 ACE(에이스) 포켓몬, 6번 포켓몬이 TANK(탱커) 포켓몬으로 역할군이 지정되어 있으나, 이는 참고용이며 1번 메가진화 포켓몬의 자리 빼고 타입에 맞는 모든 포켓몬을 지정할 수 있습니다. 섀도볼 다크라이 등 특별한 이유가 있는 경우를 제외하고 모두 자속 보정이 있는 동일 타입 기술로 통일한다는 전제 하에 만들어졌습니다.
 
