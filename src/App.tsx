@@ -1,9 +1,10 @@
 import React, { useState, useRef } from 'react';
 import { PartyBuilder } from './components/PartyBuilder';
 import { PartySlotData } from './scripts/types';
+import { EliteTMTracker } from './components/EliteTMTracker';
 
 const POKEMON_TYPES_LIST = [
-  "fire", "water", "grass", "electric", "ice", "fighting", "poison", "ground", "flying", "psychic", "bug", "rock", "ghost", "dragon", "dark", "steel", "fairy", "normal"
+  "normal", "fire", "water", "grass", "electric", "ice", "fighting", "poison", "ground", "flying", "psychic", "bug", "rock", "ghost", "dragon", "dark", "steel", "fairy"
 ];
 
 export default function App() {
@@ -37,26 +38,56 @@ export default function App() {
     return initialParties;
   });
 
+  const [tmOrders, setTmOrders] = useState<{fast: string[], charge: string[], commDayWait: string[] }>(() => {
+    const saved = localStorage.getItem('pogo-tm-orders');
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        return { fast: parsed.fast || [], charge: parsed.charge || [], commDayWait: parsed.commDayWait || [] };
+      } catch (err) {
+        console.error('Failed to parse saved TM orders:', err);
+      }
+    }
+    return { fast: [], charge: [], commDayWait: [] };
+  });
+
+  React.useEffect(() => {
+    localStorage.setItem('pogo-tm-orders', JSON.stringify(tmOrders));
+  }, [tmOrders]);
+
+  const [saveMessage, setSaveMessage] = useState<{ text: string; type: 'success' | 'error' } | null>(null);
+
   const handleExport = () => {
     try {
       localStorage.setItem('pogo-all-parties', JSON.stringify(allParties));
-      alert('성공적으로 브라우저에 저장되었습니다!');
+      localStorage.setItem('pogo-tm-orders', JSON.stringify(tmOrders));
+      setSaveMessage({ text: '성공적으로 저장되었습니다.', type: 'success' });
+      setTimeout(() => setSaveMessage(null), 3000);
     } catch (err) {
-      alert('저장에 실패했습니다.');
+      setSaveMessage({ text: '저장에 실패했습니다.', type: 'error' });
+      setTimeout(() => setSaveMessage(null), 3000);
     }
   };
 
   const handleImport = () => {
-    const saved = localStorage.getItem('pogo-all-parties');
-    if (saved) {
+    const savedParties = localStorage.getItem('pogo-all-parties');
+    const savedOrders = localStorage.getItem('pogo-tm-orders');
+    if (savedParties) {
       try {
-        setAllParties({ ...initialParties, ...JSON.parse(saved) });
-        alert('저장된 데이터를 성공적으로 불러왔습니다!');
+        setAllParties({ ...initialParties, ...JSON.parse(savedParties) });
+        if (savedOrders) {
+          const parsedOrders = JSON.parse(savedOrders);
+          setTmOrders({ fast: parsedOrders.fast || [], charge: parsedOrders.charge || [], commDayWait: parsedOrders.commDayWait || [] });
+        }
+        setSaveMessage({ text: '데이터를 성공적으로 불러왔습니다.', type: 'success' });
+        setTimeout(() => setSaveMessage(null), 3000);
       } catch (err) {
-        alert('데이터를 불러오는데 실패했습니다.');
+        setSaveMessage({ text: '데이터를 불러오는데 실패했습니다.', type: 'error' });
+        setTimeout(() => setSaveMessage(null), 3000);
       }
     } else {
-      alert('저장된 데이터가 없습니다.');
+      setSaveMessage({ text: '저장된 데이터가 없습니다.', type: 'error' });
+      setTimeout(() => setSaveMessage(null), 3000);
     }
   };
 
@@ -79,6 +110,12 @@ export default function App() {
           setSlots={setSlots}
           onImportClick={handleImport}
           onExportClick={handleExport}
+          saveMessage={saveMessage}
+        />
+        <EliteTMTracker 
+          allParties={allParties} 
+          tmOrders={tmOrders} 
+          setTmOrders={setTmOrders} 
         />
         <footer className="mt-auto py-6 flex flex-col items-center justify-center text-center opacity-40 hover:opacity-100 transition-opacity space-y-4">
           <img 

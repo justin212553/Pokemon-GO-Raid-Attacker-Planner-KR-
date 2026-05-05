@@ -18325,11 +18325,12 @@
       "BLIZZARD",
       "STONE_EDGE",
       "OUTRAGE",
-      "FUSION_BOLT",
-      "FREEZE_SHOCK"
+      "FUSION_BOLT"
     ],
     "fast_elite_moves": [],
-    "charged_elite_moves": [],
+    "charged_elite_moves": [
+      "FREEZE_SHOCK"
+    ],
     "shadow_eligible": false
   },
   {
@@ -18349,11 +18350,12 @@
       "BLIZZARD",
       "ANCIENT_POWER",
       "FOCUS_BLAST",
-      "FUSION_FLARE",
-      "ICE_BURN"
+      "FUSION_FLARE"
     ],
     "fast_elite_moves": [],
-    "charged_elite_moves": [],
+    "charged_elite_moves": [
+      "ICE_BURN"
+    ],
     "shadow_eligible": false
   },
   {

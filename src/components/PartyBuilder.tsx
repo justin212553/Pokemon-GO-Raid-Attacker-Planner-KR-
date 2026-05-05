@@ -13,13 +13,14 @@ interface PartyBuilderProps {
   setSlots: React.Dispatch<React.SetStateAction<PartySlotData[]>>;
   onImportClick: () => void;
   onExportClick: () => void;
+  saveMessage?: { text: string; type: 'success' | 'error' } | null;
 }
 
 const POKEMON_TYPES_LIST = [
-  "normal", "fire", "water", "grass", "electric", "ice", "fighting", "poison", "ground", "flying", "psychic", "bug", "rock", "ghost", "dragon", "dark", "steel", "fairy"
+  "fire", "water", "grass", "electric", "ice", "fighting", "poison", "ground", "flying", "psychic", "bug", "rock", "ghost", "dragon", "dark", "steel", "fairy", "normal"
 ];
 
-export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, onImportClick, onExportClick }: PartyBuilderProps) {
+export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, onImportClick, onExportClick, saveMessage }: PartyBuilderProps) {
   const [modalState, setModalState] = useState<{
     isOpen: boolean;
     type: 'pokemon' | 'fastMove' | 'chargeMove';
@@ -168,32 +169,39 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, o
             </h6>
             <span className="text-gray-600 text-xs">포켓몬고 레이드 공격대 육성계획표</span>
           </div>
+        <div className="flex flex-col items-end gap-1">
           <div className="flex gap-1.5 flex-wrap justify-end">
-          <button 
-            onClick={toggleCurrentTypeVisibility}
-            className="flex items-center gap-1.5 px-4 py-2 bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-semibold rounded-full border border-slate-700 transition-colors shadow-sm cursor-pointer"
-          >
-            {hiddenTypes.includes(selectedType) ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
-            {hiddenTypes.includes(selectedType) ? '현재 타입 보이기' : '현재 타입 뒤로'}
-          </button>
-          <button 
-            onClick={onImportClick}
-            className="flex items-center gap-1.5 px-4 py-2 bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-semibold rounded-full border border-slate-700 transition-colors shadow-sm cursor-pointer"
-          >
-            <Upload className="w-3.5 h-3.5" />
-            불러오기
-          </button>
-          <button 
-            onClick={onExportClick}
-            className="flex items-center gap-1.5 px-4 py-2 bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-semibold rounded-full border border-slate-700 transition-colors shadow-sm cursor-pointer"
-          >
-            <Download className="w-3.5 h-3.5" />
-            저장하기
-          </button>
+            <button 
+              onClick={toggleCurrentTypeVisibility}
+              className="flex items-center gap-1.5 px-4 py-2 bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-semibold rounded-full border border-slate-700 transition-colors shadow-sm cursor-pointer"
+            >
+              {hiddenTypes.includes(selectedType) ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
+              {hiddenTypes.includes(selectedType) ? '현재 타입 보이기' : '현재 타입 뒤로'}
+            </button>
+            <button 
+              onClick={onImportClick}
+              className="flex items-center gap-1.5 px-4 py-2 bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-semibold rounded-full border border-slate-700 transition-colors shadow-sm cursor-pointer"
+            >
+              <Upload className="w-3.5 h-3.5" />
+              불러오기
+            </button>
+            <button 
+              onClick={onExportClick}
+              className="flex items-center gap-1.5 px-4 py-2 bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-semibold rounded-full border border-slate-700 transition-colors shadow-sm cursor-pointer"
+            >
+              <Download className="w-3.5 h-3.5" />
+              저장하기
+            </button>
+          </div>
+          {saveMessage && (
+            <span className={`text-[10px] sm:text-xs font-medium px-2 py-0.5 rounded ${saveMessage.type === 'error' ? 'text-rose-400 bg-rose-500/10' : 'text-emerald-400 bg-emerald-500/10'}`}>
+              {saveMessage.text}
+            </span>
+          )}
         </div>
         </div>
 
-        <div className="w-full max-w-full h-14 mx-auto mt-4 px-2 overflow-x-auto custom-scrollbar items-center">
+        <div className="w-full max-w-full h-14 mx-auto mt-4 px-2 overflow-x-auto items-center [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           <div className="flex items-center h-10 gap-2 min-w-max justify-between sm:justify-between">
             {[...POKEMON_TYPES_LIST.filter(t => !hiddenTypes.includes(t)), ...POKEMON_TYPES_LIST.filter(t => hiddenTypes.includes(t))].map(type => (
               <button
@@ -229,11 +237,11 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, o
             onDrop={(e) => handleDrop(e, index)}
             onDragEnd={handleDragEnd}
           >
-            <div className={`w-4 sm:w-12 flex flex-col items-center justify-center font-black tracking-widest text-[10px] sm:text-xs text-center ${roleTextColor} opacity-80 uppercase shrink-0`}>
-              <div className="cursor-grab hover:text-white mb-2 active:cursor-grabbing text-slate-500">
+            <div className={`w-4 h-full flex flex-col items-center justify-center font-black tracking-widest text-[10px] sm:text-xs text-left pl-2 pb-1 ${roleTextColor} opacity-80 uppercase shrink-0`}>
+              <div className="cursor-grab hover:text-white mb-5 active:cursor-grabbing text-slate-500">
                 <GripVertical className="w-4 h-4" />
               </div>
-              <span className="-rotate-90 sm:rotate-0 inline-block">{roleLabel}</span>
+              <span className="-rotate-90 inline-block">{roleLabel}</span>
             </div>
             <div className="flex-1 pointer-events-auto">
               <PokemonSlot 
