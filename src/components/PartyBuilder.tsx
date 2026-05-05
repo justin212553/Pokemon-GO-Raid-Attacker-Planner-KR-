@@ -16,7 +16,7 @@ interface PartyBuilderProps {
 }
 
 const POKEMON_TYPES_LIST = [
-  "normal", "fire", "water", "grass", "electric", "ice", "fighting", "poison", "ground", "flying", "psychic", "bug", "rock", "ghost", "dragon", "dark", "steel", "fairy"
+  "fire", "water", "grass", "electric", "ice", "fighting", "poison", "ground", "flying", "psychic", "bug", "rock", "ghost", "dragon", "dark", "steel", "fairy", "normal"
 ];
 
 export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, onImportClick, onExportClick }: PartyBuilderProps) {
