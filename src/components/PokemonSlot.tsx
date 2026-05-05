@@ -91,30 +91,35 @@ export function PokemonSlot({
       </div>
 
       {/* 정보 및 스킬 (Right Box) */}
-      <div className="flex-1 flex flex-col justify-center py-2 relative">
+      <div className="flex-1 flex flex-col justify-center py-1 relative">
         {/* 포켓몬 이름 & 훈련 상태 (Top Row) */}
-        <div className="flex justify-between items-center px-4 pb-2 border-b border-slate-800/50">
-          <div>
-            <div className="flex items-center gap-2">
-              <button
-                disabled={!canBeShadow}
-                onClick={toggleShadow}
-                className={`w-5 h-5 rounded flex items-center justify-center border transition-all ${
-                  !canBeShadow 
-                    ? 'opacity-30 cursor-not-allowed border-slate-700 bg-slate-800' 
-                    : isShadow 
-                      ? 'bg-purple-600/30 border-purple-500/50 shadow-[0_0_8px_rgba(168,85,247,0.4)] text-purple-400' 
-                      : 'border-slate-600 bg-slate-800 text-slate-500 hover:border-purple-500/50 hover:text-purple-400'
-                }`}
-                title={!canBeShadow ? 'Shadow not available' : isShadow ? 'Shadow' : 'Normal'}
-              >
-                <span className="text-[10px] font-bold">S</span>
-              </button>
-              <h4 className="text-xl font-bold tracking-tight text-white">{pokemon.name}</h4>
-            </div>
+        <div className="flex justify-between items-center px-4 py-1 border-b border-slate-800/50">
+          {/* 왼쪽 영역: 그림자 아이콘 + 이름 */}
+          <div className="flex items-center gap-3 min-w-0">
+            <button
+              disabled={!canBeShadow}
+              onClick={toggleShadow}
+              className={`shrink-0 w-6 h-6 rounded flex items-center justify-center border transition-all ${
+                !canBeShadow 
+                  ? 'opacity-30 cursor-not-allowed border-slate-700 bg-slate-800' 
+                  : isShadow 
+                    ? 'bg-purple-600/30 border-purple-500/50 shadow-[0_0_8px_rgba(168,85,247,0.4)] text-purple-400' 
+                    : 'border-slate-600 bg-slate-800 text-slate-500 hover:border-purple-500/50 hover:text-purple-400'
+              }`}
+              title={!canBeShadow ? 'Shadow not available' : isShadow ? 'Shadow' : 'Normal'}
+            >
+              <span className="text-[10px] font-bold leading-none">S</span>
+            </button>
+            
+            <h4 className="text-xl font-bold tracking-tight text-white truncate leading-tight">
+              {pokemon.name}
+            </h4>
           </div>
-          <div className="flex flex-col gap-1 items-end">
-            <div className="flex gap-1">
+
+          {/* 오른쪽 영역: 타입 아이콘 + 육성 상태 */}
+          <div className="flex items-center gap-3 shrink-0">
+            {/* 타입 아이콘 그룹 */}
+            <div className="flex gap-1 items-center">
               {pokemon.types.map(t => (
                 <img 
                   key={t} 
@@ -125,22 +130,26 @@ export function PokemonSlot({
                 />
               ))}
             </div>
+
+            {/* 드롭다운 버튼 */}
             <div className="relative dropdown-container">
               <button
                 onClick={(e) => {
                   e.stopPropagation();
                   setOpenDropdown(openDropdown === 'status' ? null : 'status');
                 }}
-                className="px-2.5 py-1 text-[10px] font-bold rounded bg-slate-800 border border-slate-600 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                className="px-3 py-1.5 text-[11px] font-bold rounded bg-slate-800 border border-slate-600 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors w-28 text-center"
               >
                 {trainingStatus || 'Not Caught'}
               </button>
+
+              {/* 드롭다운 메뉴 (동일) */}
               {openDropdown === 'status' && (
                 <div className="absolute top-full right-0 mt-1 w-32 bg-slate-900 border border-slate-700 rounded-lg shadow-xl z-50 overflow-hidden">
                   {TRAINING_STATUSES.map((status) => (
                     <div 
                       key={status}
-                      className="px-3 py-1.5 flex items-center justify-between hover:bg-slate-800 cursor-pointer border-b border-slate-800/50 last:border-0"
+                      className="px-3 py-2 flex items-center justify-between hover:bg-slate-800 cursor-pointer border-b border-slate-800/50 last:border-0"
                       onClick={(e) => {
                         e.stopPropagation();
                         onUpdate({ ...slot, trainingStatus: status });
