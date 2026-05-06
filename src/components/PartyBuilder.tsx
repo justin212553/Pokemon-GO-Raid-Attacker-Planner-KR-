@@ -178,8 +178,7 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, o
       isMatch = poke.name.toLowerCase() === normSearch;
     }
     
-    // 검색 시에는 타입 필터를 무시하고 슬롯 조건과 검색 조건만으로 필터링
-    return isMatch && matchSlot;
+    return isMatch && matchSlot && matchType;
   });
 
   return (

@@ -33,7 +33,8 @@ export function EliteTMTracker({ allParties, tmOrders, setTmOrders }: EliteTMTra
         const trainingStatus = slot.trainingStatus || 'Not Caught';
 
         // Check Fast Move
-        if (slot.fastMove && !slot.fastMoveChecked) {
+        const isFastTmEnabled = ['Evolved', 'Maxed Out', 'Mega Evolved'].includes(trainingStatus);
+        if (slot.fastMove && !slot.fastMoveChecked && isFastTmEnabled) {
           const isElite = slot.pokemon.fastEliteMoves.some(m => m.name === slot.fastMove!.name);
           if (isElite) {
             const id = `${partyType}-${slot.id}-${slot.fastMove.name}-fast`;
@@ -74,6 +75,34 @@ export function EliteTMTracker({ allParties, tmOrders, setTmOrders }: EliteTMTra
 
     return newItems;
   }, [allParties, tmOrders.commDayWait]);
+
+  const normalTmCounts = useMemo(() => {
+    const counts: Record<string, { fast: number; charge: number }> = {};
+    Object.entries(allParties).forEach(([partyType, party]) => {
+      let fastCount = 0;
+      let chargeCount = 0;
+      party.forEach(slot => {
+        if (!slot.pokemon) return;
+        const isUncaught = ['Not Caught', 'To Catch'].includes(slot.trainingStatus || 'Not Caught');
+        if (isUncaught) return;
+
+        const isFastTmEnabled = ['Evolved', 'Maxed Out', 'Mega Evolved'].includes(slot.trainingStatus || '');
+
+        if (slot.fastMove && !slot.fastMoveChecked && isFastTmEnabled) {
+          const isElite = slot.pokemon.fastEliteMoves.some(m => m.name === slot.fastMove!.name);
+          if (!isElite) fastCount++;
+        }
+        if (slot.chargeMove1 && !slot.chargeMove1Checked) {
+          const isElite = slot.pokemon.chargeEliteMoves.some(m => m.name === slot.chargeMove1!.name);
+          if (!isElite) chargeCount++;
+        }
+      });
+      if (fastCount > 0 || chargeCount > 0) {
+        counts[partyType] = { fast: fastCount, charge: chargeCount };
+      }
+    });
+    return counts;
+  }, [allParties]);
 
   const fastItems = useMemo(() => items.filter(i => i.moveType === 'fast'), [items]);
   const chargeItems = useMemo(() => items.filter(i => i.moveType === 'charge'), [items]);
@@ -149,7 +178,7 @@ export function EliteTMTracker({ allParties, tmOrders, setTmOrders }: EliteTMTra
     });
   };
 
-  if (items.length === 0) {
+  if (items.length === 0 && Object.keys(normalTmCounts).length === 0) {
     return null;
   }
 
@@ -199,14 +228,12 @@ export function EliteTMTracker({ allParties, tmOrders, setTmOrders }: EliteTMTra
   };
 
   const TMList = ({ title, itemsToRender, moveType }: { title: string, itemsToRender: EliteTMItem[], moveType: 'fast' | 'charge' }) => {
-    if (itemsToRender.length === 0) return null;
-    
     const validCount = itemsToRender.filter(i => !i.isUncaught && !i.isCommDayWait).length;
     
     return (
-      <div className="flex-1 min-w-[300px]">
+      <div className="flex-1 min-w-0">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-bold text-slate-100 flex items-center gap-2">
+          <h3 className="text-sm md:text-base font-bold text-slate-100 flex items-center gap-1.5">
             <span className="text-yellow-400">★</span> 
             {title}
           </h3>
@@ -214,7 +241,8 @@ export function EliteTMTracker({ allParties, tmOrders, setTmOrders }: EliteTMTra
             총 {validCount}개 필요
           </span>
         </div>
-        <div className="space-y-2">
+        <div className="flex flex-col gap-2 min-h-[150px] max-h-[250px] overflow-y-auto pr-2 pb-2 custom-scrollbar relative">
+          {itemsToRender.length === 0 && <div className="absolute inset-0 flex items-center justify-center text-sm font-bold text-slate-600/50 p-2 text-center w-full tracking-widest">EMPTY</div>}
           {itemsToRender.map((item, index) => {
             const Icon = TYPE_ICONS[item.partyType] || '';
             const isDisabled = item.isUncaught || item.isCommDayWait;
@@ -225,49 +253,43 @@ export function EliteTMTracker({ allParties, tmOrders, setTmOrders }: EliteTMTra
                 onDragStart={(e) => handleDragStart(e, item.id, moveType)}
                 onDragOver={handleDragOver}
                 onDrop={(e) => handleDrop(e, item.id, moveType, isDisabled)}
-                className={`group flex items-center gap-3 border rounded-lg p-2 transition-all ${!isDisabled && 'cursor-grab active:cursor-grabbing'} ${
+                className={`w-full group flex items-center gap-2 border rounded-lg p-2 transition-all ${!isDisabled && 'cursor-grab active:cursor-grabbing'} ${
                   isDisabled 
                     ? 'bg-slate-900/40 border-slate-800/50 grayscale opacity-50 hover:opacity-80 cursor-default' 
                     : 'bg-slate-900/60 border-slate-700/50 hover:border-slate-600 hover:bg-slate-800/60'
                 }`}
               >
-                <div className="flex flex-col items-center justify-center w-8 shrink-0">
-                  <span className="text-[10px] font-black text-slate-500 mb-0.5">{isDisabled ? '-' : `#${index + 1}`}</span>
+                <div className="flex flex-col items-center justify-center w-5 shrink-0">
+                  <span className="text-[9px] font-black text-slate-500 mb-0.5">{isDisabled ? '-' : `#${index + 1}`}</span>
                   {!isDisabled && (
                     <div className="opacity-30 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
-                      <GripVertical className="w-4 h-4 text-slate-500" />
+                      <GripVertical className="w-3.5 h-3.5 text-slate-500" />
                     </div>
                   )}
                 </div>
                 
-                <div className="w-6 h-6 shrink-0 opacity-80" title={`${item.partyType} 타입 파티`}>
+                <div className="w-5 h-5 shrink-0 opacity-80" title={`${item.partyType} 타입 파티`}>
                   <img src={Icon} alt={item.partyType} className="w-full h-full object-contain filter drop-shadow-md" />
                 </div>
 
-                <div className="flex items-center gap-2 min-w-0">
-                  <span className={`w-[90px] sm:w-[120px] shrink-0 text-sm font-bold truncate ${isDisabled ? 'text-slate-400' : 'text-slate-200'}`} title={item.pokemonName}>
+                <div className="flex-1 flex items-center min-w-0 pr-1">
+                  <span className={`text-xs md:text-sm font-bold truncate ${isDisabled ? 'text-slate-400' : 'text-slate-200'}`} title={item.pokemonName}>
                     {item.pokemonName}
-                  </span>
-                  <span className="text-slate-600 text-xs font-black shrink-0">|</span>
-                  <span className={`w-[90px] sm:w-[120px] shrink-0 text-xs font-medium truncate ${isDisabled ? 'text-slate-500' : 'text-slate-400'}`} title={item.moveName}>
-                    {item.moveName}
                   </span>
                 </div>
                 
-                <div className="flex items-center gap-2 ml-auto shrink-0">
-                  <span className={`px-2 py-0.5 text-[10px] font-bold rounded border ${getStatusColorClass(item.trainingStatus, item.isUncaught, item.isCommDayWait)}`}>
+                <span className={`px-1.5 py-0.5 text-[9px] font-bold rounded border whitespace-nowrap ${getStatusColorClass(item.trainingStatus, item.isUncaught, item.isCommDayWait)}`}>
                     {item.trainingStatus}
                   </span>
-                  <label className="flex items-center gap-1.5 cursor-pointer ml-1 sm:ml-2">
+                  <label className="flex items-center gap-1 cursor-pointer">
                     <input 
                       type="checkbox"
                       checked={!!item.isCommDayWait}
                       onChange={() => toggleCommDayWait(item.id)}
-                      className="w-3.5 h-3.5 rounded border-slate-700 bg-slate-800 text-indigo-500 focus:ring-0 focus:ring-offset-0 cursor-pointer"
+                      className="w-3 h-3 rounded border-slate-700 bg-slate-800 text-indigo-500 focus:ring-0 focus:ring-offset-0 cursor-pointer"
                     />
-                    <span className="text-[10px] font-bold text-slate-500 whitespace-nowrap">커뮤니티데이</span>
+                    <span className="text-[9px] font-bold text-slate-500 whitespace-nowrap">CD</span>
                   </label>
-                </div>
               </div>
             );
           })}
@@ -276,11 +298,97 @@ export function EliteTMTracker({ allParties, tmOrders, setTmOrders }: EliteTMTra
     );
   };
 
+  const NormalTMList = () => {
+    const entries = Object.entries(normalTmCounts) as [string, { fast: number; charge: number }][];
+    
+
+    let totalFast = 0;
+    let totalCharge = 0;
+    entries.forEach(([_, count]) => {
+      totalFast += count.fast;
+      totalCharge += count.charge;
+    });
+
+    const fastEntries = entries.filter(([, counts]) => counts.fast > 0).sort((a, b) => b[1].fast - a[1].fast);
+    const chargeEntries = entries.filter(([, counts]) => counts.charge > 0).sort((a, b) => b[1].charge - a[1].charge);
+
+    return (
+        <div className="flex flex-row gap-8">
+          {/* Normal Fast TM */}
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-sm md:text-base font-bold text-slate-100 flex items-center gap-1.5">
+                <span className="text-emerald-400">❖</span> 
+                기술머신(노말)
+              </h3>
+              <span className="text-xs text-slate-500 font-medium bg-slate-900/50 px-2 py-1 rounded-full border border-slate-800">
+                총 {totalFast}개 
+              </span>
+            </div>
+            <div className="flex flex-col gap-2 min-h-[150px] max-h-[250px] overflow-y-auto pr-2 pb-2 custom-scrollbar relative">
+              {fastEntries.length === 0 && <div className="absolute inset-0 flex items-center justify-center text-sm font-bold text-slate-600/50 p-2 text-center w-full tracking-widest">EMPTY</div>}
+              {fastEntries.map(([partyType, count]) => {
+                const Icon = TYPE_ICONS[partyType] || '';
+                return (
+                  <div key={partyType} className="w-full flex items-center gap-2 border border-slate-700/50 bg-slate-900/60 rounded-lg p-2 hover:bg-slate-800/60 transition-colors">
+                    <div className="w-6 h-6 shrink-0 bg-slate-800 rounded-full flex items-center justify-center p-1" title={`${partyType} 타입 파티`}>
+                      <img src={Icon} alt={partyType} className="w-full h-full object-contain filter drop-shadow-md" />
+                    </div>
+                    <div className="flex-1 flex flex-col justify-center min-w-0">
+                      <span className="text-xs text-slate-200 font-bold uppercase tracking-wider truncate">{partyType}</span>
+                    </div>
+                    <div className="flex items-center shrink-0">
+                      <span className="text-emerald-400 text-xs font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/20">{count.fast}개</span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Normal Charge TM */}
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-sm md:text-base font-bold text-slate-100 flex items-center gap-1.5">
+                <span className="text-indigo-400">❖</span> 
+                기술머신(스페셜)
+              </h3>
+              <span className="text-xs text-slate-500 font-medium bg-slate-900/50 px-2 py-1 rounded-full border border-slate-800">
+                총 {totalCharge}개 
+              </span>
+            </div>
+            <div className="flex flex-col gap-2 min-h-[150px] max-h-[250px] overflow-y-auto pr-2 pb-2 custom-scrollbar relative">
+              {chargeEntries.length === 0 && <div className="absolute inset-0 flex items-center justify-center text-sm font-bold text-slate-600/50 p-2 text-center w-full tracking-widest">EMPTY</div>}
+              {chargeEntries.map(([partyType, count]) => {
+                const Icon = TYPE_ICONS[partyType] || '';
+                return (
+                  <div key={partyType} className="w-full flex items-center gap-2 border border-slate-700/50 bg-slate-900/60 rounded-lg p-2 hover:bg-slate-800/60 transition-colors">
+                    <div className="w-6 h-6 shrink-0 bg-slate-800 rounded-full flex items-center justify-center p-1" title={`${partyType} 타입 파티`}>
+                      <img src={Icon} alt={partyType} className="w-full h-full object-contain filter drop-shadow-md" />
+                    </div>
+                    <div className="flex-1 flex flex-col justify-center min-w-0">
+                      <span className="text-xs text-slate-200 font-bold uppercase tracking-wider truncate">{partyType}</span>
+                    </div>
+                    <div className="flex items-center shrink-0">
+                      <span className="text-indigo-400 text-xs font-bold bg-indigo-500/10 px-1.5 py-0.5 rounded border border-indigo-500/20">{count.charge}개</span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+    );
+  };
+
   return (
     <div className="w-full p-4 md:p-8 py-4 mt-4 border-t border-slate-800/50">
-      <div className="flex flex-col gap-8">
-        <TMList title="대단한 기술머신(일반) 필요 목록" itemsToRender={sortedFastItems} moveType="fast" />
-        <TMList title="대단한 기술머신(스페셜) 필요 목록" itemsToRender={sortedChargeItems} moveType="charge" />
+      <div className="flex flex-row gap-8">
+        <TMList title="대단한 기술머신(노말)" itemsToRender={sortedFastItems} moveType="fast" />
+        <TMList title="대단한 기술머신(스페셜)" itemsToRender={sortedChargeItems} moveType="charge" />
+      </div>
+      <div className="mt-8 pt-6 border-t border-slate-800/50">
+        <NormalTMList />
       </div>
     </div>
   );

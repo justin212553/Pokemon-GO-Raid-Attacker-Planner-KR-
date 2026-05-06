@@ -83,15 +83,21 @@ export function PokemonSlot({
     return () => document.removeEventListener('click', handleClickOutside);
   }, []);
 
-  const combinedFastMoves = pokemon ? [
-    ...pokemon.fastMoves.map((m) => ({ ...m, isElite: false })),
-    ...pokemon.fastEliteMoves.map((m) => ({ ...m, isElite: true }))
-  ].filter((v, i, a) => a.findIndex(t => (t.name === v.name)) === i) : [];
+  const combinedFastMoves = pokemon ? (() => {
+    const movesMap = new Map();
+    pokemon.fastMoves.forEach(m => movesMap.set(m.name, { ...m, isElite: false }));
+    pokemon.fastEliteMoves.forEach(m => movesMap.set(m.name, { ...m, isElite: true }));
+    return Array.from(movesMap.values());
+  })() : [];
 
-  const combinedChargeMoves = pokemon ? [
-    ...pokemon.chargeMoves.map((m) => ({ ...m, isElite: false })),
-    ...pokemon.chargeEliteMoves.map((m) => ({ ...m, isElite: true }))
-  ].filter((v, i, a) => a.findIndex(t => (t.name === v.name)) === i) : [];
+  const combinedChargeMoves = pokemon ? (() => {
+    const movesMap = new Map();
+    pokemon.chargeMoves.forEach(m => movesMap.set(m.name, { ...m, isElite: false }));
+    pokemon.chargeEliteMoves.forEach(m => movesMap.set(m.name, { ...m, isElite: true }));
+    return Array.from(movesMap.values());
+  })() : [];
+
+  const isFastTmEnabled = ['Evolved', 'Maxed Out', 'Mega Evolved'].includes(trainingStatus || '');
 
   const isFastMoveElite = fastMove && pokemon?.fastEliteMoves.some(m => m.name === fastMove.name);
   const isChargeMove1Elite = chargeMove1 && pokemon?.chargeEliteMoves.some(m => m.name === chargeMove1.name);
@@ -103,7 +109,12 @@ export function PokemonSlot({
       
       {/* 포켓몬 이미지 (Left Box) */}
       <div className="w-2/5 min-w-[140px] pl-4 pr-1 py-4 overflow-hidden border-r border-slate-800/50 flex flex-row items-center bg-slate-950/50 transition-colors relative group/img rounded-l-lg ">
-        <div className="flex flex-col gap-1 z-20 shrink-0">
+        <div className="flex flex-col gap-1 z-20 shrink-0 relative">
+          {!isUncaught && (slot.atkIv ?? 15) === 15 && (slot.defIv ?? 15) === 15 && (slot.hpIv ?? 15) === 15 && (
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 text-yellow-400 text-[10px] sm:text-xs min-h-[16px]">
+              ★
+            </div>
+          )}
           <input title="Attack IV" type={isUncaught ? "text" : "number"} min="0" max="15" value={isUncaught ? "-" : (slot.atkIv ?? 15)} readOnly={isUncaught} onChange={(e) => { if(!isUncaught){ const v = parseInt(e.target.value); onUpdate({...slot, atkIv: isNaN(v) ? 0 : Math.min(15, Math.max(0, v))}); } }} className={`w-7 h-5 text-[10px] bg-slate-900 border border-slate-700 text-center font-bold ${isUncaught ? 'text-slate-500' : 'text-red-400'} outline-none focus:border-red-500 rounded-sm [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]`} />
           <input title="Defense IV" type={isUncaught ? "text" : "number"} min="0" max="15" value={isUncaught ? "-" : (slot.defIv ?? 15)} readOnly={isUncaught} onChange={(e) => { if(!isUncaught){ const v = parseInt(e.target.value); onUpdate({...slot, defIv: isNaN(v) ? 0 : Math.min(15, Math.max(0, v))}); } }} className={`w-7 h-5 text-[10px] bg-slate-900 border border-slate-700 text-center font-bold ${isUncaught ? 'text-slate-500' : 'text-blue-400'} outline-none focus:border-blue-500 rounded-sm [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]`} />
           <input title="HP IV" type={isUncaught ? "text" : "number"} min="0" max="15" value={isUncaught ? "-" : (slot.hpIv ?? 15)} readOnly={isUncaught} onChange={(e) => { if(!isUncaught){ const v = parseInt(e.target.value); onUpdate({...slot, hpIv: isNaN(v) ? 0 : Math.min(15, Math.max(0, v))}); } }} className={`w-7 h-5 text-[10px] bg-slate-900 border border-slate-700 text-center font-bold ${isUncaught ? 'text-slate-500' : 'text-green-400'} outline-none focus:border-green-500 rounded-sm [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]`} />
@@ -257,12 +268,21 @@ export function PokemonSlot({
           
           <div className="ml-3 shrink-0">
             <div 
-              className={`w-5 h-5 border rounded-sm transition-colors cursor-pointer flex items-center justify-center ${
-                slot.fastMoveChecked ? 'bg-emerald-500 border-emerald-400' : 'bg-slate-900 border-slate-700'
+              className={`w-5 h-5 border rounded-sm transition-colors flex items-center justify-center ${
+                !isFastTmEnabled 
+                  ? 'bg-slate-900 border-slate-800 opacity-30 cursor-not-allowed'
+                  : slot.fastMoveChecked 
+                    ? 'bg-emerald-500 border-emerald-400 cursor-pointer' 
+                    : 'bg-slate-900 border-slate-700 cursor-pointer'
               }`}
-              onClick={() => onUpdate({ ...slot, fastMoveChecked: !slot.fastMoveChecked })}
+              onClick={() => {
+                if (isFastTmEnabled) {
+                  onUpdate({ ...slot, fastMoveChecked: !slot.fastMoveChecked })
+                }
+              }}
+              title={!isFastTmEnabled ? "Evolved/Maxed Out/Mega Evolved 상태에서만 집계됩니다" : ""}
             >
-              {slot.fastMoveChecked && <Check className="w-3 h-3 text-slate-950 font-bold" />}
+              {slot.fastMoveChecked && isFastTmEnabled && <Check className="w-3 h-3 text-slate-950 font-bold" />}
             </div>
           </div>
         </div>
@@ -320,12 +340,21 @@ export function PokemonSlot({
 
           <div className="ml-3 shrink-0">
             <div 
-              className={`w-5 h-5 border rounded-sm transition-colors cursor-pointer flex items-center justify-center ${
-                slot.chargeMove1Checked ? 'bg-emerald-500 border-emerald-400' : 'bg-slate-900 border-slate-700'
+              className={`w-5 h-5 border rounded-sm transition-colors flex items-center justify-center ${
+                !isFastTmEnabled 
+                  ? 'bg-slate-900 border-slate-800 opacity-30 cursor-not-allowed'
+                  : slot.chargeMove1Checked 
+                    ? 'bg-emerald-500 border-emerald-400 cursor-pointer' 
+                    : 'bg-slate-900 border-slate-700 cursor-pointer'
               }`}
-              onClick={() => onUpdate({ ...slot, chargeMove1Checked: !slot.chargeMove1Checked })}
+              onClick={() => {
+                if (isFastTmEnabled) {
+                  onUpdate({ ...slot, chargeMove1Checked: !slot.chargeMove1Checked })
+                }
+              }}
+              title={!isFastTmEnabled ? "Evolved/Maxed Out/Mega Evolved 상태에서만 집계됩니다" : ""}
             >
-              {slot.chargeMove1Checked && <Check className="w-3 h-3 text-slate-950 font-bold" />}
+              {slot.chargeMove1Checked && isFastTmEnabled && <Check className="w-3 h-3 text-slate-950 font-bold" />}
             </div>
           </div>
         </div>

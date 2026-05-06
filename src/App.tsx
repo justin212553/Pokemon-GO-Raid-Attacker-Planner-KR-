@@ -153,7 +153,7 @@ export default function App() {
 
   return (
     <main className="min-h-screen min-w-fit bg-[#090b0e] text-slate-100 font-sans selection:bg-slate-700 flex flex-col items-center">
-      <div className="relative z-10 flex flex-col w-[768px]">
+      <div className="relative z-10 flex flex-col w-[810px]">
         <PartyBuilder 
           selectedType={selectedType} 
           setSelectedType={setSelectedType}
