@@ -1194,9 +1194,19 @@
         "name": "구르기",
         "type": "rock"
     },
-    {
+        {
         "id": "SACRED_FIRE",
         "name": "성스러운불꽃",
+        "type": "fire"
+    },
+    {
+        "id": "SACRED_FIRE+",
+        "name": "성스러운불꽃+",
+        "type": "fire"
+    },
+    {
+        "id": "SACRED_FIRE++",
+        "name": "성스러운불꽃++",
         "type": "fire"
     },
     {

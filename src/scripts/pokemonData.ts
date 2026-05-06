@@ -335,32 +335,42 @@ export const getPokemonImageUrl = async (id: number, name: string, defaultImage:
   return defaultImage;
 };
 
-export const POKEMON_DATA: Pokemon[] = rawPokemons.map((p: any, index: number) => {
-  const getMoveData = (moveId: string): Move => {
-    const moveInfo = movesDict[moveId];
-    return {
-      name: moveInfo ? moveInfo.name : moveId,
-      type: moveInfo ? moveInfo.type.toLowerCase() : 'normal'
-    };
-  };
+export const POKEMON_DATA: Pokemon[] = (() => {
+  const uniqueNames = new Set<string>();
+  const data: Pokemon[] = [];
+  
+  rawPokemons.forEach((p: any) => {
+    if (!uniqueNames.has(p.name)) {
+      uniqueNames.add(p.name);
+      
+      const getMoveData = (moveId: string): Move => {
+        const moveInfo = movesDict[moveId];
+        return {
+          id: moveId,
+          name: moveInfo ? moveInfo.name : moveId,
+          type: moveInfo ? moveInfo.type.toLowerCase() : 'normal'
+        };
+      };
 
-  // Skip duplicates between normal and elite if any, but since they are separate lists, 
-  // we just map them directly. If an elite move is also in normal moves we could filter it out.
-  const fastMoves = p.fast_moves.map((m: string) => getMoveData(m));
-  const fastEliteMoves = p.fast_elite_moves.map((m: string) => getMoveData(m));
-  const chargeMoves = p.charged_moves.map((m: string) => getMoveData(m));
-  const chargeEliteMoves = p.charged_elite_moves.map((m: string) => getMoveData(m));
+      const fastMoves = p.fast_moves.map((m: string) => getMoveData(m));
+      const fastEliteMoves = p.fast_elite_moves.map((m: string) => getMoveData(m));
+      const chargeMoves = p.charged_moves.map((m: string) => getMoveData(m));
+      const chargeEliteMoves = p.charged_elite_moves.map((m: string) => getMoveData(m));
 
-  return {
-    id: p.id, 
-    name: p.name,
-    types: Array.from(new Set(p.types.map((t: string) => t.toLowerCase()).filter((t: string) => t && t !== 'none'))),
-    image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${p.id}.png`,
-    fastMoves,
-    fastEliteMoves,
-    chargeMoves,
-    chargeEliteMoves,
-    shadow_eligible: p.shadow_eligible || false
-  };
-});
+      data.push({
+        id: p.id, 
+        name: p.name,
+        types: Array.from(new Set(p.types.map((t: string) => t.toLowerCase()).filter((t: string) => t && t !== 'none'))),
+        image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${p.id}.png`,
+        fastMoves,
+        fastEliteMoves,
+        chargeMoves,
+        chargeEliteMoves,
+        shadow_eligible: p.shadow_eligible || false
+      });
+    }
+  });
+  
+  return data;
+})();
 

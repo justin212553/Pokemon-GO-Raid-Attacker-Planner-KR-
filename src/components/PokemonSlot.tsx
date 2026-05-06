@@ -94,13 +94,27 @@ export function PokemonSlot({
     const movesMap = new Map();
     pokemon.chargeMoves.forEach(m => movesMap.set(m.name, { ...m, isElite: false }));
     pokemon.chargeEliteMoves.forEach(m => movesMap.set(m.name, { ...m, isElite: true }));
-    return Array.from(movesMap.values());
+    let moves = Array.from(movesMap.values());
+    
+    if (pokemon.name === '칠색조') {
+      if (isShadow) {
+        moves = moves.filter(m => m.name !== '성스러운불꽃++');
+      } else {
+        moves = moves.filter(m => m.name !== '성스러운불꽃+');
+      }
+    }
+    
+    return moves;
   })() : [];
 
   const isFastTmEnabled = ['Evolved', 'Maxed Out', 'Mega Evolved'].includes(trainingStatus || '');
 
   const isFastMoveElite = fastMove && pokemon?.fastEliteMoves.some(m => m.name === fastMove.name);
-  const isChargeMove1Elite = chargeMove1 && pokemon?.chargeEliteMoves.some(m => m.name === chargeMove1.name);
+  const isChargeMove1Elite = chargeMove1 && pokemon?.chargeEliteMoves.some(m => m.name === chargeMove1.name) && 
+    !(pokemon.name === '메가레쿠쟈' && chargeMove1.name === '화룡점정') &&
+    !(pokemon.name === '칠색조' && (chargeMove1.name === '성스러운불꽃+' || chargeMove1.name === '성스러운불꽃++')) &&
+    !(pokemon.name === '디아루가 (오리진)' && chargeMove1.name === '시간의포효') &&
+    !(pokemon.name === '펄기아 (오리진)' && chargeMove1.name === '공간절단');
 
   return (
     <div className="group/slot relative flex border border-slate-700/50 bg-slate-900/80 rounded-lg hover:border-blue-500/50 hover:bg-slate-800/80 transition-all text-slate-100">
@@ -249,7 +263,7 @@ export function PokemonSlot({
                     onClick={(e) => {
                       e.stopPropagation();
                       // Remove isElite when passing back to state if we want strictly type Move
-                      onUpdate({ ...slot, fastMove: { name: m.name, type: m.type } });
+                      onUpdate({ ...slot, fastMove: { id: m.id, name: m.name, type: m.type } });
                       setOpenDropdown(null);
                     }}
                   >
@@ -321,7 +335,7 @@ export function PokemonSlot({
                     className="px-3 py-2 flex items-center justify-between hover:bg-slate-800 cursor-pointer border-b border-slate-800/50 last:border-0"
                     onClick={(e) => {
                       e.stopPropagation();
-                      onUpdate({ ...slot, chargeMove1: { name: m.name, type: m.type } });
+                      onUpdate({ ...slot, chargeMove1: { id: m.id, name: m.name, type: m.type } });
                       setOpenDropdown(null);
                     }}
                   >

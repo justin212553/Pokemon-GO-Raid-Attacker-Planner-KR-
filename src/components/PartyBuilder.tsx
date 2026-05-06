@@ -17,13 +17,15 @@ interface PartyBuilderProps {
   onImportFileClick: () => void;
   onExportFileClick: () => void;
   saveMessage?: { text: string; type: 'success' | 'error' } | null;
+  hiddenTypes: string[];
+  toggleCurrentTypeVisibility: () => void;
 }
 
-const POKEMON_TYPES_LIST = [
+export const POKEMON_TYPES_LIST = [
   "fire", "water", "grass", "electric", "ice", "fighting", "poison", "ground", "flying", "psychic", "bug", "rock", "ghost", "dragon", "dark", "steel", "fairy", "normal"
 ];
 
-export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, onImportClick, onExportClick, onImportFileClick, onExportFileClick, saveMessage }: PartyBuilderProps) {
+export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, onImportClick, onExportClick, onImportFileClick, onExportFileClick, saveMessage, hiddenTypes = [], toggleCurrentTypeVisibility }: PartyBuilderProps) {
   const [modalState, setModalState] = useState<{
     isOpen: boolean;
     type: 'pokemon' | 'fastMove' | 'chargeMove';
@@ -37,10 +39,6 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, o
   const [searchTerm, setSearchTerm] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
-  const [hiddenTypes, setHiddenTypes] = useState<string[]>(() => {
-    const saved = localStorage.getItem('pogo-hidden-types');
-    return saved ? JSON.parse(saved) : [];
-  });
   const captureRef = useRef<HTMLDivElement>(null);
   const [isCapturing, setIsCapturing] = useState(false);
 
@@ -63,19 +61,6 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, o
     } finally {
       setIsCapturing(false);
     }
-  };
-
-  const toggleCurrentTypeVisibility = () => {
-    setHiddenTypes(prev => {
-      let next;
-      if (prev.includes(selectedType)) {
-        next = prev.filter(t => t !== selectedType);
-      } else {
-        next = [...prev, selectedType];
-      }
-      localStorage.setItem('pogo-hidden-types', JSON.stringify(next));
-      return next;
-    });
   };
 
   const handleDragStart = (e: React.DragEvent, index: number) => {
@@ -209,7 +194,22 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, o
 
         <div className="w-full max-w-full h-14 mx-auto mt-4 px-2 overflow-x-auto items-center [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           <div className="flex items-center h-10 gap-2 min-w-max justify-between sm:justify-between">
-            {[...POKEMON_TYPES_LIST.filter(t => !hiddenTypes.includes(t)), ...POKEMON_TYPES_LIST.filter(t => hiddenTypes.includes(t))].map(type => (
+            {POKEMON_TYPES_LIST.filter(t => !hiddenTypes.includes(t)).map(type => (
+              <button
+                key={type}
+                onClick={() => setSelectedType(type)}
+                className={`w-8 h-8 rounded-full flex items-center justify-center border-2 transition-all shrink-0 border-none ${
+                  selectedType === type 
+                    ? 'scale-125 z-10' 
+                    : 'opacity-70 hover:opacity-100'
+                } ${hiddenTypes.includes(type) && selectedType !== type ? 'opacity-30 grayscale' : ''}`}
+                title={type}
+              >
+                <img src={TYPE_ICONS[type]} alt={type} className="w-6 h-6 object-contain" />
+              </button>
+            ))}
+            {hiddenTypes.length > 0 && <div className="w-[2px] h-6 bg-slate-700/50 mx-1 rounded-full shrink-0" />}
+            {POKEMON_TYPES_LIST.filter(t => hiddenTypes.includes(t)).map(type => (
               <button
                 key={type}
                 onClick={() => setSelectedType(type)}
@@ -424,7 +424,7 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, o
                   ].filter((v, i, a) => a.findIndex(t => t.name === v.name) === i).map((move, idx) => (
                     <button
                       key={idx}
-                      onClick={() => handleSelectMove({ name: move.name, type: move.type })}
+                      onClick={() => handleSelectMove({ id: move.id, name: move.name, type: move.type })}
                       className="flex items-center justify-between px-3 py-2 rounded bg-slate-950 border border-slate-800 hover:border-blue-500/50 hover:bg-slate-900 transition-all text-left group"
                     >
                       <div className="flex items-center gap-2">
@@ -448,7 +448,7 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, o
                   ].filter((v, i, a) => a.findIndex(t => t.name === v.name) === i).map((move, idx) => (
                     <button
                       key={idx}
-                      onClick={() => handleSelectMove({ name: move.name, type: move.type })}
+                      onClick={() => handleSelectMove({ id: move.id, name: move.name, type: move.type })}
                       className="flex items-center justify-between px-3 py-2 rounded bg-slate-950 border border-slate-800 hover:border-blue-500/50 hover:bg-slate-900 transition-all text-left group"
                     >
                       <div className="flex items-center gap-2">

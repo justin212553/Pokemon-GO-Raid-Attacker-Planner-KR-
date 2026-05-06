@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { PartySlotData } from '../scripts/types';
 import { GripVertical } from 'lucide-react';
 import { TYPE_ICONS } from '../scripts/icons';
+import { POKEMON_TYPES_LIST } from './PartyBuilder';
 
 interface EliteTMItem {
   id: string;
@@ -55,7 +56,12 @@ export function EliteTMTracker({ allParties, tmOrders, setTmOrders }: EliteTMTra
         // Check Charge Move
         if (slot.chargeMove1 && !slot.chargeMove1Checked) {
           const isElite = slot.pokemon.chargeEliteMoves.some(m => m.name === slot.chargeMove1!.name);
-          if (isElite) {
+          const isException = 
+            (slot.pokemon.name === '메가레쿠쟈' && slot.chargeMove1.name === '화룡점정') || 
+            (slot.pokemon.name === '칠색조' && (slot.chargeMove1.name === '성스러운불꽃+' || slot.chargeMove1.name === '성스러운불꽃++')) ||
+            (slot.pokemon.name === '디아루가 (오리진)' && slot.chargeMove1.name === '시간의포효') ||
+            (slot.pokemon.name === '펄기아 (오리진)' && slot.chargeMove1.name === '공간절단');
+          if (isElite && !isException) {
             const id = `${partyType}-${slot.id}-${slot.chargeMove1.name}-charge`;
             newItems.push({
               id,
@@ -92,9 +98,14 @@ export function EliteTMTracker({ allParties, tmOrders, setTmOrders }: EliteTMTra
           const isElite = slot.pokemon.fastEliteMoves.some(m => m.name === slot.fastMove!.name);
           if (!isElite) fastCount++;
         }
-        if (slot.chargeMove1 && !slot.chargeMove1Checked) {
+        if (slot.chargeMove1 && !slot.chargeMove1Checked && isFastTmEnabled) {
           const isElite = slot.pokemon.chargeEliteMoves.some(m => m.name === slot.chargeMove1!.name);
-          if (!isElite) chargeCount++;
+          const isException = 
+            (slot.pokemon.name === '메가레쿠쟈' && slot.chargeMove1.name === '화룡점정') || 
+            (slot.pokemon.name === '칠색조' && (slot.chargeMove1.name === '성스러운불꽃+' || slot.chargeMove1.name === '성스러운불꽃++')) ||
+            (slot.pokemon.name === '디아루가 (오리진)' && slot.chargeMove1.name === '시간의포효') ||
+            (slot.pokemon.name === '펄기아 (오리진)' && slot.chargeMove1.name === '공간절단');
+          if (!isElite && !isException) chargeCount++;
         }
       });
       if (fastCount > 0 || chargeCount > 0) {
@@ -227,7 +238,7 @@ export function EliteTMTracker({ allParties, tmOrders, setTmOrders }: EliteTMTra
     }
   };
 
-  const TMList = ({ title, itemsToRender, moveType }: { title: string, itemsToRender: EliteTMItem[], moveType: 'fast' | 'charge' }) => {
+  const renderTMList = (title: string, itemsToRender: EliteTMItem[], moveType: 'fast' | 'charge') => {
     const validCount = itemsToRender.filter(i => !i.isUncaught && !i.isCommDayWait).length;
     
     return (
@@ -241,7 +252,7 @@ export function EliteTMTracker({ allParties, tmOrders, setTmOrders }: EliteTMTra
             총 {validCount}개 필요
           </span>
         </div>
-        <div className="flex flex-col gap-2 min-h-[150px] max-h-[250px] overflow-y-auto pr-2 pb-2 custom-scrollbar relative">
+        <div className="flex flex-col gap-2 h-[250px] overflow-y-auto pr-2 pb-2 custom-scrollbar relative">
           {itemsToRender.length === 0 && <div className="absolute inset-0 flex items-center justify-center text-sm font-bold text-slate-600/50 p-2 text-center w-full tracking-widest">EMPTY</div>}
           {itemsToRender.map((item, index) => {
             const Icon = TYPE_ICONS[item.partyType] || '';
@@ -298,7 +309,7 @@ export function EliteTMTracker({ allParties, tmOrders, setTmOrders }: EliteTMTra
     );
   };
 
-  const NormalTMList = () => {
+  const renderNormalTMList = () => {
     const entries = Object.entries(normalTmCounts) as [string, { fast: number; charge: number }][];
     
 
@@ -309,8 +320,8 @@ export function EliteTMTracker({ allParties, tmOrders, setTmOrders }: EliteTMTra
       totalCharge += count.charge;
     });
 
-    const fastEntries = entries.filter(([, counts]) => counts.fast > 0).sort((a, b) => b[1].fast - a[1].fast);
-    const chargeEntries = entries.filter(([, counts]) => counts.charge > 0).sort((a, b) => b[1].charge - a[1].charge);
+    const fastEntries = entries.filter(([, counts]) => counts.fast > 0).sort((a, b) => POKEMON_TYPES_LIST.indexOf(a[0]) - POKEMON_TYPES_LIST.indexOf(b[0]));
+    const chargeEntries = entries.filter(([, counts]) => counts.charge > 0).sort((a, b) => POKEMON_TYPES_LIST.indexOf(a[0]) - POKEMON_TYPES_LIST.indexOf(b[0]));
 
     return (
         <div className="flex flex-row gap-8">
@@ -325,7 +336,7 @@ export function EliteTMTracker({ allParties, tmOrders, setTmOrders }: EliteTMTra
                 총 {totalFast}개 
               </span>
             </div>
-            <div className="flex flex-col gap-2 min-h-[150px] max-h-[250px] overflow-y-auto pr-2 pb-2 custom-scrollbar relative">
+            <div className="flex flex-col gap-2 h-[250px] overflow-y-auto pr-2 pb-2 custom-scrollbar relative">
               {fastEntries.length === 0 && <div className="absolute inset-0 flex items-center justify-center text-sm font-bold text-slate-600/50 p-2 text-center w-full tracking-widest">EMPTY</div>}
               {fastEntries.map(([partyType, count]) => {
                 const Icon = TYPE_ICONS[partyType] || '';
@@ -357,7 +368,7 @@ export function EliteTMTracker({ allParties, tmOrders, setTmOrders }: EliteTMTra
                 총 {totalCharge}개 
               </span>
             </div>
-            <div className="flex flex-col gap-2 min-h-[150px] max-h-[250px] overflow-y-auto pr-2 pb-2 custom-scrollbar relative">
+            <div className="flex flex-col gap-2 h-[250px] overflow-y-auto pr-2 pb-2 custom-scrollbar relative">
               {chargeEntries.length === 0 && <div className="absolute inset-0 flex items-center justify-center text-sm font-bold text-slate-600/50 p-2 text-center w-full tracking-widest">EMPTY</div>}
               {chargeEntries.map(([partyType, count]) => {
                 const Icon = TYPE_ICONS[partyType] || '';
@@ -384,11 +395,11 @@ export function EliteTMTracker({ allParties, tmOrders, setTmOrders }: EliteTMTra
   return (
     <div className="w-full p-4 md:p-8 py-4 mt-4 border-t border-slate-800/50">
       <div className="flex flex-row gap-8">
-        <TMList title="대단한 기술머신(노말)" itemsToRender={sortedFastItems} moveType="fast" />
-        <TMList title="대단한 기술머신(스페셜)" itemsToRender={sortedChargeItems} moveType="charge" />
+        {renderTMList("대단한 기술머신(노말)", sortedFastItems, "fast")}
+        {renderTMList("대단한 기술머신(스페셜)", sortedChargeItems, "charge")}
       </div>
       <div className="mt-8 pt-6 border-t border-slate-800/50">
-        <NormalTMList />
+        {renderNormalTMList()}
       </div>
     </div>
   );

@@ -7821,7 +7821,8 @@
     "fast_elite_moves": [],
     "charged_elite_moves": [
       "EARTHQUAKE",
-      "SACRED_FIRE"
+      "SACRED_FIRE+",
+      "SACRED_FIRE++"
     ],
     "shadow_eligible": true
   },
@@ -22582,7 +22583,7 @@
   },
   {
     "id": 800,
-    "name": "네크로즈마",
+    "name": "새벽 네크로즈마",
     "types": [
       "psychic",
       "none"
