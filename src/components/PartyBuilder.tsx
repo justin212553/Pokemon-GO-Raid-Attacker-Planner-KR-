@@ -4,7 +4,7 @@ import { PartySlotData, Pokemon, Move } from '../scripts/types';
 import { POKEMON_DATA, POKEMON_TYPES, TYPE_TEXT_COLORS } from '../scripts/pokemonData';
 import { TYPE_ICONS } from '../scripts/icons';
 import { PokemonImage } from './PokemonImage';
-import { ChevronDown, X, Trash2, Upload, Download, GripVertical, Eye, EyeOff, Camera } from 'lucide-react';
+import { ChevronDown, X, Trash2, Upload, Download, GripVertical, Eye, EyeOff, Camera, FileJson, FileUp, HardDriveDownload, HardDriveUpload } from 'lucide-react';
 import * as htmlToImage from 'html-to-image';
 
 interface PartyBuilderProps {
@@ -14,6 +14,8 @@ interface PartyBuilderProps {
   setSlots: React.Dispatch<React.SetStateAction<PartySlotData[]>>;
   onImportClick: () => void;
   onExportClick: () => void;
+  onImportFileClick: () => void;
+  onExportFileClick: () => void;
   saveMessage?: { text: string; type: 'success' | 'error' } | null;
 }
 
@@ -21,7 +23,7 @@ const POKEMON_TYPES_LIST = [
   "fire", "water", "grass", "electric", "ice", "fighting", "poison", "ground", "flying", "psychic", "bug", "rock", "ghost", "dragon", "dark", "steel", "fairy", "normal"
 ];
 
-export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, onImportClick, onExportClick, saveMessage }: PartyBuilderProps) {
+export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, onImportClick, onExportClick, onImportFileClick, onExportFileClick, saveMessage }: PartyBuilderProps) {
   const [modalState, setModalState] = useState<{
     isOpen: boolean;
     type: 'pokemon' | 'fastMove' | 'chargeMove';
@@ -281,30 +283,62 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, o
         )})}
       </div>
 
-      <footer className="mt-4 flex flex-col items-center justify-center gap-2">
-        <div className="flex gap-2 flex-row justify-center flex-wrap">
-          <button 
-            onClick={onImportClick}
-            className="flex items-center justify-center gap-1.5 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-bold rounded-lg transition-all shadow-sm active:scale-95"
-          >
-            <Upload className="w-4 h-4" />
-            불러오기
-          </button>
-          <button 
-            onClick={onExportClick}
-            className="flex items-center justify-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold rounded-lg transition-all shadow-sm active:scale-95"
-          >
-            <Download className="w-4 h-4" />
-            저장하기
-          </button>
-          <button 
-            onClick={handleCapture}
-            disabled={isCapturing}
-            className="flex items-center justify-center gap-1.5 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-bold rounded-lg transition-all shadow-sm active:scale-95 disabled:opacity-50"
-          >
-            <Camera className="w-4 h-4" />
-            {isCapturing ? '저장 중...' : '이미지 저장'}
-          </button>
+      <footer className="mt-8 flex flex-col items-center justify-center gap-4">
+        <div className="flex gap-3 flex-row justify-center flex-wrap">
+          {/* 브라우저 영역 */}
+          <div className="flex bg-slate-800/60 p-1 rounded-xl shadow-inner border border-slate-700/50">
+            <button 
+              onClick={onImportClick}
+              className="flex items-center justify-center gap-1.5 px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-700/80 text-sm font-medium rounded-lg transition-all active:scale-95"
+              title="이 브라우저에 저장된 데이터를 불러옵니다"
+            >
+              <Upload className="w-4 h-4" />
+              <span>불러오기</span>
+            </button>
+            <div className="w-[1px] bg-slate-700/50 mx-1 my-1"></div>
+            <button 
+              onClick={onExportClick}
+              className="flex items-center justify-center gap-1.5 px-3 py-2 text-blue-400 hover:text-blue-300 hover:bg-blue-500/10 text-sm font-medium rounded-lg transition-all active:scale-95"
+              title="이 브라우저에 현재 상태를 저장합니다"
+            >
+              <Download className="w-4 h-4" />
+              <span>저장하기</span>
+            </button>
+          </div>
+
+          {/* 파일 영역 */}
+          <div className="flex bg-slate-800/60 p-1 rounded-xl shadow-inner border border-slate-700/50">
+            <button 
+              onClick={onImportFileClick}
+              className="flex items-center justify-center gap-1.5 px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-700/80 text-sm font-medium rounded-lg transition-all active:scale-95"
+              title="저장된 파일에서 데이터를 불러옵니다"
+            >
+              <FileUp className="w-4 h-4" />
+              <span>파일 열기</span>
+            </button>
+            <div className="w-[1px] bg-slate-700/50 mx-1 my-1"></div>
+            <button 
+              onClick={onExportFileClick}
+              className="flex items-center justify-center gap-1.5 px-3 py-2 text-indigo-400 hover:text-indigo-300 hover:bg-indigo-500/10 text-sm font-medium rounded-lg transition-all active:scale-95"
+              title="현재 상태를 파일로 다운로드합니다"
+            >
+              <FileJson className="w-4 h-4" />
+              <span>파일 저장</span>
+            </button>
+          </div>
+
+          {/* 캡처 영역 */}
+          <div className="flex bg-slate-800/60 p-1 rounded-xl shadow-inner border border-slate-700/50">
+            <button 
+              onClick={handleCapture}
+              disabled={isCapturing}
+              className="flex items-center justify-center gap-1.5 px-3 py-2 text-emerald-400 hover:text-emerald-300 hover:bg-emerald-500/10 text-sm font-medium rounded-lg transition-all active:scale-95 disabled:opacity-50"
+              title="현재 파티의 스크린샷을 저장합니다"
+            >
+              <Camera className="w-4 h-4" />
+              <span>{isCapturing ? '저장 중...' : '이미지 저장'}</span>
+            </button>
+          </div>
         </div>
         {saveMessage && (
           <span className={`text-[10px] sm:text-xs font-medium px-2 py-1 rounded inline-block text-center ${saveMessage.type === 'error' ? 'text-rose-400 bg-rose-500/10' : 'text-emerald-400 bg-emerald-500/10'}`}>

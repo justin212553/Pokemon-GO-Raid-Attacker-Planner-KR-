@@ -69,6 +69,57 @@ export default function App() {
     }
   };
 
+  const handleExportFile = () => {
+    try {
+      const data = { allParties, tmOrders };
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `pogo_planner_backup_${new Date().toISOString().split('T')[0]}.json`;
+      link.click();
+      URL.revokeObjectURL(url);
+      setSaveMessage({ text: '파일로 저장되었습니다.', type: 'success' });
+      setTimeout(() => setSaveMessage(null), 3000);
+    } catch (err) {
+      setSaveMessage({ text: '파일 저장에 실패했습니다.', type: 'error' });
+      setTimeout(() => setSaveMessage(null), 3000);
+    }
+  };
+
+  const handleImportFile = () => {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'application/json';
+    input.onchange = (e) => {
+      const file = (e.target as HTMLInputElement).files?.[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        try {
+          const content = event.target?.result as string;
+          const data = JSON.parse(content);
+          
+          if (data.allParties) {
+            setAllParties(data.allParties);
+          }
+          if (data.tmOrders) {
+            setTmOrders(data.tmOrders);
+          }
+          
+          setSaveMessage({ text: '파일에서 불러왔습니다.', type: 'success' });
+          setTimeout(() => setSaveMessage(null), 3000);
+        } catch (err) {
+          setSaveMessage({ text: '파일을 불러오는데 실패했습니다.', type: 'error' });
+          setTimeout(() => setSaveMessage(null), 3000);
+        }
+      };
+      reader.readAsText(file);
+    };
+    input.click();
+  };
+
   const handleImport = () => {
     const savedParties = localStorage.getItem('pogo-all-parties');
     const savedOrders = localStorage.getItem('pogo-tm-orders');
@@ -110,6 +161,8 @@ export default function App() {
           setSlots={setSlots}
           onImportClick={handleImport}
           onExportClick={handleExport}
+          onImportFileClick={handleImportFile}
+          onExportFileClick={handleExportFile}
           saveMessage={saveMessage}
         />
         <EliteTMTracker 
