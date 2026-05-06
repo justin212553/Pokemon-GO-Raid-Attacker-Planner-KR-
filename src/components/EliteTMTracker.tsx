@@ -214,65 +214,58 @@ export function EliteTMTracker({ allParties, tmOrders, setTmOrders }: EliteTMTra
             총 {validCount}개 필요
           </span>
         </div>
-        <div className="flex overflow-x-auto gap-8 px-4 md:px-8 py-8 -mx-4 md:-mx-8 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+        <div className="space-y-2">
           {itemsToRender.map((item, index) => {
             const Icon = TYPE_ICONS[item.partyType] || '';
             const isDisabled = item.isUncaught || item.isCommDayWait;
             return (
-               <div 
+              <div 
                 key={item.id} 
                 draggable={!isDisabled}
                 onDragStart={(e) => handleDragStart(e, item.id, moveType)}
                 onDragOver={handleDragOver}
                 onDrop={(e) => handleDrop(e, item.id, moveType, isDisabled)}
-                className={`group relative flex flex-col items-center justify-center gap-2.5 border rounded-2xl w-40 shrink-0 p-4 snap-center transition-all ${!isDisabled && 'cursor-grab active:cursor-grabbing'} ${
+                className={`group flex items-center gap-3 border rounded-lg p-2 transition-all ${!isDisabled && 'cursor-grab active:cursor-grabbing'} ${
                   isDisabled 
                     ? 'bg-slate-900/40 border-slate-800/50 grayscale opacity-50 hover:opacity-80 cursor-default' 
                     : 'bg-slate-900/60 border-slate-700/50 hover:border-slate-600 hover:bg-slate-800/60'
                 }`}
               >
-                {/* Rank Circle */}
-                <div className="absolute -top-3 -left-3 w-8 h-8 rounded-full border border-slate-700 bg-slate-900 flex items-center justify-center shadow-lg pointer-events-none">
-                  <span className="text-xs font-black text-slate-300">{isDisabled ? '-' : `#${index + 1}`}</span>
+                <div className="flex flex-col items-center justify-center w-8 shrink-0">
+                  <span className="text-[10px] font-black text-slate-500 mb-0.5">{isDisabled ? '-' : `#${index + 1}`}</span>
                   {!isDisabled && (
-                    <div className="absolute inset-0 flex items-center justify-center bg-slate-800 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-                      <GripVertical className="w-4 h-4 text-slate-400" />
+                    <div className="opacity-30 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
+                      <GripVertical className="w-4 h-4 text-slate-500" />
                     </div>
                   )}
                 </div>
-
-                {/* Type Circle */}
-                <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full border border-slate-700 bg-slate-900 flex items-center justify-center p-1.5 shadow-lg pointer-events-none" title={`${item.partyType} 타입 파티`}>
-                  <img src={Icon} alt={item.partyType} className="w-full h-full object-contain filter drop-shadow-md opacity-80" />
+                
+                <div className="w-6 h-6 shrink-0 opacity-80" title={`${item.partyType} 타입 파티`}>
+                  <img src={Icon} alt={item.partyType} className="w-full h-full object-contain filter drop-shadow-md" />
                 </div>
 
-                {/* Pokemon Name */}
-                <span className={`text-[15px] font-bold w-full text-center truncate ${isDisabled ? 'text-slate-400' : 'text-slate-200'}`} title={item.pokemonName}>
-                  {item.pokemonName}
-                </span>
-
-                {/* Divider */}
-                <div className="w-10 h-px bg-slate-700/80 my-1"></div>
-
-                {/* Move Name */}
-                <span className={`text-[13px] font-medium w-full text-center truncate ${isDisabled ? 'text-slate-500' : 'text-slate-400'}`} title={item.moveName}>
-                  {item.moveName}
-                </span>
-
-                {/* Status Wrapper */}
-                <div className="flex flex-col items-center gap-3 mt-2 w-full">
+                <div className="flex items-center gap-2 min-w-0">
+                  <span className={`w-[90px] sm:w-[120px] shrink-0 text-sm font-bold truncate ${isDisabled ? 'text-slate-400' : 'text-slate-200'}`} title={item.pokemonName}>
+                    {item.pokemonName}
+                  </span>
+                  <span className="text-slate-600 text-xs font-black shrink-0">|</span>
+                  <span className={`w-[90px] sm:w-[120px] shrink-0 text-xs font-medium truncate ${isDisabled ? 'text-slate-500' : 'text-slate-400'}`} title={item.moveName}>
+                    {item.moveName}
+                  </span>
+                </div>
+                
+                <div className="flex items-center gap-2 ml-auto shrink-0">
                   <span className={`px-2 py-0.5 text-[10px] font-bold rounded border ${getStatusColorClass(item.trainingStatus, item.isUncaught, item.isCommDayWait)}`}>
                     {item.trainingStatus}
                   </span>
-
-                  <label className="flex items-center gap-1.5 cursor-pointer mt-0.5">
+                  <label className="flex items-center gap-1.5 cursor-pointer ml-1 sm:ml-2">
                     <input 
                       type="checkbox"
                       checked={!!item.isCommDayWait}
                       onChange={() => toggleCommDayWait(item.id)}
                       className="w-3.5 h-3.5 rounded border-slate-700 bg-slate-800 text-indigo-500 focus:ring-0 focus:ring-offset-0 cursor-pointer"
                     />
-                    <span className="text-[10px] sm:text-xs font-bold text-slate-500 whitespace-nowrap">커뮤니티데이</span>
+                    <span className="text-[10px] font-bold text-slate-500 whitespace-nowrap">커뮤니티데이</span>
                   </label>
                 </div>
               </div>
@@ -284,10 +277,10 @@ export function EliteTMTracker({ allParties, tmOrders, setTmOrders }: EliteTMTra
   };
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 md:px-8 py-4 border-t border-slate-800/50">
-      <div className="flex flex-col md:flex-row gap-8">
-        <TMList title="대단한 기술머신(일반)" itemsToRender={sortedFastItems} moveType="fast" />
-        <TMList title="대단한 기술머신(스페셜)" itemsToRender={sortedChargeItems} moveType="charge" />
+    <div className="w-full p-4 md:p-8 py-4 mt-4 border-t border-slate-800/50">
+      <div className="flex flex-col gap-8">
+        <TMList title="대단한 기술머신(일반) 필요 목록" itemsToRender={sortedFastItems} moveType="fast" />
+        <TMList title="대단한 기술머신(스페셜) 필요 목록" itemsToRender={sortedChargeItems} moveType="charge" />
       </div>
     </div>
   );

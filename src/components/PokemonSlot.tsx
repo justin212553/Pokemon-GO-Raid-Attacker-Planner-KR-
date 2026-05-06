@@ -100,11 +100,9 @@ export function PokemonSlot({
     <div className="group/slot relative flex border border-slate-700/50 bg-slate-900/80 rounded-lg hover:border-blue-500/50 hover:bg-slate-800/80 transition-all text-slate-100">
       
       <div className={`absolute left-0 top-0 bottom-0 w-3 rounded-l-lg ${getStatusBgColor(trainingStatus || 'Not Caught')} z-10 opacity-100 pointer-events-none`}></div>
-
+      
       {/* 포켓몬 이미지 (Left Box) */}
-      <div 
-        className="w-2/5 min-w-[140px] pl-4 pr-1 py-4 overflow-hidden border-r border-slate-800/50 flex flex-row items-center bg-slate-950/50 transition-colors relative group/img rounded-l-lg "
-      >
+      <div className="w-2/5 min-w-[140px] pl-4 pr-1 py-4 overflow-hidden border-r border-slate-800/50 flex flex-row items-center bg-slate-950/50 transition-colors relative group/img rounded-l-lg ">
         <div className="flex flex-col gap-1 z-20 shrink-0">
           <input title="Attack IV" type={isUncaught ? "text" : "number"} min="0" max="15" value={isUncaught ? "-" : (slot.atkIv ?? 15)} readOnly={isUncaught} onChange={(e) => { if(!isUncaught){ const v = parseInt(e.target.value); onUpdate({...slot, atkIv: isNaN(v) ? 0 : Math.min(15, Math.max(0, v))}); } }} className={`w-7 h-5 text-[10px] bg-slate-900 border border-slate-700 text-center font-bold ${isUncaught ? 'text-slate-500' : 'text-red-400'} outline-none focus:border-red-500 rounded-sm [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]`} />
           <input title="Defense IV" type={isUncaught ? "text" : "number"} min="0" max="15" value={isUncaught ? "-" : (slot.defIv ?? 15)} readOnly={isUncaught} onChange={(e) => { if(!isUncaught){ const v = parseInt(e.target.value); onUpdate({...slot, defIv: isNaN(v) ? 0 : Math.min(15, Math.max(0, v))}); } }} className={`w-7 h-5 text-[10px] bg-slate-900 border border-slate-700 text-center font-bold ${isUncaught ? 'text-slate-500' : 'text-blue-400'} outline-none focus:border-blue-500 rounded-sm [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]`} />

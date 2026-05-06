@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { getPokemonImageUrl } from '../scripts/pokemonData';
 
-interface PokemonImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+interface PokemonImageProps {
   pokemonId: number;
   pokemonName: string;
   defaultImage: string;
+  className?: string;
+  [key: string]: any;
 }
 
 export function PokemonImage({ pokemonId, pokemonName, defaultImage, ...props }: PokemonImageProps) {

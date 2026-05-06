@@ -1,25 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { PokemonSlot } from './PokemonSlot';
 import { PartySlotData, Pokemon, Move } from '../scripts/types';
-import { POKEMON_DATA, TYPE_TEXT_COLORS } from '../scripts/pokemonData';
+import { POKEMON_DATA, POKEMON_TYPES, TYPE_TEXT_COLORS } from '../scripts/pokemonData';
 import { TYPE_ICONS } from '../scripts/icons';
 import { PokemonImage } from './PokemonImage';
-import { MobilePokemonSlot } from './MobilePokemonSlot';
-import { X, Eye, EyeOff } from 'lucide-react';
+import { ChevronDown, X, Trash2, Upload, Download, GripVertical, Eye, EyeOff, Camera } from 'lucide-react';
+import * as htmlToImage from 'html-to-image';
 
 interface PartyBuilderProps {
   selectedType: string;
   setSelectedType: (type: string) => void;
   slots: PartySlotData[];
   setSlots: React.Dispatch<React.SetStateAction<PartySlotData[]>>;
+  onImportClick: () => void;
+  onExportClick: () => void;
   saveMessage?: { text: string; type: 'success' | 'error' } | null;
-  setSaveMessage: (msg: { text: string; type: 'success' | 'error' } | null) => void;
 }
 
 const POKEMON_TYPES_LIST = [
   "fire", "water", "grass", "electric", "ice", "fighting", "poison", "ground", "flying", "psychic", "bug", "rock", "ghost", "dragon", "dark", "steel", "fairy", "normal"
 ];
 
-export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, setSaveMessage }: PartyBuilderProps) {
+export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, onImportClick, onExportClick, saveMessage }: PartyBuilderProps) {
   const [modalState, setModalState] = useState<{
     isOpen: boolean;
     type: 'pokemon' | 'fastMove' | 'chargeMove';
@@ -37,6 +39,29 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, s
     const saved = localStorage.getItem('pogo-hidden-types');
     return saved ? JSON.parse(saved) : [];
   });
+  const captureRef = useRef<HTMLDivElement>(null);
+  const [isCapturing, setIsCapturing] = useState(false);
+
+  const handleCapture = async () => {
+    if (!captureRef.current) return;
+    try {
+      setIsCapturing(true);
+      // Allow UI to update if needed
+      await new Promise(resolve => setTimeout(resolve, 50));
+      const dataUrl = await htmlToImage.toPng(captureRef.current, {
+        backgroundColor: '#090b0e',
+        pixelRatio: 2,
+      });
+      const link = document.createElement('a');
+      link.href = dataUrl;
+      link.download = `pogo_party_${selectedType}.png`;
+      link.click();
+    } catch (error) {
+      console.error('Failed to capture:', error);
+    } finally {
+      setIsCapturing(false);
+    }
+  };
 
   const toggleCurrentTypeVisibility = () => {
     setHiddenTypes(prev => {
@@ -156,23 +181,23 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, s
   });
 
   return (
-    <div className="max-w-7xl mx-auto px-0 md:px-8 pb-24 w-full pt-16">
-      <header className="flex flex-col w-full max-w-full items-center mb-8 border-b border-slate-800 relative z-10 px-4 md:px-0">
-        <div className="flex flex-col items-center md:flex-row md:items-start w-full max-w-full justify-between gap-4 md:gap-0 pb-4 md:pb-0">
-          <div className="text-center md:text-left">
-            <h6 className="font-black tracking-tighter uppercase text-center md:text-left">
+    <div className="w-full pb-16 pt-16">
+      <header className="flex flex-col w-full max-w-full items-center mb-8 border-b border-slate-800 relative z-10">
+        <div className="flex flex-col md:flex-row w-full px-8 max-w-full items-start md:items-center justify-between gap-4 md:gap-0">
+          <div>
+            <h4 className="font-black tracking-tighter uppercase text-left">
               <span className="text-yellow-300">POKEMON </span>
               <span className="text-blue-500">GO</span>
-              <br />
-              <span className="text-white-600 md:ml-0">Raid Attacker Planner</span>
-            </h6>
+              <br/>
+              <span className="text-white-600">Raid Attacker Planner</span>
+            </h4>
             <span className="text-gray-600 text-xs">포켓몬고 레이드 공격대 육성계획표</span>
           </div>
-          <div className="flex flex-col items-center md:items-end gap-2 md:gap-1 w-full md:w-auto">
-            <div className="flex gap-1.5 flex-wrap justify-center md:justify-end w-full">
+          <div className="flex flex-col items-start md:items-end gap-2 md:gap-1 w-full md:w-auto">
+            <div className="flex flex-col md:flex-row gap-2 md:gap-1.5 w-full md:w-auto justify-start md:justify-end flex-wrap">
               <button 
                 onClick={toggleCurrentTypeVisibility}
-                className="flex items-center gap-1.5 px-4 py-2 bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-semibold rounded-full border border-slate-700 transition-colors shadow-sm cursor-pointer"
+                className="flex items-center gap-1.5 px-4 py-2 bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-semibold rounded-full border border-slate-700 transition-colors shadow-sm cursor-pointer w-max"
               >
                 {hiddenTypes.includes(selectedType) ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
                 {hiddenTypes.includes(selectedType) ? '현재 타입 보이기' : '현재 타입 뒤로'}
@@ -201,7 +226,7 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, s
         </div>
       </header>
 
-      <div className="flex overflow-x-auto gap-4 relative snap-x snap-mandatory pt-2 pb-4 px-4 md:px-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+      <div ref={captureRef} className="flex flex-col gap-2 relative bg-[#090b0e] p-2 -mx-2 rounded-xl">
         {slots.map((slot, index) => {
           const roleLabel = index === 0 ? 'MEGA' : index === 1 || index === 2 ? 'DPS' : index === 3 || index === 4 ? 'ACE' : 'TANK';
           const roleTextColor = index === 0 ? 'text-purple-400' : index === 1 || index === 2 ? 'text-red-400' : index === 3 || index === 4 ? 'text-blue-400' : 'text-emerald-400';
@@ -210,22 +235,32 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, s
           return (
           <div 
             key={slot.id} 
-            className={`flex gap-2 items-center group transition-all snap-center w-auto shrink-0 ${draggedIndex === index ? 'opacity-50 scale-95' : ''}`}
+            className={`flex gap-2 items-center pr-2 group transition-all ${draggedIndex === index ? 'opacity-50 scale-95' : ''}`}
             draggable
             onDragStart={(e) => handleDragStart(e, index)}
             onDragOver={handleDragOver}
             onDrop={(e) => handleDrop(e, index)}
             onDragEnd={handleDragEnd}
           >
-            <div className="flex pointer-events-auto shrink-0 mx-auto">
-              <MobilePokemonSlot 
+            <div className={`w-4 h-full flex flex-col items-center justify-center font-black tracking-widest text-[10px] sm:text-xs text-left pl-2 pb-1 ${roleTextColor} opacity-80 uppercase shrink-0`}>
+              {!isCapturing && (
+                <div className="cursor-grab hover:text-white mb-5 active:cursor-grabbing text-slate-500">
+                  <GripVertical className="w-4 h-4" />
+                </div>
+              )}
+              <span className="-rotate-90 inline-block">{roleLabel}</span>
+            </div>
+            <div className="flex-1 pointer-events-auto">
+              <PokemonSlot 
                 slot={slot}
                 roleColor={roleBgColor}
-                roleLabel={roleLabel}
-                roleTextColor={roleTextColor}
                 onUpdate={handleUpdateSlot}
                 onSelectPokemonRequest={() => openPokemonSelector(slot.id)}
-                onRemoveRequest={() => {
+              />
+            </div>
+            {!isCapturing && (
+              <button 
+                onClick={() => {
                   handleUpdateSlot({
                     ...slot,
                     pokemon: null,
@@ -237,11 +272,46 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, s
                     trainingStatus: 'Not Caught'
                   });
                 }}
-              />
-            </div>
+                className="w-10 h-10 bg-red-500/10 text-red-500 rounded flex items-center justify-center hover:bg-red-500 hover:text-white transition-colors border border-red-500/20 opacity-0 group-hover:opacity-100 flex-shrink-0"
+              >
+                <Trash2 className="w-4 h-4 " />
+              </button>
+            )}
           </div>
         )})}
       </div>
+
+      <footer className="mt-4 flex flex-col items-center justify-center gap-2">
+        <div className="flex gap-2 flex-row justify-center flex-wrap">
+          <button 
+            onClick={onImportClick}
+            className="flex items-center justify-center gap-1.5 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-bold rounded-lg transition-all shadow-sm active:scale-95"
+          >
+            <Upload className="w-4 h-4" />
+            불러오기
+          </button>
+          <button 
+            onClick={onExportClick}
+            className="flex items-center justify-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold rounded-lg transition-all shadow-sm active:scale-95"
+          >
+            <Download className="w-4 h-4" />
+            저장하기
+          </button>
+          <button 
+            onClick={handleCapture}
+            disabled={isCapturing}
+            className="flex items-center justify-center gap-1.5 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-bold rounded-lg transition-all shadow-sm active:scale-95 disabled:opacity-50"
+          >
+            <Camera className="w-4 h-4" />
+            {isCapturing ? '저장 중...' : '이미지 저장'}
+          </button>
+        </div>
+        {saveMessage && (
+          <span className={`text-[10px] sm:text-xs font-medium px-2 py-1 rounded inline-block text-center ${saveMessage.type === 'error' ? 'text-rose-400 bg-rose-500/10' : 'text-emerald-400 bg-emerald-500/10'}`}>
+            {saveMessage.text}
+          </span>
+        )}
+      </footer>
 
       {/* Modals */}
       {modalState.isOpen && (
