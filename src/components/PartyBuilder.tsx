@@ -1,26 +1,25 @@
 import React, { useState } from 'react';
 import { PartySlotData, Pokemon, Move } from '../scripts/types';
-import { POKEMON_DATA, POKEMON_TYPES, TYPE_TEXT_COLORS } from '../scripts/pokemonData';
+import { POKEMON_DATA, TYPE_TEXT_COLORS } from '../scripts/pokemonData';
 import { TYPE_ICONS } from '../scripts/icons';
 import { PokemonImage } from './PokemonImage';
 import { MobilePokemonSlot } from './MobilePokemonSlot';
-import { ChevronDown, X, Trash2, Upload, Download, GripVertical, Eye, EyeOff } from 'lucide-react';
+import { X, Eye, EyeOff } from 'lucide-react';
 
 interface PartyBuilderProps {
   selectedType: string;
   setSelectedType: (type: string) => void;
   slots: PartySlotData[];
   setSlots: React.Dispatch<React.SetStateAction<PartySlotData[]>>;
-  onImportClick: () => void;
-  onExportClick: () => void;
   saveMessage?: { text: string; type: 'success' | 'error' } | null;
+  setSaveMessage: (msg: { text: string; type: 'success' | 'error' } | null) => void;
 }
 
 const POKEMON_TYPES_LIST = [
   "fire", "water", "grass", "electric", "ice", "fighting", "poison", "ground", "flying", "psychic", "bug", "rock", "ghost", "dragon", "dark", "steel", "fairy", "normal"
 ];
 
-export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, onImportClick, onExportClick, saveMessage }: PartyBuilderProps) {
+export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, setSaveMessage }: PartyBuilderProps) {
   const [modalState, setModalState] = useState<{
     isOpen: boolean;
     type: 'pokemon' | 'fastMove' | 'chargeMove';
@@ -179,27 +178,6 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, o
                 {hiddenTypes.includes(selectedType) ? '현재 타입 보이기' : '현재 타입 뒤로'}
               </button>
             </div>
-            <div className="flex gap-1.5 flex-wrap justify-center md:justify-end w-full">
-              <button 
-                onClick={onImportClick}
-                className="flex items-center gap-1.5 px-4 py-2 bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-semibold rounded-full border border-slate-700 transition-colors shadow-sm cursor-pointer"
-              >
-                <Upload className="w-3.5 h-3.5" />
-                불러오기
-              </button>
-              <button 
-                onClick={onExportClick}
-                className="flex items-center gap-1.5 px-4 py-2 bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-semibold rounded-full border border-slate-700 transition-colors shadow-sm cursor-pointer"
-              >
-                <Download className="w-3.5 h-3.5" />
-                저장하기
-              </button>
-            </div>
-            {saveMessage && (
-              <span className={`text-[10px] sm:text-xs font-medium px-2 py-0.5 rounded ${saveMessage.type === 'error' ? 'text-rose-400 bg-rose-500/10' : 'text-emerald-400 bg-emerald-500/10'}`}>
-                {saveMessage.text}
-              </span>
-            )}
           </div>
         </div>
 
@@ -223,7 +201,7 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, o
         </div>
       </header>
 
-      <div className="flex overflow-x-auto gap-4 relative snap-x snap-mandatory pt-2 pb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+      <div className="flex overflow-x-auto gap-4 relative snap-x snap-mandatory pt-2 pb-4 px-4 md:px-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
         {slots.map((slot, index) => {
           const roleLabel = index === 0 ? 'MEGA' : index === 1 || index === 2 ? 'DPS' : index === 3 || index === 4 ? 'ACE' : 'TANK';
           const roleTextColor = index === 0 ? 'text-purple-400' : index === 1 || index === 2 ? 'text-red-400' : index === 3 || index === 4 ? 'text-blue-400' : 'text-emerald-400';

@@ -124,8 +124,8 @@ export function MobilePokemonSlot({
       <div className="flex-1 flex flex-col border border-slate-700/50 bg-slate-900/80 rounded-lg relative">
         <div className={`absolute left-0 right-0 top-0 h-[3px] rounded-t-lg ${getStatusBgColor(trainingStatus || 'Not Caught')} z-10 pointer-events-none`}></div>
 
-        {/* Top: Image & IVs */}
-        <div className="px-2 pt-3 pb-1 border-b border-slate-800/50 bg-slate-950/50 rounded-t-lg relative flex flex-col items-center group/img">
+        {/* Top: Image */}
+        <div className="px-2 pt-3 pb-1 border-b border-slate-800/50 bg-slate-950/50 rounded-t-lg relative flex flex-col items-center overflow-hidden group/img">
           
           <div className="w-full flex justify-between absolute top-2 px-2 left-0 z-20">
             <button
@@ -146,19 +146,13 @@ export function MobilePokemonSlot({
             </span>
           </div>
 
-          <div className="cursor-pointer my-2 flex items-center justify-center w-full h-[70px] relative" onClick={onSelectPokemonRequest}>
+          <div className="cursor-pointer my-2 flex items-center justify-center w-full h-[144px] relative" onClick={onSelectPokemonRequest}>
              <PokemonImage 
               pokemonId={pokemon.id}
               pokemonName={pokemon.name}
               defaultImage={pokemon.image}
-              className={`w-20 h-20 object-contain ${isShadow ? 'drop-shadow-[0_0_10px_rgba(168,85,247,0.8)] mix-blend-plus-lighter' : 'drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]'}`}
+              className={`w-80 h-80 object-contain ${isShadow ? 'drop-shadow-[0_0_10px_rgba(168,85,247,0.8)] mix-blend-plus-lighter' : 'drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]'}`}
             />
-          </div>
-
-          <div className="flex gap-1 mb-1 z-20">
-            <input title="Attack IV" type={isUncaught ? "text" : "number"} min="0" max="15" value={isUncaught ? "-" : (slot.atkIv ?? 15)} readOnly={isUncaught} onChange={(e) => { if(!isUncaught){ const v = parseInt(e.target.value); onUpdate({...slot, atkIv: isNaN(v) ? 0 : Math.min(15, Math.max(0, v))}); } }} className={`w-6 h-4 text-[9px] bg-slate-900 border border-slate-700 text-center font-bold ${isUncaught ? 'text-slate-500' : 'text-red-400'} outline-none focus:border-red-500 rounded-sm [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]`} />
-            <input title="Defense IV" type={isUncaught ? "text" : "number"} min="0" max="15" value={isUncaught ? "-" : (slot.defIv ?? 15)} readOnly={isUncaught} onChange={(e) => { if(!isUncaught){ const v = parseInt(e.target.value); onUpdate({...slot, defIv: isNaN(v) ? 0 : Math.min(15, Math.max(0, v))}); } }} className={`w-6 h-4 text-[9px] bg-slate-900 border border-slate-700 text-center font-bold ${isUncaught ? 'text-slate-500' : 'text-blue-400'} outline-none focus:border-blue-500 rounded-sm [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]`} />
-            <input title="HP IV" type={isUncaught ? "text" : "number"} min="0" max="15" value={isUncaught ? "-" : (slot.hpIv ?? 15)} readOnly={isUncaught} onChange={(e) => { if(!isUncaught){ const v = parseInt(e.target.value); onUpdate({...slot, hpIv: isNaN(v) ? 0 : Math.min(15, Math.max(0, v))}); } }} className={`w-6 h-4 text-[9px] bg-slate-900 border border-slate-700 text-center font-bold ${isUncaught ? 'text-slate-500' : 'text-green-400'} outline-none focus:border-green-500 rounded-sm [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]`} />
           </div>
         </div>
 
@@ -168,6 +162,12 @@ export function MobilePokemonSlot({
             {pokemon.name}
           </h4>
           
+          <div className="flex gap-1 flex-row mb-2 z-20">
+            <input title="Attack IV" type={isUncaught ? "text" : "number"} min="0" max="15" value={isUncaught ? "-" : (slot.atkIv ?? 15)} readOnly={isUncaught} onChange={(e) => { if(!isUncaught){ const v = parseInt(e.target.value); onUpdate({...slot, atkIv: isNaN(v) ? 0 : Math.min(15, Math.max(0, v))}); } }} className={`w-6 h-4 text-[9px] bg-slate-900 border border-slate-700 text-center font-bold ${isUncaught ? 'text-slate-500' : 'text-red-400'} outline-none focus:border-red-500 rounded-sm [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]`} />
+            <input title="Defense IV" type={isUncaught ? "text" : "number"} min="0" max="15" value={isUncaught ? "-" : (slot.defIv ?? 15)} readOnly={isUncaught} onChange={(e) => { if(!isUncaught){ const v = parseInt(e.target.value); onUpdate({...slot, defIv: isNaN(v) ? 0 : Math.min(15, Math.max(0, v))}); } }} className={`w-6 h-4 text-[9px] bg-slate-900 border border-slate-700 text-center font-bold ${isUncaught ? 'text-slate-500' : 'text-blue-400'} outline-none focus:border-blue-500 rounded-sm [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]`} />
+            <input title="HP IV" type={isUncaught ? "text" : "number"} min="0" max="15" value={isUncaught ? "-" : (slot.hpIv ?? 15)} readOnly={isUncaught} onChange={(e) => { if(!isUncaught){ const v = parseInt(e.target.value); onUpdate({...slot, hpIv: isNaN(v) ? 0 : Math.min(15, Math.max(0, v))}); } }} className={`w-6 h-4 text-[9px] bg-slate-900 border border-slate-700 text-center font-bold ${isUncaught ? 'text-slate-500' : 'text-green-400'} outline-none focus:border-green-500 rounded-sm [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]`} />
+          </div>
+
           <div className="flex items-center justify-between w-full">
             <div className="flex gap-1 shrink-0">
               {pokemon.types.map(t => (

@@ -1,13 +1,12 @@
 {
   "manifest_version": 3,
-  "name": "POGO Raid Planner",
+  "name": "Pokemon GO Raid Planner",
   "version": "1.0",
-  "description": "포켓몬고 레이드 공격대 육성계획표 (한국어 버전)",
+  "description": "A planner for Pokemon GO to build parties and select moves based on types with dark mode.",
   "action": {
     "default_title": "Open Planner"
   },
   "background": {
     "service_worker": "background.js"
-  },
-  "permissions": ["tabs"]
+  }
 }
