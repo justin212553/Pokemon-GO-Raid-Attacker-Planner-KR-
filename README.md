@@ -45,7 +45,7 @@ Visual Refinement 이후 Chrome Extension으로 출시 예정이며, 빌드 후 
 
 
 ## 제작자 정보
-제작자: 아이작 블루 (@Friday_3233 of X)
+제작자: justin212553 of Github
 
 <div align="center">
 <img height="40" alt="Google AI Studio badge" src="https://img.shields.io/badge/Google_AI_Studio-8E75B2?logo=googlegemini&logoColor=white&style=for-the-badge" />
