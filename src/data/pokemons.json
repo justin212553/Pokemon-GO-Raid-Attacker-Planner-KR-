@@ -529,7 +529,8 @@
       "BRAVE_BIRD",
       "HURRICANE",
       "FEATHER_DANCE",
-      "HEAT_WAVE"
+      "HEAT_WAVE",
+      "TWISTER"
     ],
     "fast_elite_moves": [
       "WING_ATTACK",
@@ -559,7 +560,8 @@
       "BRAVE_BIRD",
       "HURRICANE",
       "FEATHER_DANCE",
-      "HEAT_WAVE"
+      "HEAT_WAVE",
+      "TWISTER"
     ],
     "fast_elite_moves": [
       "WING_ATTACK",
@@ -738,7 +740,9 @@
       "DARK_PULSE",
       "GUNK_SHOT",
       "SLUDGE_WAVE",
-      "ACID_SPRAY"
+      "ACID_SPRAY",
+      "BRUTAL_SWING",
+      "WRAP"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -969,7 +973,8 @@
       "WILD_CHARGE",
       "SKULL_BASH",
       "TRAILBLAZE",
-      "SURF"
+      "SURF",
+      "VOLT_TACKLE"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [
@@ -996,10 +1001,69 @@
       "GRASS_KNOT",
       "TRAILBLAZE",
       "SURF",
-      "PSYSHOCK"
+      "PSYSHOCK",
+      "VOLT_TACKLE"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
+    "shadow_eligible": false
+  },
+  {
+    "id": 26,
+    "name": "메가라이츄X",
+    "types": [
+      "electric",
+      "none"
+    ],
+    "fast_moves": [
+      "SPARK",
+      "THUNDER_SHOCK",
+      "VOLT_SWITCH",
+      "CHARM"
+    ],
+    "charged_moves": [
+      "BRICK_BREAK",
+      "THUNDER",
+      "THUNDER_PUNCH",
+      "WILD_CHARGE",
+      "SKULL_BASH",
+      "TRAILBLAZE",
+      "SURF",
+      "VOLT_TACKLE"
+    ],
+    "fast_elite_moves": [],
+    "charged_elite_moves": [
+      "THUNDER"
+    ],
+    "shadow_eligible": false
+  },
+  {
+    "id": 26,
+    "name": "메가라이츄Y",
+    "types": [
+      "electric",
+      "none"
+    ],
+    "fast_moves": [
+      "SPARK",
+      "THUNDER_SHOCK",
+      "VOLT_SWITCH",
+      "CHARM"
+    ],
+    "charged_moves": [
+      "BRICK_BREAK",
+      "THUNDER",
+      "THUNDER_PUNCH",
+      "WILD_CHARGE",
+      "SKULL_BASH",
+      "TRAILBLAZE",
+      "SURF",
+      "VOLT_TACKLE"
+    ],
+    "fast_elite_moves": [],
+    "charged_elite_moves": [
+      "THUNDER"
+    ],
     "shadow_eligible": false
   },
   {
@@ -1222,7 +1286,8 @@
       "MEGAHORN",
       "SLUDGE_WAVE",
       "EARTH_POWER",
-      "SAND_TOMB"
+      "SAND_TOMB",
+      "AVALANCHE"
     ],
     "fast_elite_moves": [
       "FURY_CUTTER"
@@ -1401,8 +1466,8 @@
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [
-      "PLAY_ROUGH",
-      "BODY_SLAM"
+      "BODY_SLAM",
+      "PLAY_ROUGH"
     ],
     "shadow_eligible": false
   },
@@ -2309,7 +2374,8 @@
     "fast_moves": [
       "ACID",
       "RAZOR_LEAF",
-      "MAGICAL_LEAF"
+      "MAGICAL_LEAF",
+      "SUCKER_PUNCH"
     ],
     "charged_moves": [
       "LEAF_BLADE",
@@ -2334,7 +2400,8 @@
     "fast_moves": [
       "ACID",
       "RAZOR_LEAF",
-      "MAGICAL_LEAF"
+      "MAGICAL_LEAF",
+      "SUCKER_PUNCH"
     ],
     "charged_moves": [
       "LEAF_BLADE",
@@ -2897,7 +2964,7 @@
     "charged_elite_moves": [
       "AQUA_JET"
     ],
-    "shadow_eligible": false
+    "shadow_eligible": true
   },
   {
     "id": 87,
@@ -2927,7 +2994,7 @@
       "AQUA_JET",
       "ICY_WIND"
     ],
-    "shadow_eligible": false
+    "shadow_eligible": true
   },
   {
     "id": 88,
@@ -3012,7 +3079,9 @@
       "DARK_PULSE",
       "GUNK_SHOT",
       "SLUDGE_WAVE",
-      "ACID_SPRAY"
+      "ACID_SPRAY",
+      "BRUTAL_SWING",
+      "ICE_PUNCH"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -3143,9 +3212,9 @@
       "LICK"
     ],
     "charged_elite_moves": [
-      "SLUDGE_WAVE",
       "DARK_PULSE",
       "PSYCHIC",
+      "SLUDGE_WAVE",
       "SHADOW_PUNCH"
     ],
     "shadow_eligible": true
@@ -3177,9 +3246,9 @@
       "LICK"
     ],
     "charged_elite_moves": [
-      "SLUDGE_WAVE",
       "DARK_PULSE",
       "PSYCHIC",
+      "SLUDGE_WAVE",
       "SHADOW_PUNCH"
     ],
     "shadow_eligible": false
@@ -3276,7 +3345,7 @@
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
-    "shadow_eligible": false
+    "shadow_eligible": true
   },
   {
     "id": 99,
@@ -3301,7 +3370,7 @@
       "MUD_SHOT"
     ],
     "charged_elite_moves": [],
-    "shadow_eligible": false
+    "shadow_eligible": true
   },
   {
     "id": 100,
@@ -3545,8 +3614,8 @@
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [
-      "STOMP",
-      "BRICK_BREAK"
+      "BRICK_BREAK",
+      "STOMP"
     ],
     "shadow_eligible": true
   },
@@ -3894,8 +3963,8 @@
       "POISON_JAB"
     ],
     "charged_elite_moves": [
-      "ICY_WIND",
-      "DRILL_RUN"
+      "DRILL_RUN",
+      "ICY_WIND"
     ],
     "shadow_eligible": false
   },
@@ -3956,7 +4025,53 @@
       "PSYBEAM",
       "PSYCHIC",
       "THUNDER",
-      "SURF"
+      "SURF",
+      "AQUA_JET"
+    ],
+    "fast_elite_moves": [
+      "TACKLE"
+    ],
+    "charged_elite_moves": [],
+    "shadow_eligible": true
+  },
+  {
+    "id": 121,
+    "name": "메가아쿠스타",
+    "types": [
+      "water",
+      "psychic"
+    ],
+    "fast_moves": [
+      "HIDDEN_POWER_BUG",
+      "HIDDEN_POWER_DARK",
+      "HIDDEN_POWER_DRAGON",
+      "HIDDEN_POWER_ELECTRIC",
+      "HIDDEN_POWER_FIGHTING",
+      "HIDDEN_POWER_FIRE",
+      "HIDDEN_POWER_FLYING",
+      "HIDDEN_POWER_GHOST",
+      "HIDDEN_POWER_GRASS",
+      "HIDDEN_POWER_GROUND",
+      "HIDDEN_POWER_ICE",
+      "HIDDEN_POWER_POISON",
+      "HIDDEN_POWER_PSYCHIC",
+      "HIDDEN_POWER_ROCK",
+      "HIDDEN_POWER_STEEL",
+      "HIDDEN_POWER_WATER",
+      "QUICK_ATTACK",
+      "TACKLE",
+      "WATER_GUN",
+      "PSYWAVE"
+    ],
+    "charged_moves": [
+      "HYDRO_PUMP",
+      "ICE_BEAM",
+      "POWER_GEM",
+      "PSYBEAM",
+      "PSYCHIC",
+      "THUNDER",
+      "SURF",
+      "AQUA_JET"
     ],
     "fast_elite_moves": [
       "TACKLE"
@@ -4383,8 +4498,8 @@
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [
-      "LAST_RESORT",
-      "BODY_SLAM"
+      "BODY_SLAM",
+      "LAST_RESORT"
     ],
     "shadow_eligible": false
   },
@@ -4459,8 +4574,8 @@
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [
-      "LAST_RESORT",
       "HEAT_WAVE",
+      "LAST_RESORT",
       "SUPER_POWER"
     ],
     "shadow_eligible": false
@@ -4507,9 +4622,9 @@
       "ZEN_HEADBUTT"
     ],
     "charged_elite_moves": [
-      "SIGNAL_BEAM",
+      "DISCHARGE",
       "PSYBEAM",
-      "DISCHARGE"
+      "SIGNAL_BEAM"
     ],
     "shadow_eligible": true
   },
@@ -4533,8 +4648,8 @@
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [
-      "ROCK_TOMB",
-      "BRINE"
+      "BRINE",
+      "ROCK_TOMB"
     ],
     "shadow_eligible": true
   },
@@ -4600,7 +4715,8 @@
     "charged_moves": [
       "ANCIENT_POWER",
       "STONE_EDGE",
-      "WATER_PULSE"
+      "WATER_PULSE",
+      "AQUA_JET"
     ],
     "fast_elite_moves": [
       "FURY_CUTTER"
@@ -4626,7 +4742,8 @@
       "HYPER_BEAM",
       "IRON_HEAD",
       "ROCK_SLIDE",
-      "EARTH_POWER"
+      "EARTH_POWER",
+      "BRUTAL_SWING"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -4650,7 +4767,8 @@
       "HYPER_BEAM",
       "IRON_HEAD",
       "ROCK_SLIDE",
-      "EARTH_POWER"
+      "EARTH_POWER",
+      "BRUTAL_SWING"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -4666,7 +4784,8 @@
     "fast_moves": [
       "LICK",
       "ZEN_HEADBUTT",
-      "YAWN"
+      "YAWN",
+      "PSYWAVE"
     ],
     "charged_moves": [
       "BODY_SLAM",
@@ -4763,7 +4882,8 @@
       "flying"
     ],
     "fast_moves": [
-      "COUNTER"
+      "COUNTER",
+      "LOW_KICK"
     ],
     "charged_moves": [
       "CLOSE_COMBAT",
@@ -4929,7 +5049,8 @@
     ],
     "fast_moves": [
       "CONFUSION",
-      "PSYCHO_CUT"
+      "PSYCHO_CUT",
+      "COUNTER"
     ],
     "charged_moves": [
       "FLAMETHROWER",
@@ -4941,11 +5062,13 @@
       "THUNDERBOLT",
       "PSYSTRIKE"
     ],
-    "fast_elite_moves": [],
+    "fast_elite_moves": [
+      "COUNTER"
+    ],
     "charged_elite_moves": [
-      "PSYSTRIKE",
+      "HYPER_BEAM",
       "SHADOW_BALL",
-      "HYPER_BEAM"
+      "PSYSTRIKE"
     ],
     "shadow_eligible": true
   },
@@ -4972,6 +5095,66 @@
       "PSYSTRIKE"
     ],
     "shadow_eligible": false
+  },
+  {
+    "id": 150,
+    "name": "메가뮤츠X",
+    "types": [
+      "psychic",
+      "fighting"
+    ],
+    "fast_moves": [
+      "CONFUSION",
+      "PSYCHO_CUT",
+      "COUNTER"
+    ],
+    "charged_moves": [
+      "FLAMETHROWER",
+      "FOCUS_BLAST",
+      "HYPER_BEAM",
+      "ICE_BEAM",
+      "PSYCHIC",
+      "SHADOW_BALL",
+      "THUNDERBOLT",
+      "PSYSTRIKE"
+    ],
+    "fast_elite_moves": [],
+    "charged_elite_moves": [
+      "HYPER_BEAM",
+      "SHADOW_BALL",
+      "PSYSTRIKE"
+    ],
+    "shadow_eligible": true
+  },
+  {
+    "id": 150,
+    "name": "메가뮤츠Y",
+    "types": [
+      "psychic",
+      "none"
+    ],
+    "fast_moves": [
+      "CONFUSION",
+      "PSYCHO_CUT",
+      "COUNTER"
+    ],
+    "charged_moves": [
+      "FLAMETHROWER",
+      "FOCUS_BLAST",
+      "HYPER_BEAM",
+      "ICE_BEAM",
+      "PSYCHIC",
+      "SHADOW_BALL",
+      "THUNDERBOLT",
+      "PSYSTRIKE"
+    ],
+    "fast_elite_moves": [],
+    "charged_elite_moves": [
+      "HYPER_BEAM",
+      "SHADOW_BALL",
+      "PSYSTRIKE"
+    ],
+    "shadow_eligible": true
   },
   {
     "id": 151,
@@ -5308,7 +5491,7 @@
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
-    "shadow_eligible": false
+    "shadow_eligible": true
   },
   {
     "id": 164,
@@ -5329,7 +5512,7 @@
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
-    "shadow_eligible": false
+    "shadow_eligible": true
   },
   {
     "id": 165,
@@ -5361,13 +5544,15 @@
     "fast_moves": [
       "BUG_BITE",
       "STRUGGLE_BUG",
-      "COUNTER"
+      "COUNTER",
+      "ROLLOUT"
     ],
     "charged_moves": [
       "AERIAL_ACE",
       "BUG_BUZZ",
       "SILVER_WIND",
-      "DYNAMIC_PUNCH"
+      "DYNAMIC_PUNCH",
+      "ACROBATICS"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -5409,7 +5594,8 @@
       "MEGAHORN",
       "SHADOW_SNEAK",
       "LUNGE",
-      "TRAILBLAZE"
+      "TRAILBLAZE",
+      "FOUL_PLAY"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -5424,7 +5610,8 @@
     ],
     "fast_moves": [
       "AIR_SLASH",
-      "BITE"
+      "BITE",
+      "GUST"
     ],
     "charged_moves": [
       "AIR_CUTTER",
@@ -5452,28 +5639,6 @@
       "BUBBLE_BEAM",
       "THUNDERBOLT",
       "WATER_PULSE"
-    ],
-    "fast_elite_moves": [],
-    "charged_elite_moves": [],
-    "shadow_eligible": false
-  },
-  {
-    "id": 171,
-    "name": "랜턴",
-    "types": [
-      "water",
-      "electric"
-    ],
-    "fast_moves": [
-      "CHARGE_BEAM",
-      "WATER_GUN",
-      "SPARK"
-    ],
-    "charged_moves": [
-      "HYDRO_PUMP",
-      "THUNDER",
-      "THUNDERBOLT",
-      "SURF"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -5542,8 +5707,8 @@
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [
-      "PSYCHIC",
-      "BODY_SLAM"
+      "BODY_SLAM",
+      "PSYCHIC"
     ],
     "shadow_eligible": false
   },
@@ -5689,7 +5854,8 @@
       "AERIAL_ACE",
       "FUTURE_SIGHT",
       "OMINOUS_WIND",
-      "PSYSHOCK"
+      "PSYSHOCK",
+      "SHADOW_BALL"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -6518,7 +6684,8 @@
       "SLUDGE_WAVE",
       "ACID_SPRAY",
       "FELL_STINGER",
-      "SCALD"
+      "SCALD",
+      "SHADOW_BALL"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -6947,7 +7114,8 @@
       "AERIAL_ACE",
       "ICE_BEAM",
       "WATER_PULSE",
-      "BUBBLE_BEAM"
+      "BUBBLE_BEAM",
+      "TWISTER"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -6967,7 +7135,29 @@
     "charged_moves": [
       "BRAVE_BIRD",
       "FLASH_CANNON",
-      "SKY_ATTACK"
+      "SKY_ATTACK",
+      "DRILL_RUN"
+    ],
+    "fast_elite_moves": [],
+    "charged_elite_moves": [],
+    "shadow_eligible": true
+  },
+  {
+    "id": 227,
+    "name": "메가무장조",
+    "types": [
+      "steel",
+      "flying"
+    ],
+    "fast_moves": [
+      "AIR_SLASH",
+      "STEEL_WING"
+    ],
+    "charged_moves": [
+      "BRAVE_BIRD",
+      "FLASH_CANNON",
+      "SKY_ATTACK",
+      "DRILL_RUN"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -7002,13 +7192,15 @@
     ],
     "fast_moves": [
       "FIRE_FANG",
-      "SNARL"
+      "SNARL",
+      "INCINERATE"
     ],
     "charged_moves": [
       "CRUNCH",
       "FIRE_BLAST",
       "FLAMETHROWER",
-      "FOUL_PLAY"
+      "FOUL_PLAY",
+      "TRAILBLAZE"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -7023,13 +7215,15 @@
     ],
     "fast_moves": [
       "FIRE_FANG",
-      "SNARL"
+      "SNARL",
+      "INCINERATE"
     ],
     "charged_moves": [
       "CRUNCH",
       "FIRE_BLAST",
       "FLAMETHROWER",
-      "FOUL_PLAY"
+      "FOUL_PLAY",
+      "TRAILBLAZE"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -7052,7 +7246,8 @@
       "HYDRO_PUMP",
       "OUTRAGE",
       "OCTAZOOKA",
-      "SWIFT"
+      "SWIFT",
+      "SURF"
     ],
     "fast_elite_moves": [
       "WATER_GUN"
@@ -7538,7 +7733,8 @@
       "GYRO_BALL",
       "ICE_BEAM",
       "STOMP",
-      "THUNDERBOLT"
+      "THUNDERBOLT",
+      "HIGH_HORSEPOWER"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -7775,7 +7971,8 @@
       "HYDRO_PUMP",
       "SKY_ATTACK",
       "AEROBLAST",
-      "FLY"
+      "FLY",
+      "EARTH_POWER"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [
@@ -7821,8 +8018,7 @@
     "fast_elite_moves": [],
     "charged_elite_moves": [
       "EARTHQUAKE",
-      "SACRED_FIRE+",
-      "SACRED_FIRE++"
+      "SACRED_FIRE"
     ],
     "shadow_eligible": true
   },
@@ -8005,8 +8201,8 @@
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [
-      "BLAST_BURN",
-      "STONE_EDGE"
+      "STONE_EDGE",
+      "BLAST_BURN"
     ],
     "shadow_eligible": true
   },
@@ -8033,8 +8229,8 @@
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [
-      "BLAST_BURN",
-      "STONE_EDGE"
+      "STONE_EDGE",
+      "BLAST_BURN"
     ],
     "shadow_eligible": true
   },
@@ -9204,7 +9400,8 @@
       "STONE_EDGE",
       "THUNDER",
       "ROCK_TOMB",
-      "METEOR_BEAM"
+      "METEOR_BEAM",
+      "BRICK_BREAK"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -9228,7 +9425,8 @@
       "STONE_EDGE",
       "THUNDER",
       "ROCK_TOMB",
-      "METEOR_BEAM"
+      "METEOR_BEAM",
+      "BRICK_BREAK"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -9413,12 +9611,14 @@
     ],
     "fast_moves": [
       "STRUGGLE_BUG",
-      "TACKLE"
+      "TACKLE",
+      "INFESTATION"
     ],
     "charged_moves": [
       "BUG_BUZZ",
       "SIGNAL_BEAM",
-      "THUNDERBOLT"
+      "THUNDERBOLT",
+      "LUNGE"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -9433,12 +9633,14 @@
     ],
     "fast_moves": [
       "STRUGGLE_BUG",
-      "TACKLE"
+      "TACKLE",
+      "INFESTATION"
     ],
     "charged_moves": [
       "BUG_BUZZ",
       "DAZZLING_GLEAM",
-      "SILVER_WIND"
+      "SILVER_WIND",
+      "SHADOW_BALL"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -10211,29 +10413,6 @@
     "shadow_eligible": true
   },
   {
-    "id": 346,
-    "name": "릴리요",
-    "types": [
-      "rock",
-      "grass"
-    ],
-    "fast_moves": [
-      "ACID",
-      "INFESTATION",
-      "BULLET_SEED"
-    ],
-    "charged_moves": [
-      "BULLDOZE",
-      "GRASS_KNOT",
-      "STONE_EDGE",
-      "ROCK_SLIDE",
-      "ROCK_TOMB"
-    ],
-    "fast_elite_moves": [],
-    "charged_elite_moves": [],
-    "shadow_eligible": true
-  },
-  {
     "id": 347,
     "name": "아노딥스",
     "types": [
@@ -10412,7 +10591,9 @@
       "FOUL_PLAY",
       "ICE_BEAM",
       "SHADOW_SNEAK",
-      "THUNDER"
+      "THUNDER",
+      "THUNDER_PUNCH",
+      "DYNAMIC_PUNCH"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -11281,8 +11462,8 @@
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [
-      "PRECIPICE_BLADES",
-      "FIRE_PUNCH"
+      "FIRE_PUNCH",
+      "PRECIPICE_BLADES"
     ],
     "shadow_eligible": true
   },
@@ -11306,8 +11487,8 @@
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [
-      "PRECIPICE_BLADES",
-      "FIRE_PUNCH"
+      "FIRE_PUNCH",
+      "PRECIPICE_BLADES"
     ],
     "shadow_eligible": false
   },
@@ -11435,7 +11616,8 @@
     ],
     "fast_moves": [
       "COUNTER",
-      "ZEN_HEADBUTT"
+      "ZEN_HEADBUTT",
+      "LOW_KICK"
     ],
     "charged_moves": [
       "PSYCHO_BOOST",
@@ -11708,6 +11890,31 @@
     "name": "찌르호크",
     "types": [
       "normal",
+      "flying"
+    ],
+    "fast_moves": [
+      "QUICK_ATTACK",
+      "WING_ATTACK",
+      "GUST",
+      "SAND_ATTACK"
+    ],
+    "charged_moves": [
+      "BRAVE_BIRD",
+      "CLOSE_COMBAT",
+      "HEAT_WAVE",
+      "FLY"
+    ],
+    "fast_elite_moves": [
+      "GUST"
+    ],
+    "charged_elite_moves": [],
+    "shadow_eligible": true
+  },
+  {
+    "id": 398,
+    "name": "메가찌르호크",
+    "types": [
+      "fighting",
       "flying"
     ],
     "fast_moves": [
@@ -12508,7 +12715,9 @@
       "FIRE_PUNCH",
       "FOCUS_BLAST",
       "HYPER_BEAM",
-      "TRIPLE_AXEL"
+      "TRIPLE_AXEL",
+      "THUNDER_PUNCH",
+      "SHADOW_BALL"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -12530,7 +12739,9 @@
       "FIRE_PUNCH",
       "FOCUS_BLAST",
       "HYPER_BEAM",
-      "TRIPLE_AXEL"
+      "TRIPLE_AXEL",
+      "THUNDER_PUNCH",
+      "SHADOW_BALL"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -12552,7 +12763,8 @@
     "charged_moves": [
       "DARK_PULSE",
       "DAZZLING_GLEAM",
-      "SHADOW_BALL"
+      "SHADOW_BALL",
+      "MYSTICAL_FIRE"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -13200,7 +13412,8 @@
     ],
     "fast_moves": [
       "WATER_GUN",
-      "WATERFALL"
+      "WATERFALL",
+      "GUST"
     ],
     "charged_moves": [
       "BLIZZARD",
@@ -13387,7 +13600,8 @@
       "SKULL_BASH",
       "SUPER_POWER",
       "ROCK_WRECKER",
-      "BREAKING_SWIPE"
+      "BREAKING_SWIPE",
+      "DRILL_RUN"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [
@@ -13684,7 +13898,8 @@
       "CLOSE_COMBAT",
       "LEAF_BLADE",
       "PSYCHIC",
-      "SYNCHRONOISE"
+      "SYNCHRONOISE",
+      "SACRED_SWORD"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [
@@ -13709,7 +13924,8 @@
       "CLOSE_COMBAT",
       "LEAF_BLADE",
       "PSYCHIC",
-      "SYNCHRONOISE"
+      "SYNCHRONOISE",
+      "SACRED_SWORD"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [
@@ -14231,13 +14447,15 @@
     ],
     "fast_moves": [
       "FEINT_ATTACK",
-      "SNARL"
+      "SNARL",
+      "SUCKER_PUNCH"
     ],
     "charged_moves": [
       "DARK_PULSE",
       "FOCUS_BLAST",
       "SHADOW_BALL",
-      "SLUDGE_BOMB"
+      "SLUDGE_BOMB",
+      "FOUL_PLAY"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [
@@ -15374,7 +15592,8 @@
     ],
     "fast_moves": [
       "MUD_SLAP",
-      "SMACK_DOWN"
+      "SMACK_DOWN",
+      "LOCK_ON"
     ],
     "charged_moves": [
       "ROCK_SLIDE",
@@ -15483,7 +15702,8 @@
     ],
     "fast_moves": [
       "POUND",
-      "ZEN_HEADBUTT"
+      "ZEN_HEADBUTT",
+      "CHARGE_BEAM"
     ],
     "charged_moves": [
       "DISARMING_VOICE",
@@ -15506,7 +15726,8 @@
     ],
     "fast_moves": [
       "POUND",
-      "ZEN_HEADBUTT"
+      "ZEN_HEADBUTT",
+      "CHARGE_BEAM"
     ],
     "charged_moves": [
       "DISARMING_VOICE",
@@ -15569,7 +15790,8 @@
     ],
     "fast_moves": [
       "COUNTER",
-      "POISON_JAB"
+      "POISON_JAB",
+      "FORCE_PALM"
     ],
     "charged_moves": [
       "DYNAMIC_PUNCH",
@@ -15637,7 +15859,8 @@
     "charged_moves": [
       "MUDDY_WATER",
       "EARTH_POWER",
-      "SLUDGE_BOMB"
+      "SLUDGE_BOMB",
+      "ICY_WIND"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -16330,7 +16553,8 @@
     "charged_moves": [
       "SHADOW_BALL",
       "DARK_PULSE",
-      "PSYCHIC"
+      "PSYCHIC",
+      "ENERGY_BALL"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -16535,7 +16759,8 @@
       "FOUL_PLAY",
       "SLUDGE_BOMB",
       "FLAMETHROWER",
-      "SHADOW_BALL"
+      "SHADOW_BALL",
+      "SWIFT"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -16779,13 +17004,15 @@
     ],
     "fast_moves": [
       "WATER_GUN",
-      "AIR_SLASH"
+      "AIR_SLASH",
+      "GUST"
     ],
     "charged_moves": [
       "ICE_BEAM",
       "BUBBLE_BEAM",
       "HURRICANE",
-      "FLY"
+      "FLY",
+      "AQUA_JET"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -17381,7 +17608,8 @@
     "fast_moves": [
       "HEX",
       "FIRE_SPIN",
-      "INCINERATE"
+      "INCINERATE",
+      "ASTONISH"
     ],
     "charged_moves": [
       "ENERGY_BALL",
@@ -17414,7 +17642,7 @@
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
-    "shadow_eligible": false
+    "shadow_eligible": true
   },
   {
     "id": 611,
@@ -17434,7 +17662,7 @@
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
-    "shadow_eligible": false
+    "shadow_eligible": true
   },
   {
     "id": 612,
@@ -17458,7 +17686,7 @@
     "charged_elite_moves": [
       "BREAKING_SWIPE"
     ],
-    "shadow_eligible": false
+    "shadow_eligible": true
   },
   {
     "id": 613,
@@ -18216,7 +18444,7 @@
     "charged_elite_moves": [
       "FUSION_FLARE"
     ],
-    "shadow_eligible": false
+    "shadow_eligible": true
   },
   {
     "id": 644,
@@ -18240,7 +18468,7 @@
     "charged_elite_moves": [
       "FUSION_BOLT"
     ],
-    "shadow_eligible": false
+    "shadow_eligible": true
   },
   {
     "id": 645,
@@ -18627,6 +18855,32 @@
     "shadow_eligible": true
   },
   {
+    "id": 652,
+    "name": "메가브리가론",
+    "types": [
+      "grass",
+      "fighting"
+    ],
+    "fast_moves": [
+      "LOW_KICK",
+      "SMACK_DOWN",
+      "VINE_WHIP"
+    ],
+    "charged_moves": [
+      "GYRO_BALL",
+      "ENERGY_BALL",
+      "SUPER_POWER",
+      "SOLAR_BEAM",
+      "FRENZY_PLANT",
+      "THUNDER_PUNCH"
+    ],
+    "fast_elite_moves": [],
+    "charged_elite_moves": [
+      "FRENZY_PLANT"
+    ],
+    "shadow_eligible": true
+  },
+  {
     "id": 653,
     "name": "푸호꼬",
     "types": [
@@ -18669,6 +18923,33 @@
   {
     "id": 655,
     "name": "마폭시",
+    "types": [
+      "fire",
+      "psychic"
+    ],
+    "fast_moves": [
+      "SCRATCH",
+      "FIRE_SPIN",
+      "ZEN_HEADBUTT"
+    ],
+    "charged_moves": [
+      "PSYCHIC",
+      "FLAMETHROWER",
+      "FLAME_CHARGE",
+      "FIRE_BLAST",
+      "BLAST_BURN",
+      "MYSTICAL_FIRE",
+      "PSYSHOCK"
+    ],
+    "fast_elite_moves": [],
+    "charged_elite_moves": [
+      "BLAST_BURN"
+    ],
+    "shadow_eligible": true
+  },
+  {
+    "id": 655,
+    "name": "메가마폭시",
     "types": [
       "fire",
       "psychic"
@@ -18750,7 +19031,34 @@
       "AERIAL_ACE",
       "SURF",
       "HYDRO_PUMP",
+      "HYDRO_CANNON",
+      "BRUTAL_SWING"
+    ],
+    "fast_elite_moves": [],
+    "charged_elite_moves": [
       "HYDRO_CANNON"
+    ],
+    "shadow_eligible": true
+  },
+  {
+    "id": 658,
+    "name": "메가개굴닌자",
+    "types": [
+      "water",
+      "dark"
+    ],
+    "fast_moves": [
+      "FEINT_ATTACK",
+      "BUBBLE",
+      "WATER_SHURIKEN"
+    ],
+    "charged_moves": [
+      "NIGHT_SLASH",
+      "AERIAL_ACE",
+      "SURF",
+      "HYDRO_PUMP",
+      "HYDRO_CANNON",
+      "BRUTAL_SWING"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [
@@ -19096,7 +19404,7 @@
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
-    "shadow_eligible": false
+    "shadow_eligible": true
   },
   {
     "id": 675,
@@ -19119,7 +19427,7 @@
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
-    "shadow_eligible": false
+    "shadow_eligible": true
   },
   {
     "id": 676,
@@ -19312,7 +19620,8 @@
     ],
     "fast_moves": [
       "CHARM",
-      "CHARGE_BEAM"
+      "CHARGE_BEAM",
+      "FAIRY_WIND"
     ],
     "charged_moves": [
       "MOONBLAST",
@@ -19700,14 +20009,16 @@
     ],
     "fast_moves": [
       "CHARM",
-      "QUICK_ATTACK"
+      "QUICK_ATTACK",
+      "FAIRY_WIND"
     ],
     "charged_moves": [
       "MOONBLAST",
       "DAZZLING_GLEAM",
       "DRAINING_KISS",
       "LAST_RESORT",
-      "PSYSHOCK"
+      "PSYSHOCK",
+      "SHADOW_BALL"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [
@@ -19806,13 +20117,36 @@
     ],
     "fast_moves": [
       "WATER_GUN",
-      "TACKLE"
+      "TACKLE",
+      "DRAGON_BREATH"
     ],
     "charged_moves": [
       "DRAGON_PULSE",
       "SLUDGE_WAVE",
       "MUDDY_WATER",
-      "WATER_PULSE"
+      "WATER_PULSE",
+      "BODY_SLAM"
+    ],
+    "fast_elite_moves": [],
+    "charged_elite_moves": [],
+    "shadow_eligible": false
+  },
+  {
+    "id": 705,
+    "name": "미끄네일 (히스이)",
+    "types": [
+      "dragon",
+      "steel"
+    ],
+    "fast_moves": [
+      "WATER_GUN",
+      "TACKLE"
+    ],
+    "charged_moves": [
+      "DRAGON_PULSE",
+      "SLUDGE_WAVE",
+      "WATER_PULSE",
+      "HEAVY_SLAM"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -19841,6 +20175,28 @@
     "charged_elite_moves": [
       "THUNDER_PUNCH"
     ],
+    "shadow_eligible": false
+  },
+  {
+    "id": 706,
+    "name": "미끄래곤 (히스이)",
+    "types": [
+      "dragon",
+      "steel"
+    ],
+    "fast_moves": [
+      "WATER_GUN",
+      "DRAGON_TAIL",
+      "IRON_TAIL"
+    ],
+    "charged_moves": [
+      "DRACO_METEOR",
+      "SLUDGE_WAVE",
+      "HYDRO_PUMP",
+      "HEAVY_SLAM"
+    ],
+    "fast_elite_moves": [],
+    "charged_elite_moves": [],
     "shadow_eligible": false
   },
   {
@@ -20030,7 +20386,7 @@
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
-    "shadow_eligible": false
+    "shadow_eligible": true
   },
   {
     "id": 715,
@@ -20054,7 +20410,7 @@
     "charged_elite_moves": [
       "BOOMBURST"
     ],
-    "shadow_eligible": false
+    "shadow_eligible": true
   },
   {
     "id": 716,
@@ -21148,7 +21504,7 @@
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
-    "shadow_eligible": false
+    "shadow_eligible": true
   },
   {
     "id": 754,
@@ -21171,7 +21527,7 @@
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
-    "shadow_eligible": false
+    "shadow_eligible": true
   },
   {
     "id": 755,
@@ -21457,7 +21813,7 @@
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
-    "shadow_eligible": false
+    "shadow_eligible": true
   },
   {
     "id": 768,
@@ -21481,31 +21837,7 @@
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
-    "shadow_eligible": false
-  },
-  {
-    "id": 768,
-    "name": "갑주무사",
-    "types": [
-      "bug",
-      "water"
-    ],
-    "fast_moves": [
-      "FURY_CUTTER",
-      "METAL_CLAW",
-      "WATERFALL",
-      "SHADOW_CLAW"
-    ],
-    "charged_moves": [
-      "X_SCISSOR",
-      "AQUA_JET",
-      "AERIAL_ACE",
-      "LIQUIDATION",
-      "RAZOR_SHELL"
-    ],
-    "fast_elite_moves": [],
-    "charged_elite_moves": [],
-    "shadow_eligible": false
+    "shadow_eligible": true
   },
   {
     "id": 769,
@@ -21527,7 +21859,7 @@
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
-    "shadow_eligible": false
+    "shadow_eligible": true
   },
   {
     "id": 770,
@@ -21549,7 +21881,7 @@
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
-    "shadow_eligible": false
+    "shadow_eligible": true
   },
   {
     "id": 771,
@@ -22583,7 +22915,7 @@
   },
   {
     "id": 800,
-    "name": "새벽 네크로즈마",
+    "name": "네크로즈마",
     "types": [
       "psychic",
       "none"
@@ -22605,7 +22937,7 @@
   },
   {
     "id": 800,
-    "name": "새벽의 날개",
+    "name": "새벽 네크로즈마",
     "types": [
       "psychic",
       "ghost"
@@ -22811,7 +23143,9 @@
     "charged_moves": [
       "THUNDER_PUNCH",
       "DISCHARGE",
-      "WILD_CHARGE"
+      "WILD_CHARGE",
+      "PLASMA_FISTS",
+      "DYNAMIC_PUNCH"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -22851,7 +23185,8 @@
       "ROCK_SLIDE",
       "THUNDERBOLT",
       "SUPER_POWER",
-      "DOUBLE_IRON_BASH"
+      "DOUBLE_IRON_BASH",
+      "DYNAMIC_PUNCH"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [
@@ -23035,10 +23370,14 @@
     "charged_moves": [
       "WATER_PULSE",
       "SURF",
-      "SHADOW_BALL"
+      "SHADOW_BALL",
+      "SNIPE_SHOT",
+      "HYDRO_CANNON"
     ],
     "fast_elite_moves": [],
-    "charged_elite_moves": [],
+    "charged_elite_moves": [
+      "HYDRO_CANNON"
+    ],
     "shadow_eligible": false
   },
   {
@@ -23102,7 +23441,7 @@
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
-    "shadow_eligible": false
+    "shadow_eligible": true
   },
   {
     "id": 822,
@@ -23122,7 +23461,7 @@
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
-    "shadow_eligible": false
+    "shadow_eligible": true
   },
   {
     "id": 823,
@@ -23147,7 +23486,7 @@
       "IRON_HEAD",
       "AIR_CUTTER"
     ],
-    "shadow_eligible": false
+    "shadow_eligible": true
   },
   {
     "id": 824,
@@ -23240,10 +23579,13 @@
     ],
     "charged_moves": [
       "NIGHT_SLASH",
-      "PLAY_ROUGH"
+      "PLAY_ROUGH",
+      "ICY_WIND"
     ],
     "fast_elite_moves": [],
-    "charged_elite_moves": [],
+    "charged_elite_moves": [
+      "ICY_WIND"
+    ],
     "shadow_eligible": false
   },
   {
@@ -23430,7 +23772,8 @@
       "fire"
     ],
     "fast_moves": [
-      "SMACK_DOWN"
+      "SMACK_DOWN",
+      "TACKLE"
     ],
     "charged_moves": [
       "ROCK_BLAST",
@@ -23574,9 +23917,10 @@
       "WATER_GUN"
     ],
     "charged_moves": [
-      "DRILL_PECK",
       "FLY",
-      "HYDRO_PUMP"
+      "HYDRO_PUMP",
+      "SURF",
+      "DIVE"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -23657,7 +24001,8 @@
       "ACID_SPRAY",
       "DISCHARGE",
       "WILD_CHARGE",
-      "POWER_UP_PUNCH"
+      "POWER_UP_PUNCH",
+      "SWIFT"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -23947,7 +24292,8 @@
       "FOUL_PLAY",
       "DARK_PULSE",
       "PLAY_ROUGH",
-      "POWER_UP_PUNCH"
+      "POWER_UP_PUNCH",
+      "DRAINING_KISS"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -24126,6 +24472,26 @@
   {
     "id": 870,
     "name": "대여르",
+    "types": [
+      "fighting",
+      "none"
+    ],
+    "fast_moves": [
+      "ROCK_SMASH",
+      "COUNTER"
+    ],
+    "charged_moves": [
+      "SUPER_POWER",
+      "BRICK_BREAK",
+      "MEGAHORN"
+    ],
+    "fast_elite_moves": [],
+    "charged_elite_moves": [],
+    "shadow_eligible": false
+  },
+  {
+    "id": 870,
+    "name": "메가대여르",
     "types": [
       "fighting",
       "none"
@@ -24922,7 +25288,8 @@
     "fast_moves": [
       "TACKLE",
       "ROCK_SMASH",
-      "SMACK_DOWN"
+      "SMACK_DOWN",
+      "SCRATCH"
     ],
     "charged_moves": [
       "FIRE_PUNCH",
@@ -25240,7 +25607,8 @@
     ],
     "fast_moves": [
       "WATER_GUN",
-      "WING_ATTACK"
+      "WING_ATTACK",
+      "LOW_KICK"
     ],
     "charged_moves": [
       "AQUA_JET",
@@ -25285,14 +25653,17 @@
     ],
     "fast_moves": [
       "TACKLE",
-      "TAKE_DOWN"
+      "TAKE_DOWN",
+      "MUD_SLAP"
     ],
     "charged_moves": [
       "DIG",
       "BODY_SLAM",
       "TRAILBLAZE"
     ],
-    "fast_elite_moves": [],
+    "fast_elite_moves": [
+      "MUD_SLAP"
+    ],
     "charged_elite_moves": [],
     "shadow_eligible": false
   },
@@ -25305,14 +25676,17 @@
     ],
     "fast_moves": [
       "TACKLE",
-      "TAKE_DOWN"
+      "TAKE_DOWN",
+      "MUD_SLAP"
     ],
     "charged_moves": [
       "DIG",
       "BODY_SLAM",
       "TRAILBLAZE"
     ],
-    "fast_elite_moves": [],
+    "fast_elite_moves": [
+      "MUD_SLAP"
+    ],
     "charged_elite_moves": [],
     "shadow_eligible": false
   },
@@ -25681,86 +26055,6 @@
     "shadow_eligible": false
   },
   {
-    "id": 931,
-    "name": "시비꼬 (블루플루미지)",
-    "types": [
-      "normal",
-      "flying"
-    ],
-    "fast_moves": [
-      "PECK",
-      "AIR_SLASH"
-    ],
-    "charged_moves": [
-      "AERIAL_ACE",
-      "BRAVE_BIRD",
-      "FLY"
-    ],
-    "fast_elite_moves": [],
-    "charged_elite_moves": [],
-    "shadow_eligible": false
-  },
-  {
-    "id": 931,
-    "name": "시비꼬 (그린플루미지)",
-    "types": [
-      "normal",
-      "flying"
-    ],
-    "fast_moves": [
-      "PECK",
-      "AIR_SLASH"
-    ],
-    "charged_moves": [
-      "AERIAL_ACE",
-      "BRAVE_BIRD",
-      "FLY"
-    ],
-    "fast_elite_moves": [],
-    "charged_elite_moves": [],
-    "shadow_eligible": false
-  },
-  {
-    "id": 931,
-    "name": "시비꼬 (화이트플루미지)",
-    "types": [
-      "normal",
-      "flying"
-    ],
-    "fast_moves": [
-      "PECK",
-      "AIR_SLASH"
-    ],
-    "charged_moves": [
-      "AERIAL_ACE",
-      "BRAVE_BIRD",
-      "FLY"
-    ],
-    "fast_elite_moves": [],
-    "charged_elite_moves": [],
-    "shadow_eligible": false
-  },
-  {
-    "id": 931,
-    "name": "시비꼬 (옐로플루미지)",
-    "types": [
-      "normal",
-      "flying"
-    ],
-    "fast_moves": [
-      "PECK",
-      "AIR_SLASH"
-    ],
-    "charged_moves": [
-      "AERIAL_ACE",
-      "BRAVE_BIRD",
-      "FLY"
-    ],
-    "fast_elite_moves": [],
-    "charged_elite_moves": [],
-    "shadow_eligible": false
-  },
-  {
     "id": 932,
     "name": "베베솔트",
     "types": [
@@ -25976,7 +26270,7 @@
     ],
     "charged_moves": [
       "CRUNCH",
-      "PAYBACK",
+      "PSYCHIC_FANGS",
       "DIG"
     ],
     "fast_elite_moves": [],
@@ -25996,7 +26290,7 @@
     ],
     "charged_moves": [
       "CRUNCH",
-      "PAYBACK",
+      "PSYCHIC_FANGS",
       "DIG"
     ],
     "fast_elite_moves": [],
@@ -26032,12 +26326,14 @@
     ],
     "fast_moves": [
       "MUD_SLAP",
-      "POISON_JAB"
+      "POISON_JAB",
+      "SCRATCH"
     ],
     "charged_moves": [
       "ACID_SPRAY",
       "POISON_FANG",
-      "SLUDGE_BOMB"
+      "SLUDGE_BOMB",
+      "FOUL_PLAY"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -26385,7 +26681,8 @@
       "PAYBACK",
       "AERIAL_ACE",
       "FLY",
-      "ROCK_TOMB"
+      "ROCK_TOMB",
+      "DRILL_RUN"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -26653,7 +26950,8 @@
     ],
     "fast_moves": [
       "WING_ATTACK",
-      "DOUBLE_KICK"
+      "DOUBLE_KICK",
+      "PECK"
     ],
     "charged_moves": [
       "AERIAL_ACE",
@@ -26918,7 +27216,8 @@
     "fast_moves": [
       "SNARL",
       "METAL_CLAW",
-      "METAL_SOUND"
+      "METAL_SOUND",
+      "LOW_KICK"
     ],
     "charged_moves": [
       "DARK_PULSE",
@@ -27193,10 +27492,13 @@
       "AVALANCHE",
       "OUTRAGE",
       "BLIZZARD",
-      "ICY_WIND"
+      "ICY_WIND",
+      "GLAIVE_RUSH"
     ],
     "fast_elite_moves": [],
-    "charged_elite_moves": [],
+    "charged_elite_moves": [
+      "GLAIVE_RUSH"
+    ],
     "shadow_eligible": false
   },
   {

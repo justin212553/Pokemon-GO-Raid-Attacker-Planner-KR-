@@ -48,9 +48,17 @@ Visual Refinement 이후 Chrome Extension으로 출시 예정이며, 빌드 후 
 제작자: 아이작 블루 (@Friday_3233 of X)
 
 <div align="center">
-<img width="1200" alt="GAS banner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+<img height="40" alt="Google AI Studio badge" src="https://img.shields.io/badge/Google_AI_Studio-8E75B2?logo=googlegemini&logoColor=white&style=for-the-badge" />
 </div>
 
 ```
 이 웹사이트의 일부 기능은 Google AI Studio를 이용하여 만들어졌음을 밝힙니다.
+```
+
+<div align="center">
+<img height="40" alt="Claude Code badge" src="https://img.shields.io/badge/Claude_Code-D97757?logo=claude&logoColor=white&style=for-the-badge" />
+</div>
+
+```
+이 웹사이트의 일부 기능은 Claude Code를 이용하여 만들어졌음을 밝힙니다.
 ```

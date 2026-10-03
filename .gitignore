@@ -6,3 +6,6 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# build-data.mjs 출력 (리포트/미리보기)
+scripts/out/

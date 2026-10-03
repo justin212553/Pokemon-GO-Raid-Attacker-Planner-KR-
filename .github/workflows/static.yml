@@ -3,6 +3,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: ["main"]
+  # update-data.yml 이 데이터 갱신 커밋 후 호출합니다.
+  workflow_call:
 
 permissions:
   contents: read
@@ -18,6 +20,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # workflow_call 로 호출되면 기본값은 호출 시점(갱신 커밋 이전) 커밋이므로 main 최신을 받습니다.
+          ref: main
 
       - name: Setup Node
         uses: actions/setup-node@v4

@@ -10,6 +10,11 @@
         "type": "poison"
     },
     {
+        "id": "ACID_SPRAY_PLUS",
+        "name": "애시드봄+",
+        "type": "poison"
+    },
+    {
         "id": "ACROBATICS",
         "name": "애크러뱃",
         "type": "flying"
@@ -145,6 +150,11 @@
         "type": "flying"
     },
     {
+        "id": "BRAVE_BIRD_PLUS",
+        "name": "브레이브버드+",
+        "type": "flying"
+    },
+    {
         "id": "BREAKING_SWIPE",
         "name": "와이드브레이커",
         "type": "dragon"
@@ -152,6 +162,11 @@
     {
         "id": "BRICK_BREAK",
         "name": "깨트리다",
+        "type": "fighting"
+    },
+    {
+        "id": "BRICK_BREAK_PLUS",
+        "name": "깨트리다+",
         "type": "fighting"
     },
     {
@@ -275,6 +290,11 @@
         "type": "dark"
     },
     {
+        "id": "DARK_PULSE_PLUS",
+        "name": "악의파동+",
+        "type": "dark"
+    },
+    {
         "id": "DAZZLING_GLEAM",
         "name": "매지컬샤인",
         "type": "fairy"
@@ -293,6 +313,11 @@
         "id": "DISCHARGE",
         "name": "방전",
         "type": "electric"
+    },
+    {
+        "id": "DIVE",
+        "name": "다이빙",
+        "type": "water"
     },
     {
         "id": "DOOM_DESIRE",
@@ -360,6 +385,11 @@
         "type": "flying"
     },
     {
+        "id": "DRILL_PECK_PLUS",
+        "name": "회전부리+",
+        "type": "flying"
+    },
+    {
         "id": "DRILL_RUN",
         "name": "드릴라이너",
         "type": "ground"
@@ -377,6 +407,11 @@
     {
         "id": "DYNAMIC_PUNCH",
         "name": "폭발펀치",
+        "type": "fighting"
+    },
+    {
+        "id": "DYNAMIC_PUNCH_PLUS",
+        "name": "폭발펀치+",
         "type": "fighting"
     },
     {
@@ -422,6 +457,11 @@
     {
         "id": "FELL_STINGER",
         "name": "마지막일침",
+        "type": "bug"
+    },
+    {
+        "id": "FELL_STINGER_PLUS",
+        "name": "마지막일침+",
         "type": "bug"
     },
     {
@@ -540,9 +580,19 @@
         "type": "psychic"
     },
     {
+        "id": "FUTURE_SIGHT_PLUS",
+        "name": "미래예지+",
+        "type": "psychic"
+    },
+    {
         "id": "GEOMANCY",
         "name": "지오컨트롤",
         "type": "fairy"
+    },
+    {
+        "id": "GIGATON_HAMMER",
+        "name": "거대해머",
+        "type": "steel"
     },
     {
         "id": "GIGA_DRAIN",
@@ -555,19 +605,29 @@
         "type": "normal"
     },
     {
-        "id": "GIGATON_HAMMER",
-        "name": "거대해머",
-        "type": "steel"
-    },
-    {
         "id": "GLACIATE",
         "name": "얼다세계",
         "type": "ice"
     },
     {
+        "id": "GLAIVE_RUSH",
+        "name": "대검돌격",
+        "type": "dragon"
+    },
+    {
         "id": "GRASS_KNOT",
         "name": "풀묶기",
         "type": "grass"
+    },
+    {
+        "id": "GULP_MISSILE_ARROKUDA",
+        "name": "Gulp Missile (Arrokuda)",
+        "type": "water"
+    },
+    {
+        "id": "GULP_MISSILE_PIKACHU",
+        "name": "Gulp Missile (Pikachu)",
+        "type": "water"
     },
     {
         "id": "GUNK_SHOT",
@@ -720,6 +780,11 @@
         "type": "water"
     },
     {
+        "id": "HYDRO_PUMP_BLASTOISE",
+        "name": "하이드로펌프",
+        "type": "water"
+    },
+    {
         "id": "HYPER_BEAM",
         "name": "파괴광선",
         "type": "normal"
@@ -822,6 +887,11 @@
     {
         "id": "LIQUIDATION",
         "name": "아쿠아브레이크",
+        "type": "water"
+    },
+    {
+        "id": "LIQUIDATION_PLUS",
+        "name": "아쿠아브레이크+",
         "type": "water"
     },
     {
@@ -950,6 +1020,11 @@
         "type": "fire"
     },
     {
+        "id": "MYSTICAL_FIRE_PLUS",
+        "name": "매지컬플레임+",
+        "type": "fire"
+    },
+    {
         "id": "NATURES_MADNESS",
         "name": "자연의 분노",
         "type": "fairy"
@@ -995,6 +1070,11 @@
         "type": "dragon"
     },
     {
+        "id": "OUTRAGE_PLUS",
+        "name": "역린+",
+        "type": "dragon"
+    },
+    {
         "id": "OVERHEAT",
         "name": "오버히트",
         "type": "fire"
@@ -1018,6 +1098,11 @@
         "id": "PETAL_BLIZZARD",
         "name": "꽃보라",
         "type": "grass"
+    },
+    {
+        "id": "PLASMA_FISTS",
+        "name": "플라스마피스트",
+        "type": "electric"
     },
     {
         "id": "PLAY_ROUGH",
@@ -1082,6 +1167,11 @@
     {
         "id": "PSYBEAM",
         "name": "환상빔",
+        "type": "psychic"
+    },
+    {
+        "id": "PSYBEAM_PLUS",
+        "name": "환상빔+",
         "type": "psychic"
     },
     {
@@ -1194,19 +1284,9 @@
         "name": "구르기",
         "type": "rock"
     },
-        {
+    {
         "id": "SACRED_FIRE",
         "name": "성스러운불꽃",
-        "type": "fire"
-    },
-    {
-        "id": "SACRED_FIRE+",
-        "name": "성스러운불꽃+",
-        "type": "fire"
-    },
-    {
-        "id": "SACRED_FIRE++",
-        "name": "성스러운불꽃++",
         "type": "fire"
     },
     {
@@ -1252,6 +1332,11 @@
     {
         "id": "SEED_BOMB",
         "name": "씨폭탄",
+        "type": "grass"
+    },
+    {
+        "id": "SEED_BOMB_PLUS",
+        "name": "씨폭탄+",
         "type": "grass"
     },
     {
@@ -1333,6 +1418,11 @@
         "id": "SNARL",
         "name": "바크아웃",
         "type": "dark"
+    },
+    {
+        "id": "SNIPE_SHOT",
+        "name": "노려맞히기",
+        "type": "water"
     },
     {
         "id": "SOLAR_BEAM",
@@ -1417,6 +1507,11 @@
     {
         "id": "SURF",
         "name": "파도타기",
+        "type": "water"
+    },
+    {
+        "id": "SURF_PLUS",
+        "name": "파도타기+",
         "type": "water"
     },
     {
@@ -1550,6 +1645,11 @@
         "type": "electric"
     },
     {
+        "id": "VOLT_TACKLE_PLUS",
+        "name": "볼트태클+",
+        "type": "electric"
+    },
+    {
         "id": "V_CREATE",
         "name": "V제너레이트",
         "type": "fire"
@@ -1561,6 +1661,11 @@
     },
     {
         "id": "WATER_GUN",
+        "name": "물대포",
+        "type": "water"
+    },
+    {
+        "id": "WATER_GUN_FAST_BLASTOISE",
         "name": "물대포",
         "type": "water"
     },
@@ -1632,6 +1737,11 @@
     {
         "id": "ZAP_CANNON",
         "name": "전자포",
+        "type": "electric"
+    },
+    {
+        "id": "ZAP_CANNON_PLUS",
+        "name": "전자포+",
         "type": "electric"
     },
     {

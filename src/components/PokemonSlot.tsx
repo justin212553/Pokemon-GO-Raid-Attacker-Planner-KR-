@@ -122,7 +122,7 @@ export function PokemonSlot({
       <div className={`absolute left-0 top-0 bottom-0 w-3 rounded-l-lg ${getStatusBgColor(trainingStatus || 'Not Caught')} z-10 opacity-100 pointer-events-none`}></div>
       
       {/* 포켓몬 이미지 (Left Box) */}
-      <div className="w-2/5 min-w-[140px] pl-4 pr-1 py-4 overflow-hidden border-r border-slate-800/50 flex flex-row items-center bg-slate-950/50 transition-colors relative group/img rounded-l-lg ">
+      <div className="w-60 pl-4 pr-1 py-4 overflow-hidden border-r border-slate-800/50 flex flex-row items-center bg-slate-950/50 transition-colors relative group/img rounded-l-lg ">
         <div className="flex flex-col gap-1 z-20 shrink-0 relative">
           {!isUncaught && (slot.atkIv ?? 15) === 15 && (slot.defIv ?? 15) === 15 && (slot.hpIv ?? 15) === 15 && (
             <div className="absolute -top-4 left-1/2 -translate-x-1/2 text-yellow-400 text-[10px] sm:text-xs min-h-[16px]">
@@ -132,6 +132,20 @@ export function PokemonSlot({
           <input title="Attack IV" type={isUncaught ? "text" : "number"} min="0" max="15" value={isUncaught ? "-" : (slot.atkIv ?? 15)} readOnly={isUncaught} onChange={(e) => { if(!isUncaught){ const v = parseInt(e.target.value); onUpdate({...slot, atkIv: isNaN(v) ? 0 : Math.min(15, Math.max(0, v))}); } }} className={`w-7 h-5 text-[10px] bg-slate-900 border border-slate-700 text-center font-bold ${isUncaught ? 'text-slate-500' : 'text-red-400'} outline-none focus:border-red-500 rounded-sm [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]`} />
           <input title="Defense IV" type={isUncaught ? "text" : "number"} min="0" max="15" value={isUncaught ? "-" : (slot.defIv ?? 15)} readOnly={isUncaught} onChange={(e) => { if(!isUncaught){ const v = parseInt(e.target.value); onUpdate({...slot, defIv: isNaN(v) ? 0 : Math.min(15, Math.max(0, v))}); } }} className={`w-7 h-5 text-[10px] bg-slate-900 border border-slate-700 text-center font-bold ${isUncaught ? 'text-slate-500' : 'text-blue-400'} outline-none focus:border-blue-500 rounded-sm [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]`} />
           <input title="HP IV" type={isUncaught ? "text" : "number"} min="0" max="15" value={isUncaught ? "-" : (slot.hpIv ?? 15)} readOnly={isUncaught} onChange={(e) => { if(!isUncaught){ const v = parseInt(e.target.value); onUpdate({...slot, hpIv: isNaN(v) ? 0 : Math.min(15, Math.max(0, v))}); } }} className={`w-7 h-5 text-[10px] bg-slate-900 border border-slate-700 text-center font-bold ${isUncaught ? 'text-slate-500' : 'text-green-400'} outline-none focus:border-green-500 rounded-sm [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]`} />
+          <button
+            disabled={!canBeShadow}
+            onClick={toggleShadow}
+            className={`w-7 h-5 rounded flex items-center justify-center border transition-all ${
+              !canBeShadow
+                ? 'opacity-30 cursor-not-allowed border-slate-700 bg-slate-800'
+                : isShadow
+                  ? 'bg-purple-600/30 border-purple-500/50 shadow-[0_0_8px_rgba(168,85,247,0.4)] text-purple-400'
+                  : 'border-slate-600 bg-slate-800 text-slate-500 hover:border-purple-500/50 hover:text-purple-400'
+            }`}
+            title={!canBeShadow ? 'Shadow not available' : isShadow ? 'Shadow' : 'Normal'}
+          >
+            <span className="text-[10px] font-bold leading-none">S</span>
+          </button>
         </div>
         <div className="flex-1 flex flex-col items-center justify-center cursor-pointer h-full relative" onClick={onSelectPokemonRequest}>
           <PokemonImage 
@@ -150,23 +164,8 @@ export function PokemonSlot({
       <div className="flex-1 flex flex-col justify-center py-1 relative">
         {/* 포켓몬 이름 & 훈련 상태 (Top Row) */}
         <div className="flex justify-between items-center px-4 py-1 border-b border-slate-800/50">
-          {/* 왼쪽 영역: 그림자 아이콘 + 이름 */}
+          {/* 왼쪽 영역: 이름 */}
           <div className="flex items-center gap-3 min-w-0">
-            <button
-              disabled={!canBeShadow}
-              onClick={toggleShadow}
-              className={`shrink-0 w-6 h-6 rounded flex items-center justify-center border transition-all ${
-                !canBeShadow 
-                  ? 'opacity-30 cursor-not-allowed border-slate-700 bg-slate-800' 
-                  : isShadow 
-                    ? 'bg-purple-600/30 border-purple-500/50 shadow-[0_0_8px_rgba(168,85,247,0.4)] text-purple-400' 
-                    : 'border-slate-600 bg-slate-800 text-slate-500 hover:border-purple-500/50 hover:text-purple-400'
-              }`}
-              title={!canBeShadow ? 'Shadow not available' : isShadow ? 'Shadow' : 'Normal'}
-            >
-              <span className="text-[10px] font-bold leading-none">S</span>
-            </button>
-            
             <h4 className="text-xl font-bold tracking-tight text-white truncate leading-tight">
               {pokemon.name}
             </h4>
@@ -174,18 +173,6 @@ export function PokemonSlot({
 
           {/* 오른쪽 영역: 타입 아이콘 + 육성 상태 */}
           <div className="flex items-center gap-3 shrink-0">
-            {/* 타입 아이콘 그룹 */}
-            <div className="flex gap-1 items-center">
-              {pokemon.types.map(t => (
-                <img 
-                  key={t} 
-                  src={TYPE_ICONS[t]} 
-                  alt={t} 
-                  className="w-5 h-5 object-contain" 
-                  title={t} 
-                />
-              ))}
-            </div>
 
             {/* 드롭다운 버튼 */}
             <div className="relative dropdown-container">

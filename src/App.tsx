@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { PartyBuilder } from './components/PartyBuilder';
 import { PartySlotData } from './scripts/types';
 import { EliteTMTracker } from './components/EliteTMTracker';
-import { POKEMON_DATA } from './scripts/pokemonData';
+import { serializeSlot, deserializeSlot, serializeParties, deserializeParties, emptySlot } from './scripts/saveData';
 
 const POKEMON_TYPES_LIST = [
   "normal", "fire", "water", "grass", "electric", "ice", "fighting", "poison", "ground", "flying", "psychic", "bug", "rock", "ghost", "dragon", "dark", "steel", "fairy"
@@ -11,16 +11,7 @@ const POKEMON_TYPES_LIST = [
 export default function App() {
   const [selectedType, setSelectedType] = useState<string>('fire');
   
-  const generateDefaultSlots = () => Array.from({ length: 6 }).map((_, i) => ({
-    id: `slot-${i}`,
-    pokemon: null,
-    fastMove: null,
-    chargeMove1: null,
-    fastMoveChecked: false,
-    chargeMove1Checked: false,
-    isShadow: false,
-    trainingStatus: 'Not Caught' as const
-  }));
+  const generateDefaultSlots = () => Array.from({ length: 6 }, (_, i) => emptySlot(i));
 
   const initialParties = POKEMON_TYPES_LIST.reduce((acc, type) => {
     acc[type] = generateDefaultSlots();
@@ -31,7 +22,7 @@ export default function App() {
     const saved = localStorage.getItem('pogo-all-parties');
     if (saved) {
       try {
-        return { ...initialParties, ...JSON.parse(saved) };
+        return deserializeParties(JSON.parse(saved), POKEMON_TYPES_LIST);
       } catch (err) {
         console.error('Failed to parse saved parties:', err);
       }
@@ -79,7 +70,7 @@ export default function App() {
 
   const handleExport = () => {
     try {
-      localStorage.setItem('pogo-all-parties', JSON.stringify(allParties));
+      localStorage.setItem('pogo-all-parties', JSON.stringify(serializeParties(allParties)));
       localStorage.setItem('pogo-tm-orders', JSON.stringify(tmOrders));
       setSaveMessage({ text: '성공적으로 저장되었습니다.', type: 'success' });
       setTimeout(() => setSaveMessage(null), 3000);
@@ -91,7 +82,6 @@ export default function App() {
 
   const handleExportFile = () => {
     try {
-      const statusEnum = ['Not Caught', 'To Catch', 'Caught', 'Evolved', 'Maxed Out', 'Mega Evolved'];
       const data: any = {
         "hidden_types": hiddenTypes,
         "party_list": {}
@@ -116,12 +106,7 @@ export default function App() {
           const isCommDayWait = (fId && tmOrders.commDayWait.includes(fId)) || (cId && tmOrders.commDayWait.includes(cId)) || false;
 
           return {
-            "name": slot.pokemon.name,
-            "ivs": [slot.atkIv ?? 15, slot.defIv ?? 15, slot.hpIv ?? 15],
-            "is_shadow": slot.isShadow,
-            "training_level": statusEnum.indexOf(slot.trainingStatus || 'Not Caught'),
-            "fast_move": slot.fastMove ? { "id": slot.fastMove.id, "is_trained": slot.fastMoveChecked } : null,
-            "charge_move": slot.chargeMove1 ? { "id": slot.chargeMove1.id, "is_trained": slot.chargeMove1Checked } : null,
+            ...serializeSlot(slot),
             "elite_fast_order": fastEliteOrder,
             "elite_charge_order": chargeEliteOrder,
             "waitlisted": isCommDayWait
@@ -157,7 +142,6 @@ export default function App() {
         try {
           const content = event.target?.result as string;
           const data = JSON.parse(content);
-          const statusEnum = ['Not Caught', 'To Catch', 'Caught', 'Evolved', 'Maxed Out', 'Mega Evolved'];
           
           if (data["hidden_types"] && Array.isArray(data["hidden_types"])) {
             setHiddenTypes(data["hidden_types"]);
@@ -176,55 +160,22 @@ export default function App() {
                 
                 for (let i = 0; i < 6; i++) {
                     const externalData = slotArray[i];
-                    if (!externalData || !externalData["name"]) {
-                        newAllParties[type][i] = {
-                           id: `slot-${i}`,
-                           pokemon: null,
-                           fastMove: null,
-                           chargeMove1: null,
-                           fastMoveChecked: false,
-                           chargeMove1Checked: false,
-                           isShadow: false,
-                           trainingStatus: 'Not Caught'
-                        };
-                        continue;
+                    const slot = deserializeSlot(externalData, i);
+                    newAllParties[type][i] = slot;
+                    if (!slot.pokemon) continue;
+
+                    const fId = slot.fastMove ? `${type}-slot-${i}-${slot.fastMove.name}-fast` : '';
+                    const cId = slot.chargeMove1 ? `${type}-slot-${i}-${slot.chargeMove1.name}-charge` : '';
+
+                    if (externalData["elite_fast_order"] > 0 && fId) {
+                        newFastOrders.push({ id: fId, order: externalData["elite_fast_order"] });
                     }
-
-                    const poke = POKEMON_DATA.find(p => p.name === externalData["name"]);
-                    if (poke) {
-                       const fastMoveId = externalData["fast_move"]?.["id"];
-                       const fastMoveObj = poke.fastMoves.find((m: any) => m.id === fastMoveId || m.name === fastMoveId) || poke.fastEliteMoves.find((m: any) => m.id === fastMoveId || m.name === fastMoveId) || poke.fastMoves[0] || null;
-
-                       const chargeMoveId = externalData["charge_move"]?.["id"];
-                       const chargeMoveObj = poke.chargeMoves.find((m: any) => m.id === chargeMoveId || m.name === chargeMoveId) || poke.chargeEliteMoves.find((m: any) => m.id === chargeMoveId || m.name === chargeMoveId) || poke.chargeMoves[0] || null;
-                        
-                       newAllParties[type][i] = {
-                           id: `slot-${i}`,
-                           pokemon: poke,
-                           fastMove: fastMoveObj,
-                           chargeMove1: chargeMoveObj,
-                           fastMoveChecked: externalData["fast_move"]?.["is_trained"] ?? false,
-                           chargeMove1Checked: externalData["charge_move"]?.["is_trained"] ?? false,
-                           isShadow: externalData["is_shadow"] ?? false,
-                           trainingStatus: statusEnum[externalData["training_level"] ?? 0] as any,
-                           atkIv: externalData["ivs"]?.[0] ?? 15,
-                           defIv: externalData["ivs"]?.[1] ?? 15,
-                           hpIv: externalData["ivs"]?.[2] ?? 15,
-                       };
-
-                       const fId = fastMoveObj ? `${type}-slot-${i}-${fastMoveObj.name}-fast` : '';
-                       const cId = chargeMoveObj ? `${type}-slot-${i}-${chargeMoveObj.name}-charge` : '';
-
-                       if (externalData["elite_fast_order"] > 0 && fId) {
-                           newFastOrders.push({ id: fId, order: externalData["elite_fast_order"] });
-                       }
-                       if (externalData["elite_charge_order"] > 0 && cId) {
-                           newChargeOrders.push({ id: cId, order: externalData["elite_charge_order"] });
-                       }
-                       if (externalData["waitlisted"]) {
-                           if (fId) newCommDayWait.push(fId);
-                           if (cId) newCommDayWait.push(cId);
-                       }
+                    if (externalData["elite_charge_order"] > 0 && cId) {
+                        newChargeOrders.push({ id: cId, order: externalData["elite_charge_order"] });
+                    }
+                    if (externalData["waitlisted"]) {
+                        if (fId) newCommDayWait.push(fId);
+                        if (cId) newCommDayWait.push(cId);
                     }
                 }
             }
@@ -238,9 +189,6 @@ export default function App() {
                 commDayWait: [...new Set(newCommDayWait)]
             });
             setAllParties(newAllParties);
-          } else if (data.allParties) {
-             setAllParties(data.allParties);
-             if (data.tmOrders) setTmOrders(data.tmOrders);
           }
           
           setSaveMessage({ text: '파일에서 불러왔습니다.', type: 'success' });
@@ -260,7 +208,7 @@ export default function App() {
     const savedOrders = localStorage.getItem('pogo-tm-orders');
     if (savedParties) {
       try {
-        setAllParties({ ...initialParties, ...JSON.parse(savedParties) });
+        setAllParties(deserializeParties(JSON.parse(savedParties), POKEMON_TYPES_LIST));
         if (savedOrders) {
           const parsedOrders = JSON.parse(savedOrders);
           setTmOrders({ fast: parsedOrders.fast || [], charge: parsedOrders.charge || [], commDayWait: parsedOrders.commDayWait || [] });
@@ -288,7 +236,7 @@ export default function App() {
 
   return (
     <main className="min-h-screen min-w-fit bg-[#090b0e] text-slate-100 font-sans selection:bg-slate-700 flex flex-col items-center">
-      <div className="relative z-10 flex flex-col w-[768px]">
+      <div className="relative z-10 flex flex-col w-[750px]">
         <PartyBuilder 
           selectedType={selectedType} 
           setSelectedType={setSelectedType}
