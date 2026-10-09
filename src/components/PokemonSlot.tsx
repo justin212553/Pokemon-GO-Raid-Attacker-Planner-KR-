@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { POKEMON_DATA, POKEMON_TYPES, TYPE_TEXT_COLORS } from '../scripts/pokemonData';
 import { Pokemon, PartySlotData, Move } from '../scripts/types';
-import { Shield, User, Play, ChevronDown, Check, Swords, Plus } from 'lucide-react';
+import { Shield, User, Play, ChevronDown, Check, Swords, Plus, Star } from 'lucide-react';
 import { PokemonImage } from './PokemonImage';
 import { TYPE_ICONS } from '../scripts/icons';
 
@@ -133,20 +133,27 @@ export function PokemonSlot({
       {/* 포켓몬 이미지 (Top) */}
       <div className="relative px-2 pt-3 pb-1 border-b border-slate-800/50 bg-slate-950/50 rounded-t-lg overflow-hidden group/img">
         <div className="w-full flex justify-between absolute top-2 px-2 left-0 z-20">
-          <button
-            disabled={!canBeShadow}
-            onClick={toggleShadow}
-            className={`shrink-0 w-6 h-5 rounded flex items-center justify-center border transition-all ${
-              !canBeShadow
-                ? 'opacity-30 cursor-not-allowed border-slate-700 bg-slate-800'
-                : isShadow
-                  ? 'bg-purple-600/30 border-purple-500/50 shadow-[0_0_8px_rgba(168,85,247,0.4)] text-purple-400'
-                  : 'border-slate-600 bg-slate-800 text-slate-500 hover:border-purple-500/50 hover:text-purple-400'
-            }`}
-            title={!canBeShadow ? 'Shadow not available' : isShadow ? 'Shadow' : 'Normal'}
-          >
-            <span className="text-[10px] font-bold leading-none">S</span>
-          </button>
+          <div className="flex items-center gap-1.5">
+            <button
+              disabled={!canBeShadow}
+              onClick={toggleShadow}
+              className={`shrink-0 w-6 h-5 rounded flex items-center justify-center border transition-all ${
+                !canBeShadow
+                  ? 'opacity-30 cursor-not-allowed border-slate-700 bg-slate-800'
+                  : isShadow
+                    ? 'bg-purple-600/30 border-purple-500/50 shadow-[0_0_8px_rgba(168,85,247,0.4)] text-purple-400'
+                    : 'border-slate-600 bg-slate-800 text-slate-500 hover:border-purple-500/50 hover:text-purple-400'
+              }`}
+              title={!canBeShadow ? 'Shadow not available' : isShadow ? 'Shadow' : 'Normal'}
+            >
+              <span className="text-[10px] font-bold leading-none">S</span>
+            </button>
+            {isPerfectIv && (
+              <span className="h-5 flex items-center" title="Hundo">
+                <Star className="w-4 h-4 text-yellow-400 fill-yellow-400 drop-shadow-[0_0_4px_rgba(250,204,21,0.6)]" />
+              </span>
+            )}
+          </div>
           <span className="text-[9px] font-mono text-slate-500 font-bold bg-slate-900/80 px-1 py-0.5 rounded border border-slate-800">
             #{String(pokemon.id).padStart(3, '0')}
           </span>
@@ -168,13 +175,10 @@ export function PokemonSlot({
           {pokemon.name}
         </h4>
 
-        <div className="flex gap-1 items-center relative">
+        <div className="flex gap-1 items-center">
           <input title="Attack IV" type={isUncaught ? "text" : "number"} min="0" max="15" value={isUncaught ? "-" : (slot.atkIv ?? 15)} readOnly={isUncaught} onChange={(e) => { if(!isUncaught){ const v = parseInt(e.target.value); onUpdate({...slot, atkIv: isNaN(v) ? 0 : Math.min(15, Math.max(0, v))}); } }} className={ivInputClass('text-red-400', 'focus:border-red-500')} />
           <input title="Defense IV" type={isUncaught ? "text" : "number"} min="0" max="15" value={isUncaught ? "-" : (slot.defIv ?? 15)} readOnly={isUncaught} onChange={(e) => { if(!isUncaught){ const v = parseInt(e.target.value); onUpdate({...slot, defIv: isNaN(v) ? 0 : Math.min(15, Math.max(0, v))}); } }} className={ivInputClass('text-blue-400', 'focus:border-blue-500')} />
           <input title="HP IV" type={isUncaught ? "text" : "number"} min="0" max="15" value={isUncaught ? "-" : (slot.hpIv ?? 15)} readOnly={isUncaught} onChange={(e) => { if(!isUncaught){ const v = parseInt(e.target.value); onUpdate({...slot, hpIv: isNaN(v) ? 0 : Math.min(15, Math.max(0, v))}); } }} className={ivInputClass('text-green-400', 'focus:border-green-500')} />
-          {isPerfectIv && (
-            <span className="absolute -right-4 text-yellow-400 text-xs">★</span>
-          )}
         </div>
 
         <div className="flex items-center justify-between w-full">
