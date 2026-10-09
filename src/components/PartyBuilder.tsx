@@ -52,6 +52,8 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, o
       const dataUrl = await htmlToImage.toPng(captureRef.current, {
         backgroundColor: '#090b0e',
         pixelRatio: 2,
+        // -mx-2 음수 마진이 복제본에 그대로 들어가면 내용이 왼쪽으로 밀려 좌우 여백이 비대칭이 됨
+        style: { margin: '0' },
       });
       const link = document.createElement('a');
       link.href = dataUrl;
