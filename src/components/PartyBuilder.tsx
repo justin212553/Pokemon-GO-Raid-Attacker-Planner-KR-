@@ -230,7 +230,7 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, o
         </div>
       </header>
 
-      <div ref={captureRef} className="flex flex-col gap-2 relative bg-[#090b0e] p-2 -mx-2 rounded-xl">
+      <div ref={captureRef} className="grid grid-cols-3 gap-3 relative bg-[#090b0e] p-2 -mx-2 rounded-xl">
         {slots.map((slot, index) => {
           const roleLabel = index === 0 ? 'MEGA' : index === 1 || index === 2 ? 'DPS' : index === 3 || index === 4 ? 'ACE' : 'TANK';
           const roleTextColor = index === 0 ? 'text-purple-400' : index === 1 || index === 2 ? 'text-red-400' : index === 3 || index === 4 ? 'text-blue-400' : 'text-emerald-400';
@@ -239,20 +239,41 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, o
           return (
           <div 
             key={slot.id} 
-            className={`flex gap-2 items-center pr-2 group transition-all ${draggedIndex === index ? 'opacity-50 scale-95' : ''}`}
+            className={`flex flex-col gap-1.5 group transition-all ${draggedIndex === index ? 'opacity-50 scale-95' : ''}`}
             draggable
             onDragStart={(e) => handleDragStart(e, index)}
             onDragOver={handleDragOver}
             onDrop={(e) => handleDrop(e, index)}
             onDragEnd={handleDragEnd}
           >
-            <div className={`w-4 h-full flex flex-col items-center justify-center font-black tracking-widest text-[10px] sm:text-xs text-left pl-2 pb-1 ${roleTextColor} opacity-80 uppercase shrink-0`}>
-              {!isCapturing && (
-                <div className="cursor-grab hover:text-white mb-5 active:cursor-grabbing text-slate-500">
-                  <GripVertical className="w-4 h-4" />
-                </div>
+            <div className={`h-6 flex items-center justify-between px-1 font-black tracking-widest text-[10px] sm:text-xs ${roleTextColor} opacity-80 uppercase`}>
+              <div className="flex items-center gap-1">
+                {!isCapturing && (
+                  <div className="cursor-grab hover:text-white active:cursor-grabbing text-slate-500">
+                    <GripVertical className="w-4 h-4" />
+                  </div>
+                )}
+                <span>{roleLabel}</span>
+              </div>
+              {!isCapturing && slot.pokemon && (
+                <button 
+                  onClick={() => {
+                    handleUpdateSlot({
+                      ...slot,
+                      pokemon: null,
+                      fastMove: null,
+                      chargeMove1: null,
+                      fastMoveChecked: false,
+                      chargeMove1Checked: false,
+                      isShadow: false,
+                      trainingStatus: 'Not Caught'
+                    });
+                  }}
+                  className="w-6 h-6 bg-red-500/10 text-red-500 rounded flex items-center justify-center hover:bg-red-500 hover:text-white transition-colors border border-red-500/20 opacity-0 group-hover:opacity-100 flex-shrink-0"
+                >
+                  <Trash2 className="w-3.5 h-3.5" />
+                </button>
               )}
-              <span className="-rotate-90 inline-block">{roleLabel}</span>
             </div>
             <div className="flex-1 pointer-events-auto">
               <PokemonSlot 
@@ -262,25 +283,6 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, o
                 onSelectPokemonRequest={() => openPokemonSelector(slot.id)}
               />
             </div>
-            {!isCapturing && (
-              <button 
-                onClick={() => {
-                  handleUpdateSlot({
-                    ...slot,
-                    pokemon: null,
-                    fastMove: null,
-                    chargeMove1: null,
-                    fastMoveChecked: false,
-                    chargeMove1Checked: false,
-                    isShadow: false,
-                    trainingStatus: 'Not Caught'
-                  });
-                }}
-                className="w-10 h-10 bg-red-500/10 text-red-500 rounded flex items-center justify-center hover:bg-red-500 hover:text-white transition-colors border border-red-500/20 opacity-0 group-hover:opacity-100 flex-shrink-0"
-              >
-                <Trash2 className="w-4 h-4 " />
-              </button>
-            )}
           </div>
         )})}
       </div>
