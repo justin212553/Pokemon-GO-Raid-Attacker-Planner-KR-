@@ -91,6 +91,7 @@ const main = async () => {
 
   // --- pokemons.json (preprocessing/pkmn.py 와 동일한 변환) ---
   const exclude = new Set(ko.exclude || []);
+  const bySpeciesId = Object.fromEntries(pvpPokemon.map((p) => [p.speciesId, p]));
   const pokemons = [];
   for (const p of pvpPokemon) {
     if (p.speciesName.includes('(Shadow)') || exclude.has(p.speciesId)) continue;
@@ -102,6 +103,9 @@ const main = async () => {
     }
 
     const elite = new Set(p.eliteMoves || []);
+    // PvPoke 는 메가/원시 폼에 기본 폼의 레거시 기술 표시를 빠뜨리기도 함 (예: 메가뮤츠 X/Y 의 카운터)
+    const baseId = p.speciesId.match(/^(.+?)_(?:mega(?:_[xyz])?|primal)$/)?.[1];
+    for (const m of bySpeciesId[baseId]?.eliteMoves || []) elite.add(m);
     const forced = new Set(ko.forceElite?.[p.speciesId] || []);
     const fastMoves = p.fastMoves.filter((m) => !forced.has(m));
     const chargedMoves = p.chargedMoves.filter((m) => !forced.has(m));

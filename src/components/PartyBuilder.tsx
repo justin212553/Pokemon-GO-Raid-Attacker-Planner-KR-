@@ -38,6 +38,7 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, o
 
   const [searchTerm, setSearchTerm] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
+  const [includeOtherTypes, setIncludeOtherTypes] = useState(false);
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
   const captureRef = useRef<HTMLDivElement>(null);
   const [isCapturing, setIsCapturing] = useState(false);
@@ -101,6 +102,7 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, o
     setModalState({ ...modalState, isOpen: false });
     setSearchTerm('');
     setSearchQuery('');
+    setIncludeOtherTypes(false);
   };
 
   const handleSelectPokemon = (pokemon: Pokemon) => {
@@ -148,10 +150,11 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, o
       matchSlot = !isMegaOrPrimal;
     }
 
-    const matchType = poke.types.includes(selectedType);
+    const matchType = includeOtherTypes || poke.types.includes(selectedType);
 
+    // 검색어를 입력하기 전에는 목록을 보여주지 않음
     if (!normSearch) {
-      return matchType && matchSlot;
+      return false;
     }
 
     let isMatch = false;
@@ -385,6 +388,18 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, o
                 >
                   검색
                 </button>
+                <button
+                  type="button"
+                  onClick={() => setIncludeOtherTypes(v => !v)}
+                  className={`px-3 py-2 text-xs font-bold rounded border transition-colors whitespace-nowrap ${
+                    includeOtherTypes
+                      ? 'bg-amber-500/20 text-amber-300 border-amber-500/50'
+                      : 'bg-slate-950 text-slate-400 border-slate-700 hover:border-slate-500'
+                  }`}
+                  title="현재 타입이 아닌 포켓몬도 검색 결과에 포함"
+                >
+                  다른 타입
+                </button>
               </form>
             )}
 
@@ -411,7 +426,7 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, o
                       </div>
                     </button>
                   )) : (
-                    <div className="col-span-2 text-center p-4 text-slate-500 text-sm">No Pokémon found.</div>
+                    <div className="col-span-2 text-center p-4 text-slate-500 text-sm">{searchTerm.trim() ? 'No Pokémon found.' : '포켓몬 이름을 검색하세요.'}</div>
                   )}
                 </div>
               )}
@@ -419,8 +434,8 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, o
               {modalState.type === 'fastMove' && activePokemon && (
                 <div className="flex flex-col gap-1">
                   {[
-                    ...activePokemon.fastMoves.map((m) => ({ ...m, isElite: false })),
-                    ...activePokemon.fastEliteMoves.map((m) => ({ ...m, isElite: true }))
+                    ...activePokemon.fastEliteMoves.map((m) => ({ ...m, isElite: true })),
+                    ...activePokemon.fastMoves.map((m) => ({ ...m, isElite: false }))
                   ].filter((v, i, a) => a.findIndex(t => t.name === v.name) === i).map((move, idx) => (
                     <button
                       key={idx}
@@ -443,8 +458,8 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, o
               {modalState.type === 'chargeMove' && activePokemon && (
                 <div className="flex flex-col gap-1">
                   {[
-                    ...activePokemon.chargeMoves.map((m) => ({ ...m, isElite: false })),
-                    ...activePokemon.chargeEliteMoves.map((m) => ({ ...m, isElite: true }))
+                    ...activePokemon.chargeEliteMoves.map((m) => ({ ...m, isElite: true })),
+                    ...activePokemon.chargeMoves.map((m) => ({ ...m, isElite: false }))
                   ].filter((v, i, a) => a.findIndex(t => t.name === v.name) === i).map((move, idx) => (
                     <button
                       key={idx}

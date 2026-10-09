@@ -5118,7 +5118,9 @@
       "THUNDERBOLT",
       "PSYSTRIKE"
     ],
-    "fast_elite_moves": [],
+    "fast_elite_moves": [
+      "COUNTER"
+    ],
     "charged_elite_moves": [
       "HYPER_BEAM",
       "SHADOW_BALL",
@@ -5148,7 +5150,9 @@
       "THUNDERBOLT",
       "PSYSTRIKE"
     ],
-    "fast_elite_moves": [],
+    "fast_elite_moves": [
+      "COUNTER"
+    ],
     "charged_elite_moves": [
       "HYPER_BEAM",
       "SHADOW_BALL",
