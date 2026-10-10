@@ -108,7 +108,8 @@ const main = async () => {
     for (const m of bySpeciesId[baseId]?.eliteMoves || []) elite.add(m);
     const forced = new Set(ko.forceElite?.[p.speciesId] || []);
     const fastMoves = p.fastMoves.filter((m) => !forced.has(m));
-    const chargedMoves = p.chargedMoves.filter((m) => !forced.has(m));
+    // 메가 전용 + 기술은 일반 차지 기술로 추가 (기술머신 불필요, 레거시 아님)
+    const chargedMoves = [...p.chargedMoves.filter((m) => !forced.has(m)), ...(ko.megaMoves?.[p.speciesId] || [])];
 
     pokemons.push({
       id: p.dex,

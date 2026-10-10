@@ -105,7 +105,9 @@ export function EliteTMTracker({ allParties, tmOrders, setTmOrders }: EliteTMTra
             (slot.pokemon.name === '칠색조' && (slot.chargeMove1.name === '성스러운불꽃+' || slot.chargeMove1.name === '성스러운불꽃++')) ||
             (slot.pokemon.name === '디아루가 (오리진)' && slot.chargeMove1.name === '시간의포효') ||
             (slot.pokemon.name === '펄기아 (오리진)' && slot.chargeMove1.name === '공간절단');
-          if (!isElite && !isException) chargeCount++;
+          // 메가 전용 + 기술은 메가진화 시 자동으로 쓰므로 기술머신이 필요 없음
+          const isMegaMove = slot.chargeMove1.name.endsWith('+');
+          if (!isElite && !isException && !isMegaMove) chargeCount++;
         }
       });
       if (fastCount > 0 || chargeCount > 0) {

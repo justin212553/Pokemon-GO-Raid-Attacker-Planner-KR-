@@ -66,19 +66,25 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, o
     }
   };
 
+  // 0번 칸은 메가 전용이라 순서 바꾸기에서 제외 (끌 수도, 놓을 수도 없음)
   const handleDragStart = (e: React.DragEvent, index: number) => {
+    if (index === 0) {
+      e.preventDefault();
+      return;
+    }
     setDraggedIndex(index);
     e.dataTransfer.effectAllowed = 'move';
     e.dataTransfer.setData('text/plain', index.toString());
   };
 
-  const handleDragOver = (e: React.DragEvent) => {
+  const handleDragOver = (e: React.DragEvent, index: number) => {
+    if (index === 0) return;
     e.preventDefault();
   };
 
   const handleDrop = (e: React.DragEvent, dropIndex: number) => {
     e.preventDefault();
-    if (draggedIndex === null || draggedIndex === dropIndex) return;
+    if (draggedIndex === null || draggedIndex === dropIndex || draggedIndex === 0 || dropIndex === 0) return;
 
     const newSlots = [...slots];
     const item = newSlots[draggedIndex];
@@ -242,15 +248,15 @@ export function PartyBuilder({ selectedType, setSelectedType, slots, setSlots, o
           <div 
             key={slot.id} 
             className={`flex flex-col gap-1.5 group transition-all ${draggedIndex === index ? 'opacity-50 scale-95' : ''}`}
-            draggable
+            draggable={index !== 0}
             onDragStart={(e) => handleDragStart(e, index)}
-            onDragOver={handleDragOver}
+            onDragOver={(e) => handleDragOver(e, index)}
             onDrop={(e) => handleDrop(e, index)}
             onDragEnd={handleDragEnd}
           >
             <div className={`h-6 flex items-center justify-between px-1 font-black tracking-widest text-[10px] sm:text-xs ${roleTextColor} opacity-80 uppercase`}>
               <div className="flex items-center gap-1">
-                {!isCapturing && (
+                {!isCapturing && index !== 0 && (
                   <div className="cursor-grab hover:text-white active:cursor-grabbing text-slate-500">
                     <GripVertical className="w-4 h-4" />
                   </div>

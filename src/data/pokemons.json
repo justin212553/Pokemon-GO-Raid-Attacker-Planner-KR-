@@ -1029,7 +1029,8 @@
       "SKULL_BASH",
       "TRAILBLAZE",
       "SURF",
-      "VOLT_TACKLE"
+      "VOLT_TACKLE",
+      "VOLT_TACKLE_PLUS"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [
@@ -1058,7 +1059,8 @@
       "SKULL_BASH",
       "TRAILBLAZE",
       "SURF",
-      "VOLT_TACKLE"
+      "VOLT_TACKLE",
+      "ZAP_CANNON_PLUS"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [
@@ -2408,7 +2410,8 @@
       "SLUDGE_BOMB",
       "SOLAR_BEAM",
       "ACID_SPRAY",
-      "LEAF_TORNADO"
+      "LEAF_TORNADO",
+      "ACID_SPRAY_PLUS"
     ],
     "fast_elite_moves": [
       "MAGICAL_LEAF"
@@ -4071,7 +4074,8 @@
       "PSYCHIC",
       "THUNDER",
       "SURF",
-      "AQUA_JET"
+      "AQUA_JET",
+      "LIQUIDATION_PLUS"
     ],
     "fast_elite_moves": [
       "TACKLE"
@@ -5031,7 +5035,8 @@
       "HYPER_BEAM",
       "OUTRAGE",
       "SUPER_POWER",
-      "THUNDER_PUNCH"
+      "THUNDER_PUNCH",
+      "OUTRAGE_PLUS"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [
@@ -5116,7 +5121,8 @@
       "PSYCHIC",
       "SHADOW_BALL",
       "THUNDERBOLT",
-      "PSYSTRIKE"
+      "PSYSTRIKE",
+      "DYNAMIC_PUNCH_PLUS"
     ],
     "fast_elite_moves": [
       "COUNTER"
@@ -5148,7 +5154,8 @@
       "PSYCHIC",
       "SHADOW_BALL",
       "THUNDERBOLT",
-      "PSYSTRIKE"
+      "PSYSTRIKE",
+      "FUTURE_SIGHT_PLUS"
     ],
     "fast_elite_moves": [
       "COUNTER"
@@ -7161,7 +7168,8 @@
       "BRAVE_BIRD",
       "FLASH_CANNON",
       "SKY_ATTACK",
-      "DRILL_RUN"
+      "DRILL_RUN",
+      "DRILL_PECK_PLUS"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -16736,7 +16744,8 @@
     ],
     "fast_moves": [
       "SHADOW_CLAW",
-      "SNARL"
+      "SNARL",
+      "SUCKER_PUNCH"
     ],
     "charged_moves": [
       "FOUL_PLAY",
@@ -16744,7 +16753,9 @@
       "FLAMETHROWER",
       "NIGHT_SHADE"
     ],
-    "fast_elite_moves": [],
+    "fast_elite_moves": [
+      "SUCKER_PUNCH"
+    ],
     "charged_elite_moves": [],
     "shadow_eligible": false
   },
@@ -18876,7 +18887,8 @@
       "SUPER_POWER",
       "SOLAR_BEAM",
       "FRENZY_PLANT",
-      "THUNDER_PUNCH"
+      "THUNDER_PUNCH",
+      "SEED_BOMB_PLUS"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [
@@ -18970,7 +18982,8 @@
       "FIRE_BLAST",
       "BLAST_BURN",
       "MYSTICAL_FIRE",
-      "PSYSHOCK"
+      "PSYSHOCK",
+      "MYSTICAL_FIRE_PLUS"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [
@@ -19062,7 +19075,8 @@
       "SURF",
       "HYDRO_PUMP",
       "HYDRO_CANNON",
-      "BRUTAL_SWING"
+      "BRUTAL_SWING",
+      "SURF_PLUS"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [
@@ -19736,7 +19750,8 @@
       "PSYBEAM",
       "FOUL_PLAY",
       "SUPER_POWER",
-      "HYPER_BEAM"
+      "HYPER_BEAM",
+      "PSYBEAM_PLUS"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],
@@ -24507,7 +24522,8 @@
     "charged_moves": [
       "SUPER_POWER",
       "BRICK_BREAK",
-      "MEGAHORN"
+      "MEGAHORN",
+      "BRICK_BREAK_PLUS"
     ],
     "fast_elite_moves": [],
     "charged_elite_moves": [],

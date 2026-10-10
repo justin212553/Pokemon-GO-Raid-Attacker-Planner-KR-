@@ -21,6 +21,48 @@
       "ICE_BURN"
     ]
   },
+  "megaMoves": {
+    "_comment": "메가진화 상태에서만 추가로 쓰는 차지 기술(+). PvPoke 에는 기술만 있고 포켓몬에 연결돼 있지 않아 수동 지정. 출처: game master COMBAT_VM_MOVE_TEMP_EVOLUTION_*",
+    "raichu_mega_x": [
+      "VOLT_TACKLE_PLUS"
+    ],
+    "raichu_mega_y": [
+      "ZAP_CANNON_PLUS"
+    ],
+    "victreebel_mega": [
+      "ACID_SPRAY_PLUS"
+    ],
+    "starmie_mega": [
+      "LIQUIDATION_PLUS"
+    ],
+    "dragonite_mega": [
+      "OUTRAGE_PLUS"
+    ],
+    "mewtwo_mega_x": [
+      "DYNAMIC_PUNCH_PLUS"
+    ],
+    "mewtwo_mega_y": [
+      "FUTURE_SIGHT_PLUS"
+    ],
+    "skarmory_mega": [
+      "DRILL_PECK_PLUS"
+    ],
+    "chesnaught_mega": [
+      "SEED_BOMB_PLUS"
+    ],
+    "delphox_mega": [
+      "MYSTICAL_FIRE_PLUS"
+    ],
+    "greninja_mega": [
+      "SURF_PLUS"
+    ],
+    "malamar_mega": [
+      "PSYBEAM_PLUS"
+    ],
+    "falinks_mega": [
+      "BRICK_BREAK_PLUS"
+    ]
+  },
   "pokemon": {
     "bulbasaur": "이상해씨",
     "ivysaur": "이상해풀",
