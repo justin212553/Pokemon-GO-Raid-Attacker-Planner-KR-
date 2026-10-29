@@ -17640,6 +17640,32 @@
     "shadow_eligible": true
   },
   {
+    "id": 609,
+    "name": "메가샹델라",
+    "types": [
+      "ghost",
+      "fire"
+    ],
+    "fast_moves": [
+      "HEX",
+      "FIRE_SPIN",
+      "INCINERATE",
+      "ASTONISH"
+    ],
+    "charged_moves": [
+      "ENERGY_BALL",
+      "SHADOW_BALL",
+      "OVERHEAT",
+      "FLAME_CHARGE",
+      "POLTERGEIST"
+    ],
+    "fast_elite_moves": [],
+    "charged_elite_moves": [
+      "POLTERGEIST"
+    ],
+    "shadow_eligible": true
+  },
+  {
     "id": 610,
     "name": "터검니",
     "types": [

@@ -855,6 +855,11 @@
         "type": "fighting"
     },
     {
+        "id": "KOWTOW_CLEAVE",
+        "name": "Kowtow Cleave",
+        "type": "dark"
+    },
+    {
         "id": "LAST_RESORT",
         "name": "뒀다쓰기",
         "type": "normal"
@@ -1057,6 +1062,11 @@
     {
         "id": "OMINOUS_WIND",
         "name": "괴상한바람",
+        "type": "ghost"
+    },
+    {
+        "id": "OMINOUS_WIND_PLUS",
+        "name": "괴상한바람+",
         "type": "ghost"
     },
     {
