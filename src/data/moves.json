@@ -1040,6 +1040,11 @@
         "type": "ghost"
     },
     {
+        "id": "NIGHT_SHADE_PLUS",
+        "name": "나이트헤드+",
+        "type": "ghost"
+    },
+    {
         "id": "NIGHT_SLASH",
         "name": "깜짝베기",
         "type": "dark"
