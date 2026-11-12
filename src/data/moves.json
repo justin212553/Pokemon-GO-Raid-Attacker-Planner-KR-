@@ -995,6 +995,11 @@
         "type": "fairy"
     },
     {
+        "id": "MOONBLAST_PLUS",
+        "name": "문포스+",
+        "type": "fairy"
+    },
+    {
         "id": "MOONGEIST_BEAM",
         "name": "섀도레이",
         "type": "ghost"
@@ -1437,6 +1442,11 @@
     {
         "id": "SNIPE_SHOT",
         "name": "노려맞히기",
+        "type": "water"
+    },
+    {
+        "id": "SOAK",
+        "name": "Soak",
         "type": "water"
     },
     {

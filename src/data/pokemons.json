@@ -1347,6 +1347,34 @@
     "shadow_eligible": false
   },
   {
+    "id": 36,
+    "name": "메가픽시",
+    "types": [
+      "fairy",
+      "none"
+    ],
+    "fast_moves": [
+      "CHARGE_BEAM",
+      "POUND",
+      "ZEN_HEADBUTT",
+      "CHARM",
+      "FAIRY_WIND"
+    ],
+    "charged_moves": [
+      "DAZZLING_GLEAM",
+      "METEOR_MASH",
+      "MOONBLAST",
+      "PSYCHIC",
+      "SWIFT",
+      "DRAINING_KISS"
+    ],
+    "fast_elite_moves": [
+      "POUND"
+    ],
+    "charged_elite_moves": [],
+    "shadow_eligible": false
+  },
+  {
     "id": 37,
     "name": "식스테일",
     "types": [
