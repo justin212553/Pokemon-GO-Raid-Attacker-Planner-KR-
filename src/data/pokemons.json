@@ -13591,10 +13591,13 @@
       "FLASH_CANNON",
       "WILD_CHARGE",
       "ZAP_CANNON",
-      "MIRROR_SHOT"
+      "MIRROR_SHOT",
+      "MAGNET_BOMB"
     ],
     "fast_elite_moves": [],
-    "charged_elite_moves": [],
+    "charged_elite_moves": [
+      "MAGNET_BOMB"
+    ],
     "shadow_eligible": true
   },
   {
