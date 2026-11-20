@@ -27301,10 +27301,13 @@
       "IRON_HEAD",
       "X_SCISSOR",
       "FOCUS_BLAST",
-      "FOUL_PLAY"
+      "FOUL_PLAY",
+      "KOWTOW_CLEAVE"
     ],
     "fast_elite_moves": [],
-    "charged_elite_moves": [],
+    "charged_elite_moves": [
+      "KOWTOW_CLEAVE"
+    ],
     "shadow_eligible": false
   },
   {
