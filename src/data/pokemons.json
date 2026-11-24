@@ -1351,7 +1351,7 @@
     "name": "메가픽시",
     "types": [
       "fairy",
-      "none"
+      "flying"
     ],
     "fast_moves": [
       "CHARGE_BEAM",
